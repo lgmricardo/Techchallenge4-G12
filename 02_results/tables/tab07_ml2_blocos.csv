@@ -1,0 +1,5 @@
+bloco_preditores,auc,desvio_entre_particoes
+volume,0.556,0.038
+comerciais,0.583,0.029
+comerciais + categoria,0.658,0.026
+completo,0.704,0.006

@@ -1,0 +1,65 @@
+medida,valor,base,n,observacao
+Contagem de linhas — base bruta,1465.0,Bruta,1465,"linhas da origem, antes da deduplicação; serve só para relatar a qualidade do arquivo"
+Contagem de produtos — base de produtos,1351.0,Produtos,1351,DISTINCTCOUNT(product_id) após a regra de deduplicação; 1.465 − 114 linhas excedentes
+Contagem de produtos — nota válida,1350.0,Nota válida,1350,produtos com rating convertível; 1 registro com valor '|' vira nulo e sai
+Contagem de produtos — engajamento válido,1349.0,Engajamento válido,1349,"produtos com rating_count convertível; 2 nulos saem, sem sobreposição com o anterior"
+Contagem de produtos — base analítica,1348.0,Analítica,1348,padrão do dashboard: nota e volume de avaliações simultaneamente válidos
+Contagem de avaliações distintas — corpus,9255.0,Corpus de avaliações,9255,"T8: unidade = review individual, deduplicada por review_id; não confundir com contagem de linhas"
+Corte de engajamento alto — p90 de avaliações,36384.0,Analítica,1348,constante no modelo; recalcular o quantil sob filtro faz o corte variar entre visuais
+Corte de engajamento baixo — mediana de avaliações,4740.0,Analítica,1348,"constante no modelo, pela mesma razão do p90"
+Corte de satisfação baixa — nota,4.0,Analítica,1348,"rating < 4,0; limiar fechado no material, não é quantil"
+Corte de satisfação alta — nota,4.3,Analítica,1348,"rating >= 4,3; limiar fechado no material, não é quantil"
+Piso amostral de grupo agregado,30.0,Analítica,1348,T2: abaixo de 30 o grupo não é ranqueado nem comparado; listas nominais de produtos são exceção
+Preço de tabela mediano (rupia indiana),1795.0,Analítica,1348,MEDIAN(preco_tab); sem símbolo e sem conversão — L5
+Preço com desconto mediano (rupia indiana),899.0,Analítica,1348,"MEDIAN(preco_desc); é o preço praticado, não o de tabela"
+Desconto mediano (%),49.0,Analítica,1348,"MEDIAN(desconto), escala 0–100; divergência máxima de 0,50 p.p. contra o recalculado"
+Nota mediana,4.1,Analítica,1348,"MEDIAN(nota); exibição em cartão, nunca base de ranking — T1"
+Nota corrigida mediana (Wilson),4.0652,Analítica,1348,"MEDIAN(nota_corrigida); coluna calculada na carga, não medida DAX — Wilson depende do n do produto"
+Volume mediano de avaliações,4740.0,Analítica,1348,"MEDIAN(avaliacoes); T6 — volume de avaliações, nunca vendas ou demanda"
+Volume total de avaliações,23801471.0,Analítica,1348,SUM(avaliacoes); denominador de toda participação percentual deste gabarito
+Média de avaliações por produto,17656.8776,Analítica,1348,registrada só para expor a assimetria contra a mediana; o dashboard não publica média
+Produtos com engajamento alto,136.0,Analítica,1348,avaliacoes >= 36.384 (p90) · T6: volume de avaliações
+Produtos com engajamento intermediario,539.0,Analítica,1348,entre a mediana (inclusive) e o p90 (exclusive) · T6: volume de avaliações
+Produtos com engajamento baixo,673.0,Analítica,1348,avaliacoes < 4.740 (mediana) · T6: volume de avaliações
+Produtos com satisfação alta,418.0,Analítica,1348,"nota >= 4,3"
+Produtos com satisfação media,591.0,Analítica,1348,"nota entre 4,0 e 4,3"
+Produtos com satisfação baixa,339.0,Analítica,1348,"nota < 4,0"
+Participação de satisfação baixa no portfólio (%),25.1484,Analítica,1348,"nota < 4,0 sobre a base analítica; valor declarado no material é 25,1%"
+Produtos em Electronics,490.0,Analítica,1348,contagem de portfólio; categoria acima do piso de 30 (T2)
+Participação de Electronics no volume de avaliações (%),59.6956,Analítica,490,"DIVIDE(SUM(avaliacoes) da categoria; SUM(avaliacoes) total) · T6: volume, não mercado"
+Nota corrigida mediana em Electronics,4.0762,Analítica,490,"T1: Wilson, com o n da categoria ao lado; só publicável por estar acima do piso"
+Produtos em Computers&Accessories,373.0,Analítica,1348,contagem de portfólio; categoria acima do piso de 30 (T2)
+Participação de Computers&Accessories no volume de avaliações (%),26.6168,Analítica,373,"DIVIDE(SUM(avaliacoes) da categoria; SUM(avaliacoes) total) · T6: volume, não mercado"
+Nota corrigida mediana em Computers&Accessories,4.1502,Analítica,373,"T1: Wilson, com o n da categoria ao lado; só publicável por estar acima do piso"
+Produtos em Home&Kitchen,447.0,Analítica,1348,contagem de portfólio; categoria acima do piso de 30 (T2)
+Participação de Home&Kitchen no volume de avaliações (%),12.5626,Analítica,447,"DIVIDE(SUM(avaliacoes) da categoria; SUM(avaliacoes) total) · T6: volume, não mercado"
+Nota corrigida mediana em Home&Kitchen,3.9749,Analítica,447,"T1: Wilson, com o n da categoria ao lado; só publicável por estar acima do piso"
+Produtos em OfficeProducts,31.0,Analítica,1348,contagem de portfólio; categoria acima do piso de 30 (T2)
+Participação de OfficeProducts no volume de avaliações (%),0.6288,Analítica,31,"DIVIDE(SUM(avaliacoes) da categoria; SUM(avaliacoes) total) · T6: volume, não mercado"
+Nota corrigida mediana em OfficeProducts,4.2485,Analítica,31,"T1: Wilson, com o n da categoria ao lado; só publicável por estar acima do piso"
+Produtos em categorias abaixo do piso (somadas),7.0,Analítica,7,"T2: 5 categorias suprimidas — MusicalInstruments (2), Toys&Games (1), HomeImprovement (2), Health&PersonalCare (1), Car&Motorbike (1); nunca ranqueadas nem comparadas"
+Participação das categorias abaixo do piso no volume (%),0.4962,Analítica,7,linha única de supressão; declarada no rodapé do visual
+Categorias de nível 1 acima do piso,4.0,Analítica,1348,"de 9 categorias, 4 alcançam n >= 30 — L3"
+Subcategorias de nível 2 acima do piso,8.0,Analítica,1348,unidade de comparação de QA3; T2 aplicada sobre categoria_n2
+Cobertura das subcategorias acima do piso (%),88.2789,Analítica,1190,parcela do portfólio coberta pelas subcategorias comparáveis
+Produtos que concentram 80% do volume de avaliações,306.0,Analítica,1348,"ordenado por avaliacoes desc, soma acumulada; INCLUI o produto que cruza o limiar de 80%"
+Participação do grupo de Pareto no portfólio (%),22.7003,Analítica,1348,n_pareto / base analítica
+Volume de avaliações concentrado pelo grupo de Pareto (%),80.0185,Analítica,306,confere o corte: tem de ficar imediatamente acima de 80%
+"Q5 — alto engajamento e nota abaixo de 4,0",19.0,Analítica,1348,lista nominal de produtos; T2 não impõe piso a lista nominal — cada produto exibe seu n
+"Q6 — nota a partir de 4,3 e volume abaixo da mediana",187.0,Analítica,1348,"funil de Q6; a lista acionável são os 61 que seguem com nota corrigida >= 4,3 (M22, T1). Rótulo fechado em D-1: bem avaliados com baixo volume de avaliações"
+Volume de avaliações dos produtos de Q5,1453389.0,Analítica,19,"T6: soma de avaliações do quadrante, nunca lida como vendas"
+Produtos na faixa de desconto 0-20%,175.0,Analítica,1348,faixa fechada à direita; soma das 5 faixas fecha na base analítica
+Nota corrigida mediana na faixa 0-20%,4.1362,Analítica,175,T1: Wilson com o n ao lado; faixa acima do piso de 30 (T2)
+Produtos na faixa de desconto 21-40%,329.0,Analítica,1348,faixa fechada à direita; soma das 5 faixas fecha na base analítica
+Nota corrigida mediana na faixa 21-40%,4.0826,Analítica,329,T1: Wilson com o n ao lado; faixa acima do piso de 30 (T2)
+Produtos na faixa de desconto 41-60%,469.0,Analítica,1348,faixa fechada à direita; soma das 5 faixas fecha na base analítica
+Nota corrigida mediana na faixa 41-60%,4.0246,Analítica,469,T1: Wilson com o n ao lado; faixa acima do piso de 30 (T2)
+Produtos na faixa de desconto 61-80%,324.0,Analítica,1348,faixa fechada à direita; soma das 5 faixas fecha na base analítica
+Nota corrigida mediana na faixa 61-80%,4.0353,Analítica,324,T1: Wilson com o n ao lado; faixa acima do piso de 30 (T2)
+Produtos na faixa de desconto 81-100%,51.0,Analítica,1348,faixa fechada à direita; soma das 5 faixas fecha na base analítica
+Nota corrigida mediana na faixa 81-100%,3.9065,Analítica,51,T1: Wilson com o n ao lado; faixa acima do piso de 30 (T2)
+Referências de avaliação (bloco explodido),10588.0,Analítica,1348,"T8: unidade = referência, ANTES de deduplicar; não é o número a publicar"
+Avaliações distintas após deduplicação por review_id,9255.0,Corpus de avaliações,9255,T8: este é o número publicável; bate com 00_data/gold/reviews.csv
+Referências repetidas entre produtos,1333.0,Analítica,1348,diferença entre referência e review individual; 14% de inflação se ignorada
+Avaliações por produto — média (truncamento),7.8546,Analítica,1348,"L1: a origem trunca em 8 avaliações por produto; a média medida é 7,85"
+Avaliações por produto — máximo (truncamento),8.0,Analítica,1348,L1: teto rígido de 8; nenhum produto traz mais do que isso

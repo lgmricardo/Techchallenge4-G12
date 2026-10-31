@@ -1,0 +1,62 @@
+bloco_do_video,indicador,valor,base,n,regra
+1 Contexto,linhas na base bruta,1465,Bruta,1465,
+1 Contexto,produtos após deduplicação,1351,Produtos,1351,
+1 Contexto,produtos na base analítica,1348,Analítica,1348,T3 — base padrão de toda análise cruzada
+1 Contexto,categorias de nível 1 na base,9,Analítica,1348,
+1 Contexto,categorias com n >= 30 (T2),4,Analítica,1348,T2
+1 Contexto,produtos nas categorias abaixo do piso,7,Analítica,1348,T2 / L3
+1 Contexto,cobertura das 3 maiores categorias,"97,2%",Analítica,1348,L3
+1 Contexto,produtos em Electronics,490,Analítica,1348,T2
+1 Contexto,produtos em Home&Kitchen,447,Analítica,1348,T2
+1 Contexto,produtos em Computers&Accessories,373,Analítica,1348,T2
+1 Contexto,produtos em OfficeProducts,31,Analítica,1348,T2
+2 Indicadores,nota mediana,"4,10",Analítica,1348,T1 — ranking usa nota_corrigida
+2 Indicadores,desconto mediano,49%,Analítica,1348,
+2 Indicadores,"preço de tabela mediano (rupia, sem conversão)",1.795,Analítica,1348,L5
+2 Indicadores,volume mediano de avaliações,4.740,Analítica,1348,T6
+2 Indicadores,corte de engajamento alto (p90 de avaliações),36.384,Analítica,1348,T6
+2 Indicadores,"produtos com nota < 4,0","339 (25,1%)",Analítica,1348,
+2 Indicadores,"produtos com nota >= 4,3",418,Analítica,1348,
+2 Indicadores,produtos que concentram 80% das avaliações,"306 (22,7%)",Analítica,1348,T6 / QA2
+2 Indicadores,"produtos do Pareto 80% com nota < 4,0","39 (12,7%)",Analítica,306,"T6 — atenção é volume de avaliações · contraste com a taxa da base, 25,1%"
+3 Insights,Spearman desconto × nota,"rho -0,150 · p 3,1e-08",Analítica,1348,"T4 associação, nunca causa · T5 magnitude com significância"
+3 Insights,Spearman desconto × engajamento,"rho -0,132 · p 1,1e-06",Analítica,1348,"T4 associação, nunca causa · T5 magnitude com significância"
+3 Insights,Spearman preço de tabela × nota,"rho +0,032 · p 2,4e-01",Analítica,1348,"T4 associação, nunca causa · T5 magnitude com significância"
+3 Insights,Spearman engajamento × nota,"rho +0,193 · p 8,3e-13",Analítica,1348,"T4 associação, nunca causa · T5 magnitude com significância"
+3 Insights,"Q5 — engajamento alto e nota < 4,0",19,Analítica,1348,T2 exceção nominal
+3 Insights,"Q6 — funil: nota >= 4,3 e volume abaixo da mediana",187,Analítica,1348,T6 proxy declarado de exposição · vedado dizer 'baixa visibilidade'
+3 Insights,Q6 — lista acionável: funil já corrigido por Wilson,61,Analítica,1348,T1 · 126 dos 187 caem na correção · medida M22
+3 Insights,Q6 — produtos que caem na correção de Wilson,126,Analítica,1348,T1 · 187 do funil menos 61 acionáveis
+3 Insights,silhueta k=3,"0,215",Analítica,1348,ML4 — sem estrutura natural de agrupamento
+3 Insights,silhueta k=4,"0,234",Analítica,1348,ML4 — sem estrutura natural de agrupamento
+3 Insights,silhueta k=5,"0,237",Analítica,1348,ML4 — sem estrutura natural de agrupamento
+3 Insights,k de silhueta máxima,"k=5 (0,237)",Analítica,1348,ML4 — adotado k=4 por interpretabilidade
+3 Insights,arquétipo A — n · desconto · avaliações · nota,"268 · 32% · 6.836 · 4,2",Analítica,1348,"ML4 — descritivo, nunca descoberta"
+3 Insights,arquétipo B — n · desconto · avaliações · nota,"335 · 58% · 468 · 3,9",Analítica,1348,"ML4 — descritivo, nunca descoberta"
+3 Insights,arquétipo C — n · desconto · avaliações · nota,"298 · 22% · 6.534 · 4,2",Analítica,1348,"ML4 — descritivo, nunca descoberta"
+3 Insights,arquétipo D — n · desconto · avaliações · nota,"447 · 61% · 13.120 · 4,2",Analítica,1348,"ML4 — descritivo, nunca descoberta"
+3 Insights,conflito B × D — distância de desconto,3 p.p.,Analítica,1348,T4
+3 Insights,conflito B × D — razão de volume de avaliações,28x,Analítica,1348,"T6 — volume, nunca venda"
+5 Customer Insights,referências de avaliação na base,10.588,Analítica,1348,T8 — unidade: bloco de review
+5 Customer Insights,reviews distintos após deduplicar por review_id,9.255,Analítica,1348,T8
+5 Customer Insights,referências repetidas descartadas,1.333,Analítica,1348,T8
+5 Customer Insights,avaliações por produto — média e máximo,"7,85 · máx 8",Analítica,1348,L1 — truncamento na vitrine
+5 Customer Insights,"blocos de review com nota < 4,0",339,Analítica,1348,ML3 / T8
+5 Customer Insights,"blocos de review com nota >= 4,3",418,Analítica,1348,ML3 / T8
+5 Customer Insights,faixa intermediária fora do contraste,591 (44%),Analítica,1348,ML3 — lacuna declarada
+5 Customer Insights,avaliações disponíveis nos 19 produtos de Q5,147,Analítica,19,"QA5 — leitura dirigida, não TF-IDF"
+4 Dashboard,subcategorias de nível 2 com n >= 30,8,Analítica,1348,T2 / QA3
+4 Dashboard,cobertura das subcategorias acima do piso,"88,3%",Analítica,1348,T2 / QA3
+5 Customer Insights,"fones — produtos abaixo de 4,0","52,4%",Analítica,63,T2 n = 63 >= 30 · subcategoria de nível 2
+5 Customer Insights,fones — dispersão da nota (desvio-padrão),"0,224",Analítica,63,"QA3 — dispersão observada; a diferença não é significativa (Levene p = 0,18)"
+5 Customer Insights,"climatização — produtos abaixo de 4,0","37,9%",Analítica,116,T2 n = 116 >= 30 · subcategoria de nível 2
+5 Customer Insights,climatização — dispersão da nota (desvio-padrão),"0,346",Analítica,116,"QA3 — dispersão observada; a diferença não é significativa (Levene p = 0,18)"
+5 Customer Insights,"taxa da base abaixo de 4,0 — para comparação","25,1%",Analítica,1348,"sem ela, 52% e 38% não têm referência"
+6 Recomendações,ML2 — AUC só com volume de avaliações,"0,56",Analítica,1348,"ML2 — bloco isolado, duas casas; validação agrupada por variante (L8)"
+6 Recomendações,ML2 — AUC só com comerciais,"0,58",Analítica,1348,"ML2 — bloco isolado, duas casas; validação agrupada por variante (L8)"
+6 Recomendações,ML2 — AUC só com comerciais + categoria,"0,66",Analítica,1348,"ML2 — bloco isolado, duas casas; validação agrupada por variante (L8)"
+6 Recomendações,ML2 — AUC do modelo completo,"0,70 +- 0,01",Analítica,1348,ML2 — duas casas; discriminação moderada · validação agrupada por variante (L8)
+6 Recomendações,"ML2 — taxa de risco (nota < 4,0)","25,1%",Analítica,1348,ML2
+6 Recomendações,produtos no arquétipo B (revisão de sortimento),335,Analítica,1348,L4 — sem variável de venda
+6 Recomendações,faixa de desconto com maior nota corrigida (QA1),"0-20% · Wilson 4,136",Analítica,175,"T1 / T2 — todas as faixas acima do piso · T5 — 0,053 acima da segunda, sem leitura de negócio"
+6 Recomendações,faixa de desconto abaixo do limiar de satisfação (QA1),"81-100% · Wilson 3,906",Analítica,51,T1 / T2 — é o achado defensável de QA1

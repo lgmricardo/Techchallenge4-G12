@@ -1,0 +1,5 @@
+bloco_preditores,auc_validacao_ingenua,auc_validacao_agrupada,inflacao,criterio
+volume,0.622,0.556,0.066,"ingênua = StratifiedKFold · agrupada = StratifiedGroupKFold por par (avaliacoes, nota), a regra de variante da L8"
+comerciais,0.624,0.583,0.041,"ingênua = StratifiedKFold · agrupada = StratifiedGroupKFold por par (avaliacoes, nota), a regra de variante da L8"
+comerciais + categoria,0.691,0.658,0.034,"ingênua = StratifiedKFold · agrupada = StratifiedGroupKFold por par (avaliacoes, nota), a regra de variante da L8"
+completo,0.75,0.704,0.047,"ingênua = StratifiedKFold · agrupada = StratifiedGroupKFold por par (avaliacoes, nota), a regra de variante da L8"

@@ -1,0 +1,34 @@
+chave,medida,nome,medida_dax,categoria_n1,valor_esperado,publicado,escala,tolerancia
+M01,M01,Produtos Ativos,Produtos Ativos,,1348,1.348,unidade da medida,0
+M02,M02,Volume Total de Avaliações,Volume Total de Avaliações,,23801471,23.801.471,unidade da medida,0
+M03,M03,Preço Mediano,Preço Mediano,,899,899,unidade da medida,0
+M04,M04,Preço de Tabela Mediano,Preço de Tabela Mediano,,1795,1.795,unidade da medida,0
+M05,M05,Desconto Mediano,Desconto Mediano,,49,49,unidade da medida,0
+M06,M06,Nota Mediana,Nota Mediana,,4.1,"4,10",unidade da medida,1e-12
+M07,M07,Nota Corrigida Mediana,Nota Corrigida Mediana,,4.06516370824191,"4,065",unidade da medida,1e-08
+M08,M08,Volume Mediano de Avaliações,Volume Mediano de Avaliações,,4740,4.740,unidade da medida,0
+M09,M09,% Satisfação Baixa,% Satisfação Baixa,,0.251483679525223,"25,1% (339 produtos)",fração (o DAX devolve DIVIDE),1e-12
+M10,M10,% Satisfação Alta,% Satisfação Alta,,0.310089020771513,"31,0% (418 produtos)",fração (o DAX devolve DIVIDE),1e-12
+M11,M11,Produtos Q5 (risco de vitrine),Produtos Q5,,19,19,unidade da medida,0
+M12,M12,Produtos Q6 (candidatos a subexplorado),Produtos Q6,,187,187,unidade da medida,0
+M22,M22,Produtos Q6 Acionáveis (Wilson),Produtos Q6 Acionáveis,,61,61,unidade da medida,0
+M13,M13,Concentração Pareto 80%,Concentração Pareto 80%,,306,306,unidade da medida,0
+M14,M14,% Concentração Pareto 80%,% Concentração Pareto 80%,,0.22700296735905,"22,7%",fração (o DAX devolve DIVIDE),1e-12
+M15 · Electronics,M15,Participação da Categoria no Volume · Electronics,Participação da Categoria no Volume,Electronics,0.596956423407612,"59,7%",fração (o DAX devolve DIVIDE),1e-12
+M15 · Computers&Accessories,M15,Participação da Categoria no Volume · Computers&Accessories,Participação da Categoria no Volume,Computers&Accessories,0.266167666695895,"26,6%",fração (o DAX devolve DIVIDE),1e-12
+M15 · Home&Kitchen,M15,Participação da Categoria no Volume · Home&Kitchen,Participação da Categoria no Volume,Home&Kitchen,0.125625722880741,"12,6%",fração (o DAX devolve DIVIDE),1e-12
+M15 · OfficeProducts,M15,Participação da Categoria no Volume · OfficeProducts,Participação da Categoria no Volume,OfficeProducts,0.00628847687607207,"0,6%",fração (o DAX devolve DIVIDE),1e-12
+M15s,M15s,Participação suprimida por T2 (categorias n < 30),,,0.00496171013968002,"0,5% em 7 produtos / 5 categorias",fração (o DAX devolve DIVIDE),1e-12
+M16,M16,Subcategorias acima do Piso,Subcategorias acima do Piso,,8,8,unidade da medida,0
+M17,M17,Cobertura de Subcategoria acima do Piso,Cobertura de Subcategoria acima do Piso,,0.882789317507418,"88,3% (1.190 produtos)",fração (o DAX devolve DIVIDE),1e-12
+M18,M18,Corte de Engajamento Alto (p90),Corte de Engajamento Alto,,36384,36.384,unidade da medida,0
+M19,M19,Corte de Engajamento Baixo (mediana),Corte de Engajamento Baixo,,4740,4.740,unidade da medida,0
+M20,M20,Reviews Individuais,Reviews Individuais,,9255,9.255,unidade da medida,0
+M08 · Electronics,M08,Volume Mediano de Avaliações · sob filtro Electronics,Volume Mediano de Avaliações,Electronics,9129.5,"9.129,5 — volume mediano DENTRO da categoria — prova que o filtro chega",unidade da medida,1e-12
+M09 · Electronics,M09,% Satisfação Baixa · sob filtro Electronics,% Satisfação Baixa,Electronics,0.261224489795918,"26,1% — denominador local: a fatia da categoria",fração (o DAX devolve DIVIDE),1e-12
+M14 · Electronics,M14,% Concentração Pareto 80% · sob filtro Electronics,% Concentração Pareto 80%,Electronics,0.130563798219585,"13,1% — denominador com ALL: fatia da base inteira",fração (o DAX devolve DIVIDE),1e-12
+M17 · Electronics,M17,Cobertura de Subcategoria acima do Piso · sob filtro Electronics,Cobertura de Subcategoria acima do Piso,Electronics,0.320474777448071,"32,0% — denominador com ALL: cobertura sobre a base inteira",fração (o DAX devolve DIVIDE),1e-12
+M18 · Electronics,M18,Corte de Engajamento Alto (p90) · sob filtro Electronics,Corte de Engajamento Alto,Electronics,36384,36.384 — com ALL o corte NÃO muda com o filtro,unidade da medida,0
+M19 · Electronics,M19,Corte de Engajamento Baixo (mediana) · sob filtro Electronics,Corte de Engajamento Baixo,Electronics,4740,4.740 — com ALL o corte NÃO muda com o filtro,unidade da medida,0
+M20n,M20n,Linhas da Reviews — deduplicação por review_id (T8),,,9255,9.255 — sem deduplicar seriam 10.588,unidade da medida,0
+M20n · Electronics,M20n,Linhas da Reviews · sob filtro Electronics,,Electronics,2925,"2.925 — a regra de atribuição, nos 8 reviews compartilhados entre categorias",unidade da medida,0

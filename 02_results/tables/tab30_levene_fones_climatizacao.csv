@@ -1,0 +1,2 @@
+comparacao,teste,n_fones,n_climatizacao,p_valor,leitura,base
+fones × climatização,Levene (centro = mediana) sobre a nota,63,116,0.176,"dispersões não distinguíveis: a distinção por dispersão é hipótese, não conclusão","analítica, n = 1348"

@@ -1,0 +1,6 @@
+faixa_desconto,n,abaixo_4_0,pct_abaixo_4_0,taxa_da_base_pct,criterio
+0–20%,175,29,16.6,25.1,"produtos com nota bruta < 4,0 sobre os produtos da faixa · associação, nunca causa (T4)"
+21–40%,329,65,19.8,25.1,"produtos com nota bruta < 4,0 sobre os produtos da faixa · associação, nunca causa (T4)"
+41–60%,469,133,28.4,25.1,"produtos com nota bruta < 4,0 sobre os produtos da faixa · associação, nunca causa (T4)"
+61–80%,324,90,27.8,25.1,"produtos com nota bruta < 4,0 sobre os produtos da faixa · associação, nunca causa (T4)"
+81–100%,51,22,43.1,25.1,"produtos com nota bruta < 4,0 sobre os produtos da faixa · associação, nunca causa (T4)"

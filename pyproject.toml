@@ -1,0 +1,29 @@
+# Configuração de lint do projeto.
+#
+# POR QUE EXISTE. O projeto não declarava limite de linha nem conjunto de regras,
+# e sem isso "código limpo" vira opinião: cada ferramenta aplica um padrão
+# diferente e o resultado é ruído, não defeito. Aqui o padrão fica escrito.
+#
+# POR QUE 150 E NÃO 79. Boa parte das linhas longas deste repositório é tabela de
+# dados escrita em código — listas de rótulos, dicionários de leitura, linhas de
+# `salva_tab` — onde quebrar a linha separa o que se lê junto. A regra existe para
+# proteger a legibilidade; aplicá-la contra a legibilidade seria inverter o motivo.
+# As exceções acima de 150 estão listadas em `per-file-ignores`, uma a uma.
+#
+# Como rodar:  python -m ruff check .
+[tool.ruff]
+line-length = 150
+target-version = "py312"
+exclude = [".venv", "01_notebooks"]
+
+[tool.ruff.lint]
+# E/W pycodestyle · F pyflakes (import morto, nome indefinido) · I ordem de import
+select = ["E", "W", "F"]
+ignore = [
+    "E402",  # import depois de código: deliberado — `sys.path` precisa do RAIZ antes de importar `paleta`
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Tabelas de referência escritas em código, onde a quebra de linha separa o que se lê junto.
+"03_dashboard/gera_conferencia.py" = ["E501"]
+"03_dashboard/medidas_dax_fonte.py" = ["E501"]

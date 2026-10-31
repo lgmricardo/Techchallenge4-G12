@@ -1,0 +1,9 @@
+verificacao,valor,base
+product_id repetidos,92,Bruta (n = 1.465)
+linhas excedentes,114,Bruta (n = 1.465)
+máximo de rating_count único,27,Bruta (n = 1.465)
+máximo de rating_count empatado,65,Bruta (n = 1.465)
+rating_count divergente entre ocorrências,31,Bruta (n = 1.465)
+nota divergente entre ocorrências,0,Bruta (n = 1.465)
+categoria divergente entre ocorrências,0,Bruta (n = 1.465)
+nome divergente entre ocorrências,0,Bruta (n = 1.465)

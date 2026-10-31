@@ -1,0 +1,43 @@
+# --- sistema
+.DS_Store
+Thumbs.db
+
+# --- Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# --- DADO PESSOAL: o BRONZE é o arquivo como veio do Kaggle e contém
+# user_id e user_name (LGPD, regra T7). Ele nunca sobe para o repositório.
+# Silver e gold já saem sem essas colunas, e esses sim são versionados.
+00_data/bronze/*
+!00_data/bronze/.gitkeep
+
+# O texto livre das avaliações traz nomes escritos pelos próprios usuários
+# (assinatura, seção de perguntas, menção a atendente). Medido: ao menos 11
+# nomes reais em 21 produtos. Não é a coluna user_name — que foi removida —
+# mas identifica autor do mesmo jeito. Fica fora do repositório público.
+00_data/silver/produtos_texto.csv
+
+# --- Power BI: arquivos temporários e de recuperação
+*.pbix.tmp
+~$*.pbix
+*.pbix.bak
+
+# --- vídeo: a gravação é pesada; publicar por link, não por commit
+04_video/*.mp4
+04_video/*.mov
+04_video/gravacao/
+
+# --- cópias de conflito do iCloud/Finder ("arquivo 2.pdf"): nunca são entrega
+* [0-9]
+* [0-9].*
+.DS_Store
+
+# --- o enunciado é material da instituição, não entrega do grupo: fica na máquina, fora do repositório
+docs/enunciado_fase4.pdf

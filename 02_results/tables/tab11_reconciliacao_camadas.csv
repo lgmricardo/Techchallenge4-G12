@@ -1,0 +1,6 @@
+base,n,delta_sobre_produtos,removido,quando_usar
+Bruta,1465,-,origem intocada,qualidade da origem
+Produtos,1351,-114,linhas excedentes por product_id,contagem de portfólio
+Nota válida,1350,-1,rating inválido (valor '|'),análises só de rating
+Engajamento válido,1349,-2,rating_count nulo,análises só de volume de avaliações
+Analítica,1348,-3,"nota inválida + volume nulo, sem sobreposição",PADRÃO — toda análise cruzada

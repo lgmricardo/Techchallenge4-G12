@@ -1,0 +1,4 @@
+regra,n_silver,n_gold,mediana_preco_tabela,mediana_preco_desconto,soma_avaliacoes_silver,QA4_rho,QA4_p,base,moeda,nota_metodo
+oficial,1351,1348,1795.0,899.0,23802463,0.0323,0.236,Bruta 1.465 -> silver / Analitica,"rupia indiana, sem conversao (L5)","QA4 = Spearman preco de tabela x nota, n = 1.348"
+sem_desempate,1351,1348,1792.5,899.0,23802463,0.0329,0.2277,Bruta 1.465 -> silver / Analitica,"rupia indiana, sem conversao (L5)","QA4 = Spearman preco de tabela x nota, n = 1.348"
+primeira,1351,1348,1795.0,899.0,23802423,0.0323,0.236,Bruta 1.465 -> silver / Analitica,"rupia indiana, sem conversao (L5)","QA4 = Spearman preco de tabela x nota, n = 1.348"

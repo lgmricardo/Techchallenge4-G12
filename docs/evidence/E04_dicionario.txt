@@ -1,0 +1,41 @@
+Sat Oct 31 20:08:27 -03 2026
+Python 3.12.13
+
+--- 1. CONTAGEM DE COLUNAS POR ARTEFATO (lida do dicionário §3) ---------
+OK   | 00_data/silver/produtos.csv (§3 declara 9) obtido=9 esperado=9
+OK   | 00_data/silver/produtos_texto.csv (§3 declara 5) obtido=5 esperado=5
+OK   | 00_data/gold/base_analitica.csv (§3 declara 17) obtido=17 esperado=17
+OK   | 00_data/gold/reviews.csv (§3 declara 5) obtido=5 esperado=5
+
+--- 2. CAMPOS DERIVADOS DECLARADOS (§2) EXISTEM NA GOLD -----------------
+     (9 campos derivados declarados no dicionário)
+OK   | `nota_corrigida` existe na gold obtido=True esperado=True
+OK   | `categoria_n1` existe na gold obtido=True esperado=True
+OK   | `categoria_n2` existe na gold obtido=True esperado=True
+OK   | `engajamento` existe na gold obtido=True esperado=True
+OK   | `satisfacao` existe na gold obtido=True esperado=True
+OK   | `q5_risco_vitrine` existe na gold obtido=True esperado=True
+OK   | `q6_subexplorado` existe na gold obtido=True esperado=True
+OK   | `faixa_desconto` existe na gold obtido=True esperado=True
+OK   | `pareto_80` existe na gold obtido=True esperado=True
+
+--- 3. §3 LISTA EXATAMENTE AS COLUNAS QUE O ARQUIVO TEM -----------------
+OK   | produtos.csv: colunas de §3 == colunas do arquivo obtido=['avaliacoes', 'category', 'desconto', 'nota', 'preco_desc', 'preco_tab', 'product_id', 'product_name', 'review_id'] esperado=['avaliacoes', 'category', 'desconto', 'nota', 'preco_desc', 'preco_tab', 'product_id', 'product_name', 'review_id']
+OK   | produtos_texto.csv: colunas de §3 == colunas do arquivo obtido=['about_product', 'product_id', 'review_content', 'review_id', 'review_title'] esperado=['about_product', 'product_id', 'review_content', 'review_id', 'review_title']
+OK   | gold: toda coluna real é declarada em §1 ou §2 obtido=[] esperado=[]
+OK   | reviews.csv: colunas de §3 == colunas do arquivo obtido=['categoria_n1', 'nota', 'product_id', 'review_id', 'satisfacao'] esperado=['categoria_n1', 'nota', 'product_id', 'review_id', 'satisfacao']
+
+--- 4. NENHUM NOME FANTASMA EM POSIÇÃO DE COLUNA ------------------------
+OK   | nomes declarados como coluna e inexistentes obtido=[] esperado=[]
+
+--- 4b. TODA COLUNA DA ORIGEM APARECE EM §1 -----------------------------
+OK   | as 16 colunas da origem estão documentadas obtido=[] esperado=[]
+
+--- 5. CONFORMIDADE T7 — DADO PESSOAL FORA DOS ARTEFATOS ----------------
+OK   | produtos.csv sem coluna pessoal obtido=[] esperado=[]
+OK   | produtos_texto.csv sem coluna pessoal obtido=[] esperado=[]
+OK   | base_analitica.csv sem coluna pessoal obtido=[] esperado=[]
+OK   | reviews.csv sem coluna pessoal obtido=[] esperado=[]
+
+==============================================================================
+Dicionário e artefatos conferem coluna a coluna. Nenhuma divergência.

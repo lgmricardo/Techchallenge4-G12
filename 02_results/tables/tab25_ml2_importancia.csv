@@ -1,0 +1,6 @@
+atributo,importancia,importancia_pct,leitura,criterio,base
+volume de avaliações,0.3015,30.2,maior peso isolado — é a associação de Q5 aparecendo no modelo,"importância de impureza do Random Forest · associação, nunca causa (T4)","analítica, n = 1348"
+desconto (%),0.2215,22.2,"segundo peso, na mesma direção de Q3 (ρ = -0,150)","importância de impureza do Random Forest · associação, nunca causa (T4)","analítica, n = 1348"
+preço com desconto,0.2203,22.0,empatado com desconto e com preço de tabela: nenhum dos três se destaca,"importância de impureza do Random Forest · associação, nunca causa (T4)","analítica, n = 1348"
+preço de tabela,0.2082,20.8,"empatado com os outros dois de preço, apesar de QA4 não achar associação univariada","importância de impureza do Random Forest · associação, nunca causa (T4)","analítica, n = 1348"
+categoria nível 1,0.0484,4.8,"menor peso aqui, e isto precisa de ressalva: a importância de impureza subestima variavel categorica em one-hot e superestima continua com muitos pontos de corte. A escada de AUC mede melhor a contribuicao da familia — ela sobe de 0,62 para 0,69 quando a categoria entra","importância de impureza do Random Forest · associação, nunca causa (T4)","analítica, n = 1348"

@@ -1,0 +1,37 @@
+# Tech Challenge Fase 4 — dependências
+#
+# INTERPRETADOR: Python 3.12 (medido em 3.12.13). A pinagem abaixo resolve as
+# bibliotecas, não o interpretador — e versão de Python diferente traz versão
+# diferente de scikit-learn resolvida, o que desloca os números do ML2 e do ML4.
+#
+# Instalação:  python3.12 -m venv .venv && pip install -r requirements.txt
+#
+# VERSÕES FIXADAS, e isso não é preciosismo: `random_state=42` do ML2 e do ML4
+# só reproduz os números publicados com a MESMA versão do scikit-learn. Medido:
+# entre versões, os tamanhos dos clusters do ML4 variam em 1 a 2 produtos.
+# Quem soltar a pinagem precisa republicar as métricas, não só rodar de novo.
+
+pandas==3.0.6
+numpy==2.5.3
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+jupyter==1.1.1
+nltk==3.9.1
+
+# Geração do relatório técnico (src/monta_relatorio.py) — sem estes três o
+# comando documentado em EXECUCAO.md falha com ModuleNotFoundError.
+python-docx==1.2.0
+reportlab==5.0.1
+pypdf==6.1.1
+
+# Lint. Mesma razão dos três acima: `python -m ruff check .` está documentado em
+# EXECUCAO.md e as regras moram em pyproject.toml, mas a ferramenta não vinha na
+# instalação — o comando falhava com "No module named ruff" num ambiente novo.
+ruff==0.17.3
+
+# Linearização do PDF ('fast web view'). Sem ela o reportlab grava um arquivo
+# que visualizadores de streaming (preview de webmail, do Drive) podem exibir
+# truncado — aconteceu com dois revisores, em páginas diferentes. Ver a função
+# `linearizar` em src/monta_relatorio.py.
+pikepdf==10.16.0

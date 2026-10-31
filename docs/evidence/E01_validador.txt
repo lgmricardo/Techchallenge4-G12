@@ -1,0 +1,138 @@
+Sat Oct 31 20:08:26 -03 2026
+Python 3.12.13
+4ba126c4ba8edd35e62e94ce1c853073d832de380184ab4f5f97d1e314882c77  00_data/bronze/amazon.csv
+
+=== PROCEDÊNCIA ===
+OK   | SHA-256 do amazon.csv                                obtido=4ba126c4ba8edd35e62e94ce1c853073d832de380184ab4f5f97d1e314882c77 esperado=4ba126c4ba8edd35e62e94ce1c853073d832de380184ab4f5f97d1e314882c77 [base arquivo]
+
+=== ESTRUTURA — base bruta ===
+OK   | linhas                                               obtido=1465 esperado=1465 [base bruta]
+OK   | colunas                                              obtido=16 esperado=16 [base bruta]
+OK   | linhas integralmente duplicadas                      obtido=0 esperado=0 [base bruta]
+OK   | nulos em rating_count                                obtido=2 esperado=2 [base bruta]
+OK   | falha de conversão em rating                         obtido=1 esperado=1 [base bruta]
+OK   | falha de conversão em preços                         obtido=0 esperado=0 [base bruta]
+OK   | falha de conversão em desconto                       obtido=0 esperado=0 [base bruta]
+
+=== DEDUPLICAÇÃO — regra determinística ===
+OK   | linhas excedentes                                    obtido=114 esperado=114 [base bruta]
+OK   | product_id repetidos                                 obtido=92 esperado=92 [base bruta]
+OK   | repetidos com máximo ÚNICO (regra decide)            obtido=27 esperado=27 [base bruta]
+OK   | repetidos com máximo EMPATADO (desempate decide)     obtido=65 esperado=65 [base bruta]
+OK   | produtos após deduplicação                           obtido=1351 esperado=1351 [base produtos]
+OK   | base com nota válida                                 obtido=1350 esperado=1350 [base nota válida]
+OK   | base com engajamento válido                          obtido=1349 esperado=1349 [base engajamento]
+OK   | BASE ANALÍTICA                                       obtido=1348 esperado=1348 [base analítica]
+
+=== INCONSISTÊNCIAS DA ORIGEM — L6 ===
+OK   | produtos com nota divergente entre ocorrências       obtido=0 esperado=0 [base bruta]
+OK   | produtos com categoria divergente entre ocorrências  obtido=0 esperado=0 [base bruta]
+OK   | produtos com nome divergente entre ocorrências       obtido=0 esperado=0 [base bruta]
+OK   | divergência relativa máxima de rating_count (%)      obtido=0.17 esperado=0.17 [base bruta]
+OK   | diferença de soma de rating_count entre as duas regras de deduplicação obtido=40 esperado=40 [base produtos (1.351)]
+
+=== COERÊNCIA COMERCIAL — base analítica ===
+OK   | preço com desconto acima do preço de tabela          obtido=0 esperado=0 [base analítica]
+OK   | divergência de desconto acima de 1 p.p.              obtido=0 esperado=0 [base analítica]
+OK   | divergência máxima de desconto (p.p.)                obtido=0.5 esperado=0.5 [base analítica]
+OK   | divergência média de desconto (p.p.)                 obtido=0.21 esperado=0.21 [base analítica]
+
+=== CORTES E QUADRANTES — base analítica ===
+OK   | p90 de rating_count                                  obtido=36384.0 esperado=36384.0 [base analítica]
+OK   | mediana de rating_count                              obtido=4740.0 esperado=4740.0 [base analítica]
+OK   | produtos com nota < 4,0                              obtido=339 esperado=339 [base analítica]
+OK   | % com nota < 4,0                                     obtido=25.1 esperado=25.1 [base analítica]
+OK   | produtos com nota >= 4,3                             obtido=418 esperado=418 [base analítica]
+OK   | produtos na faixa 4,0–4,29                           obtido=591 esperado=591 [base analítica]
+OK   | Q5 — alto engajamento e nota < 4,0                   obtido=19 esperado=19 [base analítica]
+OK   | Q6 — nota >= 4,3 e engajamento < mediana             obtido=187 esperado=187 [base analítica]
+OK   | faixa intermediária de engajamento (sem rótulo)      obtido=539 esperado=539 [base analítica]
+OK   | QA2 — produtos que concentram 80% das avaliações     obtido=306 esperado=306 [base analítica]
+OK   | QA2 — percentual                                     obtido=22.7 esperado=22.7 [base analítica]
+
+=== CATEGORIAS — base analítica ===
+OK   | categoria nível 1 — Electronics                      obtido=490 esperado=490 [base analítica]
+OK   | categoria nível 1 — Home&Kitchen                     obtido=447 esperado=447 [base analítica]
+OK   | categoria nível 1 — Computers&Accessories            obtido=373 esperado=373 [base analítica]
+OK   | categoria nível 1 — OfficeProducts                   obtido=31 esperado=31 [base analítica]
+OK   | categorias nível 1 acima do piso (n>=30)             obtido=4 esperado=4 [base analítica]
+OK   | categorias nível 1 abaixo do piso                    obtido=5 esperado=5 [base analítica]
+OK   | PRODUTOS nas categorias abaixo do piso               obtido=7 esperado=7 [base analítica]
+OK   | soma da tabela de categorias fecha na base           obtido=1348 esperado=1348 [base analítica]
+OK   | % do portfólio nas três maiores famílias             obtido=97.2 esperado=97.2 [base analítica]
+OK   | subcategorias nível 2 acima do piso                  obtido=8 esperado=8 [base analítica]
+OK   | cobertura das subcategorias acima do piso (%)        obtido=88.3 esperado=88.3 [base analítica]
+
+=== DISTRIBUIÇÃO — base analítica, percentil por interpolação linear ===
+OK   | preço de tabela — p25                                obtido=899 esperado=899 [base analítica]
+OK   | preço de tabela — mediana                            obtido=1795 esperado=1795 [base analítica]
+OK   | preço de tabela — p75                                obtido=4592 esperado=4592 [base analítica]
+OK   | preço de tabela — p90                                obtido=15999 esperado=15999 [base analítica]
+OK   | preço de tabela — máximo                             obtido=139900 esperado=139900 [base analítica]
+OK   | preço com desconto — p25                             obtido=349 esperado=349 [base analítica]
+OK   | preço com desconto — mediana                         obtido=899 esperado=899 [base analítica]
+OK   | preço com desconto — p75                             obtido=2184 esperado=2184 [base analítica]
+OK   | preço com desconto — p90                             obtido=8993 esperado=8993 [base analítica]
+OK   | preço com desconto — máximo                          obtido=77990 esperado=77990 [base analítica]
+OK   | desconto (%) — p25                                   obtido=31 esperado=31 [base analítica]
+OK   | desconto (%) — mediana                               obtido=49 esperado=49 [base analítica]
+OK   | desconto (%) — p75                                   obtido=62 esperado=62 [base analítica]
+OK   | desconto (%) — p90                                   obtido=75 esperado=75 [base analítica]
+OK   | desconto (%) — máximo                                obtido=94 esperado=94 [base analítica]
+OK   | avaliações — p25                                     obtido=1108 esperado=1108 [base analítica]
+OK   | avaliações — mediana                                 obtido=4740 esperado=4740 [base analítica]
+OK   | avaliações — p75                                     obtido=16052 esperado=16052 [base analítica]
+OK   | avaliações — p90                                     obtido=36384 esperado=36384 [base analítica]
+OK   | avaliações — máximo                                  obtido=426973 esperado=426973 [base analítica]
+OK   | nota — mediana                                       obtido=4.1 esperado=4.1 [base analítica]
+OK   | nota — p25                                           obtido=3.9 esperado=3.9 [base analítica]
+OK   | nota — p75                                           obtido=4.3 esperado=4.3 [base analítica]
+OK   | nota — p90                                           obtido=4.4 esperado=4.4 [base analítica]
+OK   | nota — máximo                                        obtido=5.0 esperado=5.0 [base analítica]
+
+=== ASSOCIAÇÕES (Spearman) — base analítica ===
+OK   | desconto × nota — rho                                obtido=-0.15 esperado=-0.15 [base analítica]
+OK   | desconto × nota — p-valor                            obtido=3.14e-08 esperado=3.14e-08 [base analítica]
+OK   | desconto × engajamento — rho                         obtido=-0.132 esperado=-0.132 [base analítica]
+OK   | desconto × engajamento — p-valor                     obtido=1.12e-06 esperado=1.1e-06 [base analítica]
+OK   | QA4 preço de tabela × nota — rho                     obtido=0.032 esperado=0.032 [base analítica]
+OK   | QA4 preço de tabela × nota — p-valor                 obtido=0.236 esperado=0.236 [base analítica]
+OK   | engajamento × nota — rho                             obtido=0.193 esperado=0.193 [base analítica]
+OK   | engajamento × nota — p-valor                         obtido=8.29e-13 esperado=8.3e-13 [base analítica]
+
+=== CORPUS TEXTUAL — base analítica ===
+OK   | referências de avaliação (explodidas)                obtido=10588 esperado=10588 [base analítica]
+OK   | review_id distintos                                  obtido=9255 esperado=9255 [base analítica]
+OK   | referências repetidas                                obtido=1333 esperado=1333 [base analítica]
+OK   | review_id em mais de um produto                      obtido=759 esperado=759 [base analítica]
+OK   | média de avaliações por produto (truncamento)        obtido=7.85 esperado=7.85 [base analítica]
+OK   | máximo de avaliações por produto                     obtido=8 esperado=8 [base analítica]
+OK   | faixa <4.0 — blocos                                  obtido=339 esperado=339 [base analítica]
+OK   | faixa <4.0 — referências                             obtido=2652 esperado=2652 [base analítica]
+OK   | faixa <4.0 — review_id distintos                     obtido=2502 esperado=2502 [base analítica]
+OK   | faixa 4.0-4.29 — blocos                              obtido=591 esperado=591 [base analítica]
+OK   | faixa 4.0-4.29 — referências                         obtido=4674 esperado=4674 [base analítica]
+OK   | faixa 4.0-4.29 — review_id distintos                 obtido=3875 esperado=3875 [base analítica]
+OK   | faixa >=4.3 — blocos                                 obtido=418 esperado=418 [base analítica]
+OK   | faixa >=4.3 — referências                            obtido=3262 esperado=3262 [base analítica]
+OK   | faixa >=4.3 — review_id distintos                    obtido=2878 esperado=2878 [base analítica]
+OK   | review_id presentes em mais de uma faixa de nota     obtido=0 esperado=0 [base analítica]
+
+=== SOMAS E IMPACTO DA REGRA — base declarada em cada linha ===
+OK   | soma de rating_count                                 obtido=23802463 esperado=23802463 [base produtos (1.351)]
+OK   | soma de rating_count                                 obtido=23801471 esperado=23801471 [base analítica (1.348)]
+OK   | diferença de rating_count entre as duas regras       obtido=40 esperado=40 [base produtos (1.351)]
+OK   | produtos que mudam de rating ao trocar a regra       obtido=0 esperado=0 [base produtos (1.351)]
+OK   | produtos que mudam de actual_price ao trocar a regra obtido=0 esperado=0 [base produtos (1.351)]
+OK   | produtos que mudam de discounted_price ao trocar a regra obtido=1 esperado=1 [base produtos (1.351)]
+OK   | produtos que mudam de discount_percentage ao trocar a regra obtido=1 esperado=1 [base produtos (1.351)]
+OK   | produtos que mudam de TEXTO ao trocar a regra        obtido=4 esperado=4 [base produtos (1.351)]
+OK   | usuários distintos                                   obtido=9036 esperado=9036 [base analítica]
+OK   | usuários que avaliam mais de um produto              obtido=909 esperado=909 [base analítica]
+
+=== CONFORMIDADE (T7) ===
+OK   | nenhum user_id ou user_name impresso por este script obtido=0 esperado=0 [base —]
+
+==============================================================================
+Asserções executadas com base declarada. Falhas: 0. Puladas: 0.
+Todas as asserções conferem. Os números do material estão reproduzíveis.

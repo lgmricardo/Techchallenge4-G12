@@ -1,0 +1,5 @@
+par,rho,p_valor,n,leitura
+Desconto × nota,-0.15,3.14e-08,1348,"significativa, magnitude pequena"
+Desconto × engajamento,-0.1322,1.12e-06,1348,"significativa, magnitude pequena"
+Preço de tabela × nota,0.0323,2.36e-01,1348,sem associação
+Engajamento × nota,0.1933,8.29e-13,1348,"significativa, magnitude pequena"
