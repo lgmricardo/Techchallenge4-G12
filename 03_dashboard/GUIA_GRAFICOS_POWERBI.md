@@ -14,7 +14,7 @@
 
 | Linha da ficha | O que diz |
 |---|---|
-| **Página · Pergunta** | onde o visual mora e qual das 15 perguntas ele responde |
+| **Página · Pergunta** | onde o visual mora e qual pergunta ele responde ou apoia |
 | **Tipo de visual** | o nome exato no painel *Visualizações* do Desktop em português |
 | **Tabela** | de onde vêm os campos |
 | **Campos** | `Poço do visual` ← `Tabela[coluna]` ou `[Medida]`, um por linha |
@@ -69,7 +69,7 @@ Responde "como está o portfólio" em cinco segundos. Nenhum visual aqui exige c
 
 | | |
 |---|---|
-| **Página · Pergunta** | 1 · Visão Executiva · Q2 |
+| **Página · Pergunta** | 1 · Visão Executiva · indicadores de portfólio |
 | **Tipo de visual** | **Cartão** (quatro, lado a lado) |
 | **Tabela** | `_Medidas` |
 | **Campos** | `Campos` ← `[Nota Mediana]` (M06)<br>`Campos` ← `[Desconto Mediano]` (M05)<br>`Campos` ← `[Preço de Tabela Mediano]` (M04)<br>`Campos` ← `[Volume Mediano de Avaliações]` (M08) |
@@ -85,7 +85,7 @@ Responde "como está o portfólio" em cinco segundos. Nenhum visual aqui exige c
 
 | | |
 |---|---|
-| **Página · Pergunta** | 1 · Q2 |
+| **Página · Pergunta** | 1 · corte de engajamento alto (Q5 e matriz 2×2) |
 | **Tipo de visual** | **Cartão** |
 | **Tabela** | `_Medidas` |
 | **Campos** | `Campos` ← `[Corte de Engajamento Alto]` (M18) |
@@ -219,7 +219,7 @@ Só as **4 categorias acima do piso** entram em comparação. As outras 5 aparec
 
 | | |
 |---|---|
-| **Página · Pergunta** | 2a · QA3 |
+| **Página · Pergunta** | 2a · Q4 (subcategorias) |
 | **Tipo de visual** | **Gráfico de barras agrupadas** |
 | **Tabela** | `BaseAnalitica` + `_Medidas` |
 | **Campos** | `Eixo Y` ← `BaseAnalitica[categoria_n2]`<br>`Eixo X` ← `[Desvio-Padrão da Nota (T2)]` — medida extra do passo 4.4, com `STDEV.S`<br>`Dicas de ferramenta` ← `[Produtos Ativos]` (M01) |
@@ -235,7 +235,7 @@ Só as **4 categorias acima do piso** entram em comparação. As outras 5 aparec
 
 | | |
 |---|---|
-| **Página · Pergunta** | 2a · QA3 |
+| **Página · Pergunta** | 2a · Q4 (subcategorias) |
 | **Tipo de visual** | **Tabela** |
 | **Tabela** | `BaseAnalitica` + `_Medidas` |
 | **Campos** | `Colunas` ← `BaseAnalitica[categoria_n2]`<br>`Colunas` ← `[Produtos Ativos]` (M01)<br>`Colunas` ← `[Desvio-Padrão da Nota (T2)]`<br>`Colunas` ← `[IQR da Nota (T2)]`<br>`Colunas` ← `[% Satisfação Baixa (T2)]` (M09) |
@@ -273,7 +273,7 @@ A página das duas listas nominais. **Lista nominal é exceção declarada ao pi
 
 | | |
 |---|---|
-| **Página · Pergunta** | 2b · QA3 |
+| **Página · Pergunta** | 2b · Q4 (subcategorias) |
 | **Tipo de visual** | **Gráfico de dispersão** |
 | **Tabela** | `BaseAnalitica` |
 | **Campos** | `Valores` ← `BaseAnalitica[product_id]`<br>`Eixo X` ← `BaseAnalitica[categoria_n2]`<br>`Eixo Y` ← `BaseAnalitica[nota]`, **Não resumir** |
@@ -479,7 +479,7 @@ A página que mais precisa de ressalva: tudo aqui é **o que a vitrine exibe**, 
 
 | | |
 |---|---|
-| **Página · Pergunta** | 4 · Customer Insights · Q7 · L1 |
+| **Página · Pergunta** | 4 · Customer Insights · L1 |
 | **Tipo de visual** | **Caixa de texto** |
 | **Tabela** | — (texto fixo) |
 | **Campos** | — |
@@ -495,7 +495,7 @@ A página que mais precisa de ressalva: tudo aqui é **o que a vitrine exibe**, 
 
 | | |
 |---|---|
-| **Página · Pergunta** | 4 · Q7 |
+| **Página · Pergunta** | 4 · Customer Insights (T8) |
 | **Tipo de visual** | **Cartão** (três) + **Tabela** |
 | **Tabela** | `BaseAnalitica` · `Reviews` · `_Medidas` |
 | **Campos** | `Campos` ← `[Produtos Ativos]` (M01) — blocos<br>`Campos` ← soma de `BaseAnalitica[n_referencias]` — referências<br>`Campos` ← `[Reviews Individuais]` (M20) — reviews distintos<br>Tabela: `Linhas` ← `Reviews[satisfacao]`; `Valores` ← contagem de `Reviews[review_id]` |
@@ -511,12 +511,12 @@ A página que mais precisa de ressalva: tudo aqui é **o que a vitrine exibe**, 
 
 | | |
 |---|---|
-| **Página · Pergunta** | 4 · Q7 |
+| **Página · Pergunta** | 4 · Customer Insights (T8) |
 | **Tipo de visual** | **Gráfico de barras agrupadas** |
 | **Tabela** | `tab14` |
 | **Campos** | `Eixo Y` ← `tab14[n_grama]`<br>`Eixo X` ← `tab14[delta_tfidf]`, **Não resumir** |
 | **Classificar por** | por `delta_tfidf` |
-| **Filtros do visual** | `tab14[secao]` **é** `contraste` · **`tab14[recorte]` é `Electronics`** — é o recorte que o relatório publica (§7.7); sobre a base inteira o sinal se dilui |
+| **Filtros do visual** | `tab14[secao]` **é** `contraste` · **`tab14[recorte]` é `Electronics`** — é o recorte medido no `05_nlp.ipynb`; sobre a base inteira o sinal se dilui |
 | **Interação** | não reage |
 | **Formatação** | Barras em torno de zero: Δ positivo de um lado (nota baixa), negativo do outro (nota alta) · **o recorte entra no subtítulo** |
 | **Título · subtítulo** | Som aparece onde a nota é baixa; imagem, onde é alta — subtítulo: recorte Electronics · 128 blocos < 4,0 e 136 ≥ 4,3 · unidade: bloco de review |
@@ -552,7 +552,7 @@ A página que mais precisa de ressalva: tudo aqui é **o que a vitrine exibe**, 
 | **Interação** | — |
 | **Formatação** | Quatro linhas, cada uma com a pergunta do enunciado e a pergunta do escopo que a responde |
 | **Título · subtítulo** | Onde cada pergunta de Customer Insights foi respondida |
-| **Conferir** | §7.1 do relatório e `escopo_15_perguntas.md` §6 |
+| **Conferir** | §7.1 do relatório e `escopo_perguntas.md` §6 |
 | **Regras** | torna a cobertura visível ao avaliador |
 
 ---
@@ -629,7 +629,7 @@ Nenhuma recomendação em dinheiro, unidade vendida ou tendência — a base nã
 
 > **Como estes números foram conferidos**
 > · A página **Conferência**, oculta neste arquivo, recalcula **33 valores em DAX** e compara com o Python: `Conf · Divergentes` = **0**.
-> · `verifica_pbix.py` confere modelo, colunas, relação e as **22 medidas** do arquivo entregue — provado em **36 casos**.
+> · `verifica_pbix.py` confere modelo, colunas, relação e as **22 medidas** do arquivo entregue — provado em **38 casos**.
 > · O sumário executivo falha se afirmar número que o relatório não sustenta — provado contra **41 números plantados**.
 > · O achado central (B × D) é **testado**, não comparado: Mann-Whitney, com o efeito do desconto em **0,134** e o da nota em **0,670**.
 

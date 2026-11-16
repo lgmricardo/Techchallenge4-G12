@@ -21,7 +21,7 @@ O QUE ELE CONFERE
 1. **Amarração.** Todo token com dígito na coluna "O que é dito" existe nas colunas `valor`
    ou `n` de `tab_roteiro_numeros.csv`, comparado por valor numérico — a tabela guarda
    `p 2,4e-01` e a fala diz `0,24`. Só essas duas colunas: a primeira versão conferia o CSV
-   inteiro, e o texto das colunas `indicador` e `regra` (T2, ML4, L5, QA3...) fazia qualquer
+   inteiro, e o texto das colunas `indicador` e `regra` (T2, ML4, L5, QA5...) fazia qualquer
    "5" ou "4" passar como amarrado.
 2. **Nenhum segmento descartado em silêncio.** Toda linha de tempo precisa ter fala entre
    aspas. Antes, uma célula sem aspas ou com aspas fora do padrão sumia da conferência e o
@@ -43,7 +43,7 @@ O QUE ELE NÃO CONFERE, E POR QUÊ
 · **O sinal falado.** Se a fala diz "mais 0,150" onde a tabela guarda −0,150, passa: a
   comparação é por valor absoluto.
 · **A coluna da tela.** Ela carrega rótulo de eixo, nome de arquivo e seção de relatório;
-  conferi-la aqui acusaria `fig05` e `§7.7` como números soltos. A tela é conferida no
+  conferi-la aqui acusaria `fig05` e `§5.17` como números soltos. A tela é conferida no
   checklist de gravação, com a figura na frente.
 
 As isenções estão em `ISENTOS`, uma a uma, com o motivo escrito. Lista de isenção é onde uma

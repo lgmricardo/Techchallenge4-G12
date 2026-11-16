@@ -16,7 +16,7 @@ roteiro, rode de novo.
 
 Também confere a cronometragem: cada bloco precisa ter segmentos contínuos
 que somem exatamente a duração declarada no título, e o total precisa caber
-em 7:00. Se não couber, o script falha em vez de gerar um storyboard errado.
+em 6:00 (meta do grupo; o enunciado admite 7:00). Se não couber, o script falha em vez de gerar um storyboard errado.
 
 Uso: python 04_video/gera_storyboard.py
 """
@@ -28,7 +28,7 @@ import sys
 PASTA = os.path.dirname(os.path.abspath(__file__))
 ROTEIRO = os.path.join(PASTA, "roteiro.md")
 SAIDA = os.path.join(PASTA, "storyboard.md")
-LIMITE = 7 * 60
+LIMITE = 6 * 60      # meta do grupo desde 12/11/2026; o enunciado admite até 7:00
 
 
 def segundos(tempo):
@@ -104,8 +104,10 @@ partes = [
     "Não editar à mão** — alterou o roteiro, rode o script de novo. O roteiro é a "
     "fonte da verdade; este arquivo é a visão dele focada no que aparece na tela.",
     "",
-    f"**Duração total: {fim_total // 60}:{fim_total % 60:02d} de 7:00** · "
-    f"{len(_numeros)} blocos exigidos + {len(lista) - len(_numeros)} cartela de limitação (L1) · "
+    f"**Duração total: {fim_total // 60}:{fim_total % 60:02d} de {LIMITE // 60}:00** · "
+    f"{len(_numeros)} blocos exigidos"
+    + (f" + {len(lista) - len(_numeros)} cartela de limitação (L1)" if len(lista) > len(_numeros) else "")
+    + " · "
     f"{sum(len(s) for *_, s in lista)} segmentos · cronometragem conferida pelo script",
     "",
     "| # | Bloco | Início | Fim | Duração | Segmentos |",
@@ -139,5 +141,5 @@ partes += [
 ]
 open(SAIDA, "w", encoding="utf-8").write("\n".join(partes))
 print(f"  {SAIDA}")
-print(f"  {len(_numeros)} blocos + L1 · {sum(len(s) for *_, s in lista)} segmentos · "
+print(f"  {len(_numeros)} blocos{' + L1' if len(lista) > len(_numeros) else ''} · {sum(len(s) for *_, s in lista)} segmentos · "
       f"total {fim_total // 60}:{fim_total % 60:02d} — cronometragem conferida")

@@ -378,12 +378,12 @@ rodape(fig, FONTE + " · só faixas acima do piso n≥30 (T2) · nota corrigida 
 salva(fig, "fig07_faixas_desconto.png")
 
 # ---------------------------------------------------------------------------
-# fig09 — QA3 dispersão por subcategoria
+# fig09 — dispersão por subcategoria (apoio a Q4)
 # ---------------------------------------------------------------------------
 vc2 = an.cat2.value_counts()
 sub = vc2[vc2 >= 30].index
 dados = [an[an.cat2 == s].nota.values for s in sub]
-# dp amostral (ddof = 1), o mesmo da tab16, do §5.13 e do STDEV.S do guia
+# dp amostral (ddof = 1), o mesmo da tab16, do §5.17 e do STDEV.S do guia
 ordem = np.argsort([np.std(d, ddof=1) for d in dados])
 fig, ax = plt.subplots(figsize=(9, 4))
 bp = ax.boxplot([dados[i] for i in ordem], vert=False, patch_artist=True, widths=0.6,
@@ -395,7 +395,7 @@ for patch in bp["boxes"]:
 rot = [f"{sub[i].split(' | ')[-1]}\n(n={len(dados[i])}, dp={np.std(dados[i], ddof=1):.3f})".replace(".", ",", 1)
        for i in ordem]
 ax.set_yticklabels(rot, fontsize=8)
-ax.set_title("QA3 · Dispersão de notas por subcategoria (nível 2) — 8 grupos acima do piso")
+ax.set_title("Dispersão de notas por subcategoria (nível 2) — 8 grupos acima do piso")
 ax.set_xlabel("nota")
 rodape(fig, FONTE + " · cobertura " + f"{100*vc2[vc2>=30].sum()/N:.1f}".replace(".", ",") + "% dos produtos")
 salva(fig, "fig09_dispersao_subcategoria.png")
@@ -529,7 +529,7 @@ ax.set_xticks(x)
 ax.set_xticklabels([f"nota {f}" for f in ordem_f])
 ax.set_ylabel("contagem")
 ax.legend(fontsize=8.5)
-ax.set_title("ML3 · O corpus tem três contagens — publicar só uma infla o material em 14%")
+ax.set_title("O corpus tem três contagens — publicar só uma infla o material em 14%")
 rodape(fig, FONTE + " · deduplicação por review_id obrigatória (T8) · truncamento em 8 avaliações por produto (L1)")
 salva(fig, "fig12_corpus.png")
 
@@ -566,7 +566,7 @@ for rot, a, b in [("Desconto × nota", "desconto", "nota"), ("Desconto × engaja
                  "leitura": "sem associação" if p > ALFA_CORR else "significativa, magnitude pequena"})
 salva_tab(pd.DataFrame(corr), "tab03_correlacoes.csv")
 
-# Dois pares de APOIO, citados no texto (§1.2 e §5.14) e fora da tab03 porque a tab03 é a
+# Dois pares de APOIO, fora do relatório final e fora da tab03 porque a tab03 é a
 # tabela que o dashboard importa — a página 3 mostra os quatro pares do eixo do enunciado.
 # Antes estes dois eram publicados sem código e com a tab03 como fonte, que não os tinha.
 apoio = []
@@ -694,7 +694,7 @@ salva_tab(_t26, "tab26_bxd_teste.csv")
 print("  B × D: " + " · ".join(f"{r.variavel} efeito {r.efeito_rank_biserial:+.2f}" for r in _t26.itertuples()))
 assert (_t26.n_B.iloc[0], _t26.n_D.iloc[0]) == (335, 447), "B e D divergem do publicado"
 assert (_t26.efeito_rank_biserial > 0).all(), \
-    "o sinal positivo significa 'maior em D': se algum efeito inverteu, a legenda da tab26 e o §5.17 precisam mudar"
+    "o sinal positivo significa 'maior em D': se algum efeito inverteu, a legenda da tab26 e o §5.16 precisam mudar"
 assert abs(_t26.loc[0, "efeito_rank_biserial"]) < 0.2, \
     "o argumento do relatório exige que o efeito do DESCONTO seja desprezível"
 assert (_t26.loc[1:, "efeito_rank_biserial"].abs() > 0.5).all(), \
@@ -761,7 +761,7 @@ salva_tab(pd.DataFrame([{
 print(f"  fones × climatização: dp {_f29.dp_nota:.3f} × {_c29.dp_nota:.3f} · Levene p = {_p_lev:.3f}")
 assert _f29.dp_nota < _c29.dp_nota, "a leitura 'fones têm dispersão menor' deixou de valer"
 assert _p_lev > 0.05, ("a dispersão de fones e climatização passou a se distinguir (Levene p ≤ 0,05): "
-                       "a distinção 'categoria × produto a produto' pode voltar a ser conclusão — revisar §5.18 e §7.7")
+                       "a distinção 'categoria × produto a produto' pode voltar a ser conclusão — revisar §5.17")
 assert _f29.pct_ic95_inf > 100 * _taxa_base and _c29.pct_ic95_inf > 100 * _taxa_base, \
     "a taxa de insatisfação de fones ou climatização deixou de se distinguir da taxa da base"
 
@@ -816,13 +816,12 @@ _q6 = lista_nominal(an[(an.nota >= 4.3) & (an.avaliacoes < MED) & (an.wilson >= 
 _anc = lista_nominal(an[(an.avaliacoes >= P90) & (an.nota >= 4.3)],
                      "tab21_ancoras_nominal.csv", "nota_corrigida")
 
-# A lista que responde Q2 ("quais produtos possuem maior engajamento?"): todos os de engajamento
-# alto (volume >= p90). A tab13 já dizia "lista nominal com volume e nota corrigida por produto",
-# e o relatório só trazia o corte e a proporção: a pergunta do enunciado é literalmente "quais produtos".
-_q2 = lista_nominal(an[an.avaliacoes >= P90], "tab31_q2_engajamento_alto_nominal.csv", "avaliacoes")
+# Lista nominal do engajamento alto (volume >= p90): os produtos acima do corte que define Q5,
+# a matriz de relevância e o cartão da Visão Executiva, com o volume e a nota corrigida de cada um.
+_alto = lista_nominal(an[an.avaliacoes >= P90], "tab31_engajamento_alto_nominal.csv", "avaliacoes")
 
-print(f"  listas nominais: Q2 = {len(_q2)} · Q5 = {len(_q5)} · Q6 acionável = {len(_q6)} · âncoras = {len(_anc)}")
-assert len(_q2) == 136, f"engajamento alto deveria ter 136 produtos, tem {len(_q2)}"
+print(f"  listas nominais: engajamento alto = {len(_alto)} · Q5 = {len(_q5)} · Q6 acionável = {len(_q6)} · âncoras = {len(_anc)}")
+assert len(_alto) == 136, f"engajamento alto deveria ter 136 produtos, tem {len(_alto)}"
 assert len(_q5) == 19, f"Q5 deveria ter 19 produtos, tem {len(_q5)}"
 assert len(_q6) == 61, f"Q6 acionável deveria ter 61, tem {len(_q6)}"
 assert len(_anc) == 41, f"âncoras deveriam ser 41, são {len(_anc)}"

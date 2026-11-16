@@ -23,7 +23,7 @@ Esta pasta reúne tudo que define o dashboard: o modelo, as medidas com o valor 
 | `gera_conferencia.py` | gera a página oculta de conferência a partir da referência e do catálogo — **falha** se os dois se desencontrarem |
 | `conferencia_referencia.csv` · `conferencia_dax.md` | a tabela `Conferencia` e as 6 medidas `Conf ·`: o `.pbix` confere a si mesmo contra o Python, **`Conf · Divergentes` = 0** |
 | `verifica_pbix.py` | confere o arquivo entregue pelo `.pbit`: nenhuma coluna pessoal (T7), nenhuma tabela a mais, tipos, **um** relacionamento 1 → N, as 22 medidas **com a expressão do catálogo**, e que o `.pbit` é do `.pbix` entregue |
-| `testa_verifica_pbix.py` | prova que o verificador reprova os 29 defeitos que deve e aprova as 7 variações legítimas — 36 casos |
+| `testa_verifica_pbix.py` | prova que o verificador reprova os 30 defeitos que deve e aprova as 8 variações legítimas — 38 casos |
 | `gera_checklist.py` · `checklist_qualidade.md` · `.pdf` | o checklist T1–T9 da F8, uma folha, com os números de cada tela medidos e conferidos contra o guia |
 | `screenshots/` | uma imagem por página — **a produzir na Fase 9** |
 | `TechChallenge4_G12.pbit` | o esquema legível do modelo, exportado do `.pbix` final — **a produzir na Fase 9** |
@@ -39,7 +39,7 @@ Esta pasta reúne tudo que define o dashboard: o modelo, as medidas com o valor 
 | `02_results/tables/tab03_correlacoes.csv` | Spearman (ρ, p, n) | Q3 e QA4, página 3 |
 | `02_results/tables/tab05_arquetipos.csv` | resumo dos arquétipos | QA7, página 2c |
 | `02_results/tables/tab07_ml2_blocos.csv` | AUC por bloco | Q8, página 5 |
-| `02_results/tables/tab14_ngramas.csv` | n-gramas e TF-IDF | Q7, página 4 |
+| `02_results/tables/tab14_ngramas.csv` | n-gramas e TF-IDF | página 4 |
 | `02_results/tables/tab22_arquetipo_por_produto.csv` | arquétipo de cada produto | QA7 · mesclada na `BaseAnalitica` — ✅ gerada em 26/10 |
 | `02_results/tables/tab23_qa5_temas.csv` | temas da QA5 | QA5, página 4 — ✅ gerada em 26/10 |
 | `method/definitions/regras_transversais_T1_T9.md` | T1 a T9 | checklist de cada página (Fase 8) |

@@ -77,7 +77,7 @@ P_Q3 = f"{float(p_q3):.1e}".replace(".", ",")   # dois algarismos, como no mater
 rho_qa4, p_qa4 = t03.loc["Preço de tabela × nota", "rho"], t03.loc["Preço de tabela × nota", "p_valor"]
 auc = t07.auc.tolist()
 dp_auc = br(float(t07.desvio_entre_particoes.iloc[-1]), 2)   # do modelo completo; antes era '± 0,03' escrito à mão
-# O destaque da página 3 é o achado defensável de QA1 (§5.11): a única faixa abaixo de 4,0.
+# O destaque da página 3 é o achado defensável de QA1 (§5.10): a única faixa abaixo de 4,0.
 # A primeira faixa tem a maior nota corrigida, mas a diferença para a segunda é 0,053 —
 # magnitude sem leitura de negócio, e T5 manda dizer isso em vez de destacá-la.
 faixa_pior = t08.loc[t08.nota_corrigida_wilson.idxmin()]

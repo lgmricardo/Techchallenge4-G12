@@ -47,7 +47,7 @@ Manter a ocorrência de **maior `rating_count`** por `product_id`; **no empate, 
 | Alto engajamento + nota < 4,0 (Q5) | **19 produtos · 147 avaliações · ≈49,5 mil caracteres** |
 | Nota ≥ 4,3 + engajamento abaixo da mediana (candidato a Q6) | **187 produtos** |
 | Produtos que concentram 80% das avaliações (QA2) | **306 = 22,7% da base analítica** |
-| Subcategorias de nível 2 acima do piso (QA3) | **8**, cobrindo **88,3%** dos produtos |
+| Subcategorias de nível 2 acima do piso | **8**, cobrindo **88,3%** dos produtos |
 
 ## 6. Distribuição das variáveis principais (n = 1.348)
 

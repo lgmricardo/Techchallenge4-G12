@@ -40,7 +40,7 @@ Nota corrigida mediana em OfficeProducts,4.2485,Analítica,31,"T1: Wilson, com o
 Produtos em categorias abaixo do piso (somadas),7.0,Analítica,7,"T2: 5 categorias suprimidas — MusicalInstruments (2), Toys&Games (1), HomeImprovement (2), Health&PersonalCare (1), Car&Motorbike (1); nunca ranqueadas nem comparadas"
 Participação das categorias abaixo do piso no volume (%),0.4962,Analítica,7,linha única de supressão; declarada no rodapé do visual
 Categorias de nível 1 acima do piso,4.0,Analítica,1348,"de 9 categorias, 4 alcançam n >= 30 — L3"
-Subcategorias de nível 2 acima do piso,8.0,Analítica,1348,unidade de comparação de QA3; T2 aplicada sobre categoria_n2
+Subcategorias de nível 2 acima do piso,8.0,Analítica,1348,unidade de comparação por subcategoria; T2 aplicada sobre categoria_n2
 Cobertura das subcategorias acima do piso (%),88.2789,Analítica,1190,parcela do portfólio coberta pelas subcategorias comparáveis
 Produtos que concentram 80% do volume de avaliações,306.0,Analítica,1348,"ordenado por avaliacoes desc, soma acumulada; INCLUI o produto que cruza o limiar de 80%"
 Participação do grupo de Pareto no portfólio (%),22.7003,Analítica,1348,n_pareto / base analítica

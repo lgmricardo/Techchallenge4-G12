@@ -59,7 +59,7 @@ Além das colunas do silver, traz os derivados que o dashboard usa:
 | `engajamento` | `alto` (≥ p90 = 36.384) · `intermediario` · `baixo` (< mediana = 4.740) |
 | `satisfacao` | `baixa` (< 4,0) · `media` · `alta` (≥ 4,3) |
 | `q5_risco_vitrine` | alto engajamento **e** nota < 4,0 — **19 produtos** |
-| `q6_subexplorado` | nota **bruta** ≥ 4,3 **e** engajamento abaixo da mediana — **187 produtos**. É o **funil de triagem**: cruzando com `nota_corrigida ≥ 4,3`, restam **61** — a lista acionável, porque T1 exige nota corrigida em todo ranking (relatório §5.19) |
+| `q6_subexplorado` | nota **bruta** ≥ 4,3 **e** engajamento abaixo da mediana — **187 produtos**. É o **funil de triagem**: cruzando com `nota_corrigida ≥ 4,3`, restam **61** — a lista acionável, porque T1 exige nota corrigida em todo ranking (relatório §5.18) |
 | `faixa_desconto` | cinco faixas, todas acima do piso n ≥ 30 |
 | `pareto_80` | os **306 produtos** que concentram 80% das avaliações |
 

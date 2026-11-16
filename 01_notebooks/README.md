@@ -7,8 +7,8 @@ Executar nesta sequência. Cada um consome a saída do anterior.
 | 01 | `01_eda.ipynb` | shape, tipos, nulos, duplicidade, outliers, distribuição. **As 8 limitações no cabeçalho** |
 | 02 | `02_tratamento.ipynb` | deduplicação determinística, conversões, `00_data/gold/base_analitica.csv` |
 | 03 | `03_medidas.ipynb` | cada medida com o valor de referência que o DAX terá de reproduzir |
-| 04 | `04_analises.ipynb` | as 15 perguntas, cortes, quadrantes, correlações, ML2 e ML4 |
-| 05 | `05_nlp.ipynb` | ML3 — corpus deduplicado por `review_id`, n-gramas e TF-IDF (Q7, `tab14`) · **QA5** — os 19 blocos de Q5 codificados por livro de códigos, sem TF-IDF (`tab23`) |
+| 04 | `04_analises.ipynb` | as 12 perguntas do relatório final, cortes, quadrantes, correlações, ML2 e ML4 |
+| 05 | `05_nlp.ipynb` | corpus deduplicado por `review_id`, n-gramas e TF-IDF (`tab14`, página 4 do dashboard) · **QA5** — os 19 blocos de Q5 codificados por livro de códigos, sem TF-IDF (`tab23`) |
 | 06 | `06_storytelling.ipynb` | figuras finais para o `.pbix` e para o vídeo |
 
 ## Cabeçalho obrigatório de cada notebook

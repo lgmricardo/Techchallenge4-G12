@@ -60,7 +60,7 @@ def celulas(linha):
 
 
 def rotulo_secao(titulo):
-    """"§5.5" para "5.5 Q3 · Existe relação…"; o título curto quando não há número."""
+    """"§5.4" para "5.4 Q3 · Existe relação…"; o título curto quando não há número."""
     m = re.match(r"(\d+(?:\.\d+)*)\.?\s", titulo)
     return f"§{m.group(1)}" if m else titulo.split("·")[0].split("—")[0].strip()
 
@@ -366,13 +366,13 @@ def gerar_pdf():
                                 alignment=TA_JUSTIFY, spaceAfter=6),
         "h1": ParagraphStyle("h1", parent=ss["Heading1"], fontName="DejaVu-Bold",
                              fontSize=16, leading=20, textColor=cor(CHAMADAS["favoravel"]),
-                             spaceBefore=16, spaceAfter=7),
+                             spaceBefore=16, spaceAfter=7, keepWithNext=1),
         "h2": ParagraphStyle("h2", parent=ss["Heading2"], fontName="DejaVu-Bold",
                              fontSize=12.5, leading=16, textColor=cor(ESTRUTURA["tinta"]),
-                             spaceBefore=12, spaceAfter=5),
+                             spaceBefore=12, spaceAfter=5, keepWithNext=1),
         "h3": ParagraphStyle("h3", parent=ss["Heading3"], fontName="DejaVu-Bold",
                              fontSize=10.5, leading=14, textColor=cor(ESTRUTURA["secundario"]),
-                             spaceBefore=9, spaceAfter=4),
+                             spaceBefore=9, spaceAfter=4, keepWithNext=1),
         "leg": ParagraphStyle("leg", parent=ss["Normal"], fontName="DejaVu-Obl",
                               fontSize=7.8, leading=10, textColor=cor(ESTRUTURA["secundario"]),
                               alignment=TA_CENTER, spaceAfter=9),
@@ -440,8 +440,13 @@ def gerar_pdf():
                 from PIL import Image as PILImage
                 w, h = PILImage.open(real).size
                 larg = 16.0 * cm
-                fluxo.append(KeepTogether([Image(real, width=larg, height=larg * h / w),
-                                           Spacer(1, 3), Paragraph(rico(m.group(1)), est["leg"])]))
+                # Título logo antes da figura vai junto com ela: o keepWithNext do reportlab não
+                # atravessa um KeepTogether, e o título ficaria sozinho no pé da página.
+                cabeca = []
+                if fluxo and isinstance(fluxo[-1], Paragraph) and fluxo[-1].style.name in ("h1", "h2", "h3"):
+                    cabeca = [fluxo.pop()]
+                fluxo.append(KeepTogether(cabeca + [Image(real, width=larg, height=larg * h / w),
+                                                    Spacer(1, 3), Paragraph(rico(m.group(1)), est["leg"])]))
             i += 1
             continue
 

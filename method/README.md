@@ -4,7 +4,7 @@ Ler antes de produzir qualquer número, visual ou frase. **Para definição e re
 
 | Pasta | O que tem |
 |---|---|
-| `definitions/` | as 5 bases e todos os cortes medidos · dicionário de dados · escopo fechado das 15 perguntas · **regras transversais T1–T9** · matriz de aderência C1–C9 · registro de machine learning (ML1–ML4) |
+| `definitions/` | as 5 bases e todos os cortes medidos · dicionário de dados · escopo fechado das 12 perguntas · **regras transversais T1–T9** · matriz de aderência C1–C9 · registro de machine learning (ML1–ML4) |
 | `limitations/` | L1 a L8, com texto pronto para colar no `.pbix` e falar no vídeo |
 | `design_system/` | tabela única de tokens de cor v06 + tema do Power BI |
 | (raiz) | `open_decisions.md` — o registro das oito decisões, todas fechadas |

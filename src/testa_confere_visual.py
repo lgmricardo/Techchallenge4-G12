@@ -6,7 +6,7 @@ POR QUE ESTE ARQUIVO EXISTE
 ---------------------------
 O projeto confere número e texto em seis comandos: 107 asserções sobre a base,
 dicionário coluna a coluna, DAX comparado caractere a caractere, 41 números
-plantados no sumário, 36 casos do verificador do `.pbix` e o lint. **Nenhum
+plantados no sumário, 38 casos do verificador do `.pbix` e o lint. **Nenhum
 deles olhava dentro de um PNG** — e foi exatamente por aí que passou um defeito
 real: ao unificar a vírgula decimal dos eixos, o formatador foi aplicado também
 a eixo de categoria, e `Electronics · Home&Kitchen · Computers&Accessories`

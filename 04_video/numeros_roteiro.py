@@ -215,15 +215,15 @@ def main():
     registrar("5 Customer Insights", "avaliações por produto — média e máximo",
               f"{por_produto.mean():.2f}".replace(".", ",") + f" · máx {por_produto.max()}",
               "Analítica", n_gold, "L1 — truncamento na vitrine")
-    registrar("5 Customer Insights", "blocos de review com nota < 4,0", f"{baixa}", "Analítica", n_gold, "ML3 / T8")
-    registrar("5 Customer Insights", "blocos de review com nota >= 4,3", f"{alta}", "Analítica", n_gold, "ML3 / T8")
-    intermediaria = n_gold - baixa - alta
-    registrar("5 Customer Insights", "faixa intermediária fora do contraste",
-              f"{intermediaria} ({pct(intermediaria / n_gold * 100, 0)})", "Analítica", n_gold, "ML3 — lacuna declarada")
     aval_q5 = int(silver.set_index("product_id").loc[
         g.loc[g.q5_risco_vitrine, "product_id"], "review_id"].str.split(",").apply(len).sum())
     registrar("5 Customer Insights", "avaliações disponíveis nos 19 produtos de Q5",
               f"{aval_q5}", "Analítica", q5, "QA5 — leitura dirigida, não TF-IDF")
+    # QA5 — o eixo com mais blocos de queixa entre os 19 (o gráfico de temas da página 4 do dashboard)
+    temas = pd.read_csv(os.path.join(RAIZ, "02_results", "tables", "tab23_qa5_temas.csv")).set_index("eixo_tematico")
+    registrar("5 Customer Insights", "QA5 — blocos com queixa de som, ruído e microfone",
+              f"{int(temas.loc['Som, ruído e microfone', 'blocos_com_marcador_negativo'])}", "Analítica", q5,
+              "QA5 — leitura dirigida, denominador 19 blocos")
 
     # ---------------------------------------------- demonstração do dashboard
     # A página "Produtos e Categorias" compara por subcategoria de nível 2, não
@@ -232,9 +232,9 @@ def main():
     cat2 = g.categoria_n2.value_counts()
     acima2 = cat2[cat2 >= PISO]
     registrar("4 Dashboard", f"subcategorias de nível 2 com n >= {PISO}",
-              f"{acima2.size}", "Analítica", n_gold, "T2 / QA3")
+              f"{acima2.size}", "Analítica", n_gold, "T2")
     registrar("4 Dashboard", "cobertura das subcategorias acima do piso",
-              pct(acima2.sum() / n_gold * 100), "Analítica", n_gold, "T2 / QA3")
+              pct(acima2.sum() / n_gold * 100), "Analítica", n_gold, "T2")
 
     # ------------------------------------- os DOIS focos de insatisfação (bloco 5)
     # O vídeo precisa entregar um TEMA de Customer Insights, não só o método. Os
@@ -249,7 +249,7 @@ def main():
                   f"T2 n = {len(sub)} >= {PISO} · subcategoria de nível 2")
         registrar("5 Customer Insights", f"{rotulo} — dispersão da nota (desvio-padrão)",
                   f"{sub.nota.std():.3f}".replace(".", ","), "Analítica", len(sub),
-                  "QA3 — dispersão observada; a diferença não é significativa (Levene p = 0,18)")
+                  "dispersão observada; a diferença não é significativa (Levene p = 0,18)")
     registrar("5 Customer Insights", "taxa da base abaixo de 4,0 — para comparação",
               pct((g.nota < 4.0).mean() * 100), "Analítica", n_gold,
               "sem ela, 52% e 38% não têm referência")
@@ -283,7 +283,7 @@ def main():
     print(faixas.to_string())
     # Duas faixas entram na tabela, e por motivos diferentes. A de MAIOR nota corrigida é
     # citada com a ressalva: ela está 0,053 acima da segunda, magnitude sem leitura de
-    # negócio (§5.11, T5). O achado defensável é a de MENOR nota corrigida — a única abaixo
+    # negócio (§5.10, T5). O achado defensável é a de MENOR nota corrigida — a única abaixo
     # do limiar de satisfação —, e é ela que o dashboard e o vídeo destacam.
     elegiveis = faixas[faixas.n >= PISO]
     melhor, pior = elegiveis.nota_corrigida.idxmax(), elegiveis.nota_corrigida.idxmin()

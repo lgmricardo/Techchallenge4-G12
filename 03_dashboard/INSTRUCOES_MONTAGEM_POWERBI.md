@@ -146,7 +146,7 @@ onde  p = (nota − 1) / 4 ·  n = avaliacoes ·  z = 1,96
 
 1. Criar as **22 medidas** de [`medidas_dax.md`](medidas_dax.md) (M01–M22) em `_Medidas`, **copiando cada expressão como está**. O catálogo já vem na notação que o DAX aceita (`#,##0` no `FORMAT`).
 2. **Logo depois, a página oculta `Conferência`**, de [`conferencia_dax.md`](conferencia_dax.md): as 6 medidas `Conf ·` e a página. Só depois das 22: as medidas `Conf ·` citam todas, e o DAX não aceita referência a medida que ainda não existe — enquanto faltar uma, a página fica em erro. `Conf · Divergentes` tem de dar **0**.
-3. Criar as **variantes T2**: `Participação da Categoria no Volume (T2)` e o mesmo padrão `IF([Produtos Ativos] >= 30, …, BLANK())` para M07, M09 e M10 e **para toda medida que uma página exibe por faixa, subcategoria ou arquétipo** (QA1, QA3, QA7 e os extras do passo 4.4).
+3. Criar as **variantes T2**: `Participação da Categoria no Volume (T2)` e o mesmo padrão `IF([Produtos Ativos] >= 30, …, BLANK())` para M07, M09 e M10 e **para toda medida que uma página exibe por faixa, subcategoria ou arquétipo** (QA1, Q4 por subcategoria, QA7 e os extras do passo 4.4).
    *Por que não só por categoria.* As segmentações das páginas 2a, 2b, 2c e 3 cruzam com qualquer eixo, e o grupo cai abaixo do piso sem aviso. **Medido na base analítica:** com *Home & Kitchen* selecionada, a faixa 81–100% fica com **n = 2**; com *OfficeProducts*, as cinco faixas ficam com 25 · 3 · 2 · 1 · 0; com *Computers & Accessories*, o arquétipo A fica com 19; com engajamento alto, A = 20, B = 0 e C = 25. Sem a variante, a página entregue compara grupos de n < 30 — que é exatamente o que T2 proíbe.
    *Alternativa aceita:* filtro de visual `[Produtos Ativos] >= 30`, ou desligar a interação daquela segmentação com aquele visual — mas então a escolha fica declarada no rodapé da página.
 4. Criar as medidas que o catálogo não cobre, **cada uma conferida contra uma tabela do Python** — conferir **fora** do Power BI, abrindo o CSV; se importar algum, desligar a carga:
@@ -155,8 +155,8 @@ onde  p = (nota − 1) / 4 ·  n = avaliacoes ·  z = 1,96
 |---|---|---|
 | Q1 | produtos por quadrante (41 · 19 · 187 · 227 · 874) | `tab17_matriz_relevancia.csv` |
 | QA1 | n, nota mediana, Wilson e volume mediano por faixa | `tab08_faixas_desconto.csv` |
-| QA3 | `STDEV.S` e IQR (`PERCENTILEX.INC` 0,75 − 0,25) por subcategoria | `tab16_satisfacao_subcategoria.csv` |
-| Q7 | blocos, referências e reviews por faixa (339 · 591 · 418; 10.588) | `tab06_corpus.csv` |
+| Q4 · subcategorias | `STDEV.S` e IQR (`PERCENTILEX.INC` 0,75 − 0,25) por subcategoria | `tab16_satisfacao_subcategoria.csv` |
+| Corpus (T8) | blocos, referências e reviews por faixa (339 · 591 · 418; 10.588) | `tab06_corpus.csv` |
 | QA7 | n e medianas por arquétipo | `tab05_arquetipos.csv` |
 | Q8 | produtos do Pareto com nota < 4,0 (**39 de 306**) | citado na conclusão do vídeo |
 | L8 | `Participação no Volume sem Variantes` (Electronics **53,1%**) | `tab18_relevancia_categoria.csv` + a leitura obrigatória de L8 |
@@ -227,18 +227,18 @@ Ao fechar cada página: um único âmbar · nenhuma pizza ou rosca · máximo 5 
 
 | Página | Para | Visual | Dados | Regra |
 |---|---|---|---|---|
-| **1 · Visão Executiva** | Q2 | 4 cartões | Nota 4,10 · Desconto 49% · Preço de tabela 1.795 · Volume 4.740 | sem símbolo de moeda |
-| 1 | Q2 | cartão | corte de engajamento alto **36.384** (M18) | é volume de avaliações, nunca venda |
+| **1 · Visão Executiva** | indicadores | 4 cartões | Nota 4,10 · Desconto 49% · Preço de tabela 1.795 · Volume 4.740 | sem símbolo de moeda |
+| 1 | Q5 · matriz | cartão | corte de engajamento alto **36.384** (M18) | é volume de avaliações, nunca venda |
 | 1 | Q4 | histograma de nota | compartimentos de 0,1; faixas baixa (339) e alta (418) por cor | rótulo direto |
 | 1 | QA2 | curva de Pareto | posição × % acumulado, referência em 80%, cartões **306** e **22,7%** | o ponto de 80% é o **único âmbar** |
 | 1 | Q8 | cartão | **39 dos 306** produtos do Pareto abaixo de 4,0 (12,7%) | — |
 | 1 | Q1 | matriz 2 × 2 | `relevancia`: Âncora 41 · Risco 19 · Subexplorado 187 · Cauda frágil 227 | Intermediário (874) no rodapé |
 | **2a · Categorias** | Q4 | barras horizontais | % Satisfação Baixa (T2) e Nota Corrigida (T2) nas 4 categorias | rodapé: 5 categorias, 7 produtos, 0,5% suprimidos |
 | 2a | Q4 | barras horizontais | Participação no Volume (T2): 59,7 · 26,6 · 12,6 · 0,6% | versão sem variantes ao lado (Electronics **53,1%**) |
-| 2a | QA3 | **barras de desvio-padrão** | as 8 subcategorias com n ≥ 30, da maior dispersão para a menor, **com o n no rótulo** | climatização e fones em **laranja**; sem âmbar |
-| 2a | QA3 | tabela ao lado | desvio-padrão, IQR, % abaixo de 4,0 e n | rodapé: 8 subcategorias · 88,3% · piso n ≥ 30 |
+| 2a | Q4 | **barras de desvio-padrão** | as 8 subcategorias com n ≥ 30, da maior dispersão para a menor, **com o n no rótulo** | climatização e fones em **laranja**; sem âmbar |
+| 2a | Q4 | tabela ao lado | desvio-padrão, IQR, % abaixo de 4,0 e n | rodapé: 8 subcategorias · 88,3% · piso n ≥ 30 |
 | **2b · Quadrantes** | Q1 · Q5 | dispersão | avaliações (log) × nota, linhas em p90, mediana, 4,0 e 4,3 | quadrante Q5 em âmbar · **caixa "como ler"** |
-| 2b | QA3 | dispersão por subcategoria | nota (Y) × subcategoria (X), um ponto por produto, só as 8 acima do piso | mostra **a forma**: fones deslocados, climatização espalhada |
+| 2b | Q4 | dispersão por subcategoria | nota (Y) × subcategoria (X), um ponto por produto, só as 8 acima do piso | mostra **a forma**: fones deslocados, climatização espalhada |
 | 2b | Q5 | tabela nominal | os **19**: produto, subcategoria, avaliações, nota, Wilson | lista nominal é exceção ao piso de 30 |
 | 2b | Q6 | 2 cartões | **187** "funil de triagem" (M12) e **61** "lista acionável" (M22) | *"bem avaliados com baixo volume de avaliações"* — **vedado** "baixa visibilidade" |
 | 2b | Q6 | tabela nominal | os **61**, por nota corrigida, com avaliações | — |
@@ -249,15 +249,15 @@ Ao fechar cada página: um único âmbar · nenhuma pizza ou rosca · máximo 5 
 | 3 | QA1 | colunas | nota corrigida por faixa, com n no rótulo e volume mediano | **âmbar na faixa 81–100%** (**3,906**; n = 51) · título: *"a única faixa abaixo de 4,0"* |
 | 3 | Q3 · QA4 | barras em torno de zero | ρ dos 4 pares (`tab03`), com p e n no rótulo | magnitude junto com significância · escala divergente |
 | 3 | QA4 | dispersão | preço de tabela (log) × nota | ρ = +0,032, p = 0,236 → **sem associação** |
-| **4 · Customer Insights** | Q7 | caixa de texto no topo | no máximo **8 avaliações por produto** (média 7,85) | **dito na página**, não só no rodapé |
-| 4 | Q7 | cartões + tabela | 1.348 blocos · 10.588 referências · 9.255 reviews; por faixa 339 · 591 · 418 | faixa intermediária em cinza, *"fora do contraste"* |
-| 4 | Q7 | barras horizontais | n-gramas que mais separam notas baixas e altas (`tab14`) | unidade = bloco de review |
+| **4 · Customer Insights** | L1 | caixa de texto no topo | no máximo **8 avaliações por produto** (média 7,85) | **dito na página**, não só no rodapé |
+| 4 | T8 | cartões + tabela | 1.348 blocos · 10.588 referências · 9.255 reviews; por faixa 339 · 591 · 418 | faixa intermediária em cinza, *"fora do contraste"* |
+| 4 | contraste de vocabulário | barras horizontais | n-gramas que mais separam notas baixas e altas (`tab14`) | unidade = bloco de review |
 | 4 | QA5 | barras horizontais | temas dos 19 blocos de Q5 (`tab23`) | leitura qualitativa dirigida · 147 avaliações |
 | 4 | — | caixa de texto | **as 4 perguntas de Customer Insights do enunciado**: o que valorizam · problemas frequentes · padrões positivos · temas negativos, com a pergunta do escopo que responde cada uma | torna a cobertura visível |
 | **5 · Recomendações** | Q8 | 5 cartões de texto | uma recomendação cada, com seu número: 19 · 335 · 61 · **ρ = −0,150 (p = 3,1e-08; n = 1.348)** · 97,2% | nada em receita · **ρ nunca sem o p** (T5) |
 | 5 | Q8 | barras | AUC por bloco (`tab07`, agrupada por variante): 0,56 · 0,58 · 0,66 · **0,70 ± 0,01** | *"triagem, não veredito"* |
 | 5 | Q8 | caixa de texto | **as 8 limitações completas** + registro "21 de 21 medidas conferidas" | — |
-| 5 | — | caixa de texto | **"Como estes números foram conferidos"**: Conferência com 33 valores recalculados em DAX · `verifica_pbix.py` provado em 36 casos · trava do sumário provada em 41 números plantados · B × D testado (efeito 0,134 no desconto, 0,670 na nota) | texto em `GUIA_GRAFICOS_POWERBI.md`, ficha **G-36** — rigor que o avaliador não vê se ninguém apontar |
+| 5 | — | caixa de texto | **"Como estes números foram conferidos"**: Conferência com 33 valores recalculados em DAX · `verifica_pbix.py` provado em 38 casos · trava do sumário provada em 41 números plantados · B × D testado (efeito 0,134 no desconto, 0,670 na nota) | texto em `GUIA_GRAFICOS_POWERBI.md`, ficha **G-36** — rigor que o avaliador não vê se ninguém apontar |
 | **Oculta** | — | detalhamento | ficha do produto: nota, Wilson, avaliações, preço, desconto, arquétipo, quadrante | nenhum dado de consumidor |
 | **Oculta** | — | dica de ferramenta | n e nota corrigida ao passar o mouse | — |
 

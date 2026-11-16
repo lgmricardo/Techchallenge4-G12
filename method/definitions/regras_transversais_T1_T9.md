@@ -1,5 +1,5 @@
 # ⚖️ REGRAS TRANSVERSAIS T1–T9
-**Valem para as 15 perguntas, sem exceção. Não são pergunta — são requisito de construção.**
+**Valem para todas as perguntas do escopo, sem exceção. Não são pergunta — são requisito de construção.**
 Versão harmonizada em 23/09/2026; substitui a redação anterior de T1–T7.
 **T9 acrescentada em 24/09/2026**, por decisão de Ricardo: a paleta passa a valer em todo o material, não só no `.pbix`.
 

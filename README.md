@@ -14,7 +14,7 @@ Análise do desempenho de portfólio e da percepção de consumidores em um mark
 
 > **"Quais produtos, categorias e estratégias comerciais merecem maior atenção e quais oportunidades podem ser identificadas a partir dos dados disponíveis?"**
 
-As 8 perguntas orientadoras do enunciado e as 4 da seção de Customer Insights são respondidas pelo **escopo fechado de 15 perguntas** em [`method/definitions/escopo_15_perguntas.md`](method/definitions/escopo_15_perguntas.md). Nenhuma análise entra no material sem vínculo com uma delas.
+O escopo fechado tem **12 perguntas** — as que o dashboard entregue mostra por inteiro —, em [`method/definitions/escopo_perguntas.md`](method/definitions/escopo_perguntas.md). Nenhuma análise entra no material sem vínculo com uma delas.
 
 ---
 
@@ -59,7 +59,7 @@ Techchallenge4-G12/
 ├── 04_video/                ⭐ ENTREGA 2 — roteiro, storyboard, cartelas
 │
 ├── method/                  o que governa todo o resto. Ler antes de produzir qualquer coisa
-│   ├── definitions/         as 5 bases, dicionário, escopo das 15 perguntas, regras
+│   ├── definitions/         as 5 bases, dicionário, escopo das 12 perguntas, regras
 │   │                        transversais T1–T9, registro de ML, matriz C1–C9
 │   ├── limitations/         L1 a L8, com texto pronto para o .pbix e para o vídeo
 │   ├── design_system/       tokens de cor v06 + tema do Power BI
@@ -160,7 +160,7 @@ python3 src/gera_figuras.py                            # confere a reconstruçã
 python3 src/testa_gera_resumo.py                       # planta 41 números errados e exige que o gerador reprove
 python3 src/testa_confere_visual.py                    # 10 casos: a trava visual das figuras reprova o que deve
 python3 04_video/confere_amarracao.py                  # todo número falado está na tabela · ritmo dentro dos tetos
-python3 03_dashboard/testa_verifica_pbix.py            # 36 casos: o verificador do .pbix reprova o que deve
+python3 03_dashboard/testa_verifica_pbix.py            # 38 casos: o verificador do .pbix reprova o que deve
 python -m ruff check .                                 # lint, com o padrão declarado em pyproject.toml
 ```
 
@@ -172,7 +172,7 @@ python -m ruff check .                                 # lint, com o padrão dec
 | `testa_gera_resumo` | cópias do relatório e do roteiro | sumário afirmando número que o corpo não sustenta | **41 números plantados**, um por vez |
 | `testa_confere_visual` | figuras montadas com defeito | eixo de categoria apagado, pizza, série a mais, rodapé ausente **ou cortado pela borda** | **10 casos**, 6 que reprovam e 4 que passam |
 | `confere_amarracao` | o roteiro e a tabela de amarração do vídeo | número falado sem linha na tabela · segmento sem fala conferida · bloco denso demais | `--planta`, `--planta-ritmo` e o **roteiro anterior ao corte**, que reprova com ritmo de 4,27 p/s |
-| `testa_verifica_pbix` | `.pbit` sintéticos | `.pbix` entregue fora da especificação | **36 casos**, 7 que passam e 29 que falham |
+| `testa_verifica_pbix` | `.pbit` sintéticos | `.pbix` entregue fora da especificação | **38 casos**, 8 que passam e 30 que falham |
 | `ruff check` | o código | import morto, nome indefinido, linha acima do limite | padrão declarado em `pyproject.toml` |
 
 > **Os escopos não se sobrepõem por acaso.** O `valida_base` recalcula a partir do **bronze** e não olha a gold — quem guarda a gold é o `gera_figuras`, que reconstrói a base por um caminho independente e compara. Um só comando cobrindo tudo seria um ponto único de falha; o conjunto existe para que **nenhuma camada se valide sozinha**.

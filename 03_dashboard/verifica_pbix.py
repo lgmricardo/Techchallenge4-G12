@@ -319,15 +319,30 @@ def main():
         pbix = abre(pbix_caminho, ".pbix", "DataModel", "DataModelSchema")
         a = {n: pbit.read(n) for n in pbit.namelist() if n.startswith(PARTES_RELATORIO)}
         b = {n: pbix.read(n) for n in pbix.namelist() if n.startswith(PARTES_RELATORIO)}
-        confere("o .pbix tem relatório e consultas", bool(b) and "DataMashup" in pbix.namelist(),
+        # O Power BI Desktop atual não grava mais a parte DataMashup: as consultas ficam dentro
+        # do DataModel do .pbix, e o .pbit exportado também sai sem ela. Visto nos arquivos reais
+        # do grupo em 12 e 13/11/2026. Quando os DOIS arquivos estão nesse formato, a ausência é
+        # esperada; quando só o .pbix não tem, continua sendo falha.
+        formato_atual = ("DataMashup" not in pbix.namelist() and "DataMashup" not in pbit.namelist()
+                         and "DataModel" in pbix.namelist())
+        confere("o .pbix tem relatório e consultas",
+                bool(b) and ("DataMashup" in pbix.namelist() or formato_atual),
                 "partes ausentes no .pbix")
         diferentes = sorted(n for n in set(a) | set(b)
                             if comparavel(n, a.get(n, b"")) != comparavel(n, b.get(n, b"")))
         confere("relatório idêntico nos dois arquivos", not diferentes,
                 f"diferem: {diferentes[:5]} → salvar o .pbix e exportar o .pbit de novo")
+        if formato_atual:
+            linha("AVISO", "consultas guardadas dentro do DataModel (formato atual do Desktop)",
+                  "o código M não é comparável entre os dois arquivos; relatório e data de gravação "
+                  "continuam conferidos")
         try:
+            if formato_atual:
+                raise StopIteration
             m_a, carga_a = decodifica_mashup(pbit.read("DataMashup"))
             m_b, carga_b = decodifica_mashup(pbix.read("DataMashup"))
+        except StopIteration:
+            pass
         except (KeyError, ValueError, struct.error, zipfile.BadZipFile, ET.ParseError) as erro:
             linha("AVISO", "consultas do Power Query não decodificadas", f"{erro} — comparar à mão")
         else:

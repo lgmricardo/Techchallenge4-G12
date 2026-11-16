@@ -94,7 +94,8 @@ def grava(caminho, esquema=None, layout=LAYOUT, mashup=MASHUP, pbir=False, model
                 zf.writestr(f"Report/definition/pages/p{i}/page.json", json.dumps(pagina).encode("utf-8"))
         else:
             zf.writestr("Report/Layout", json.dumps(layout, ensure_ascii=False).encode("utf-16-le"))
-        zf.writestr("DataMashup", mashup)
+        if mashup is not None:          # None: formato atual do Desktop, sem a parte DataMashup
+            zf.writestr("DataMashup", mashup)
 
 
 def tabela(esquema, nome):
@@ -189,6 +190,12 @@ with tempfile.TemporaryDirectory() as tmp:
     os.utime(ilegivel, (os.path.getmtime(pbit) - 10,) * 2)
     resultados.append(("consultas não decodificáveis — passa com aviso", roda(pbit, ilegivel), 0))
 
+    atual_t = arquivo("atual.pbit", esquema=certo, mashup=None)
+    atual_x = arquivo("atual.pbix", modelo_binario=True, mashup=None)
+    os.utime(atual_x, (os.path.getmtime(atual_t) - 10,) * 2)
+    resultados.append(("formato atual do Desktop, sem DataMashup nos dois — passa com aviso",
+                       roda(atual_t, atual_x), 0))
+
     navegou = arquivo("navegou.pbix", modelo_binario=True,
                       layout=LAYOUT | {"config": json.dumps({"activeSectionIndex": 1})})
     os.utime(navegou, (os.path.getmtime(pbit) - 10,) * 2)
@@ -215,6 +222,9 @@ with tempfile.TemporaryDirectory() as tmp:
     outro_m = arquivo("outro_m.pbix", modelo_binario=True, mashup=mashup(codigo=CODIGO_M + "\nshared x = 1;"))
     os.utime(outro_m, (os.path.getmtime(pbit) - 10,) * 2)
     resultados.append((".pbix com código M diferente", roda(pbit, outro_m), 1))
+    sem_m = arquivo("sem_consultas.pbix", modelo_binario=True, mashup=None)
+    os.utime(sem_m, (os.path.getmtime(pbit) - 10,) * 2)
+    resultados.append((".pbix sem as consultas, ao lado de .pbit que as tem", roda(pbit, sem_m), 1))
     depois = arquivo("salvo_depois.pbix", modelo_binario=True)
     os.utime(depois, (os.path.getmtime(pbit) + 3600,) * 2)
     resultados.append((".pbix salvo depois da exportação", roda(pbit, depois), 1))

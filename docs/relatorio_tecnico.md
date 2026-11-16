@@ -5,13 +5,13 @@
 **POSTECH DTAT · 2026 · Grupo 12**
 **Integrantes (ordem alfabética):** Efraim Oliveira · Érica Tarsis · Ricardo Moraes · Rodrigo Bernardino · Thiago Galvão
 
-**Versão 1 · 31 de outubro de 2026**
+**Versão 1 · 13 de novembro de 2026**
 
 ---
 
 ## Resumo Executivo
 
-Este relatório documenta a análise de **1.348 produtos** e **9.255 reviews individuais** — o texto exibido na vitrine, até 8 por produto — de um marketplace, conduzida para responder onde a liderança deve concentrar atenção comercial. Os números de base são reproduzíveis por um validador de **107 asserções** que falha se qualquer um deles divergir da origem — ele cobre as cinco bases, os cortes, os quadrantes, as distribuições, as quatro correlações, as categorias e o corpus. **Não** cobre as métricas de *machine learning*, a nota corrigida nem os n-gramas: esses são reproduzíveis pelos notebooks, com semente e versões fixadas.
+Este relatório documenta a análise de **1.348 produtos** e **9.255 reviews individuais** — o texto exibido na vitrine, até 8 por produto — de um marketplace, conduzida para responder onde a liderança deve concentrar atenção comercial. Os números de base são reproduzíveis por um validador de **107 asserções** que falha se qualquer um deles divergir da origem — ele cobre as cinco bases, os cortes, os quadrantes, as distribuições, as quatro correlações, as categorias e o corpus. **Não** cobre as métricas de *machine learning*, a nota corrigida nem o contraste de termos de Q7: esses são reproduzíveis pelos notebooks, com semente e versões fixadas.
 
 **A mensagem central é sobre desconto.** O agrupamento descreve o catálogo em quatro perfis comerciais, por convenção (ML4). Dois deles — os grupos **B** (335 produtos) e **D** (447 produtos) — praticam desconto praticamente idêntico: **58% e 61%**. E divergem em volume e em nota. O grupo D acumula **13.120 avaliações medianas**; o grupo B, **468** — vinte e oito vezes menos. B é também o **único dos quatro com nota abaixo do limiar de satisfação** (3,9 contra 4,2 dos demais).
 
@@ -24,18 +24,18 @@ Este relatório documenta a análise de **1.348 produtos** e **9.255 reviews ind
 | Achado | Medida | Onde agir |
 |---|---|---|
 | **Risco de vitrine** — produtos muito avaliados e mal avaliados | **19 produtos** com volume ≥ p90 (36.384 avaliações) e nota < 4,0 | maior exposição, pior percepção: revisão prioritária |
-| **Potencial subexplorado** — bem avaliados, com baixo volume de avaliações | **187 produtos** por nota bruta; **61** depois da correção de Wilson (T1) — 126 caem | a **lista acionável são os 61**; os 187 são o funil de triagem (§5.19) |
+| **Potencial subexplorado** — bem avaliados, com baixo volume de avaliações | **187 produtos** por nota bruta; **61** depois da correção de Wilson (T1) — 126 caem | a **lista acionável são os 61**; os 187 são o funil de triagem (§5.18) |
 | **Concentração extrema do engajamento** | **306 produtos (22,7%)** concentram 80% das avaliações | a percepção do catálogo é formada por menos de um quarto dele |
 
 **Três coisas que a base não permite afirmar, e que o relatório declara abertamente.** Não há variável de venda — `rating_count` é volume de avaliações, nunca receita ou demanda, e nenhuma recomendação aqui é expressa em dinheiro. O texto das avaliações vem truncado em no máximo 8 por produto, então Customer Insights descreve **os temas visíveis na vitrine**, não a distribuição real das opiniões. E 97,2% do portfólio está em três famílias de produto, o que significa que "análise por categoria" quer dizer, na prática, três categorias mais uma no limite amostral.
 
-O preço de tabela, por sua vez, **não apresenta associação com a satisfação** (ρ = +0,032, p = 0,236): produtos caros e baratos convergem na mesma faixa de nota. É um resultado inconclusivo, e está publicado como tal. O **preço efetivamente pago** tem associação estatisticamente significativa e de magnitude ínfima (ρ = +0,077, p = 0,005 — menos de 0,6% de variação compartilhada), e os dois números aparecem lado a lado em §5.14 justamente para que o relatório não seja acusado de publicar só o resultado que lhe convém.
+O preço de tabela, por sua vez, **não apresenta associação com a satisfação** (ρ = +0,032, p = 0,236): produtos caros e baratos convergem na mesma faixa de nota. É um resultado inconclusivo, e está publicado como tal. E também **não acompanha o desconto** (ρ = −0,063, p = 0,020, sem significância depois da correção de multiplicidade).
 
 ---
 
 ### As duas definições que o grupo fechou
 
-Duas perguntas do enunciado dependiam de definições de negócio que o projeto manteve abertas até serem decididas. **Ambas estão fechadas**, e nenhuma criou limiar novo — as duas reaproveitam cortes já medidos e publicados. O detalhamento está em **§5.19**.
+Duas perguntas do enunciado dependiam de definições de negócio que o projeto manteve abertas até serem decididas. **Ambas estão fechadas**, e nenhuma criou limiar novo — as duas reaproveitam cortes já medidos e publicados. O detalhamento está em **§5.18**.
 
 | Pergunta | Definição adotada | Resultado |
 |---|---|---|
@@ -44,17 +44,17 @@ Duas perguntas do enunciado dependiam de definições de negócio que o projeto 
 
 A matriz de relevância **reproduz Q5 = 19 e Q6 = 187 exatamente**. Ela não é uma definição concorrente: é o quadro que dá nome aos dois quadrantes que ainda não tinham — Âncora e Cauda frágil.
 
-### As quatro mensagens para a liderança
+### As três mensagens para a liderança
 
-O enunciado exige que a apresentação encerre respondendo *"Quais são as principais mensagens que a liderança deve levar a partir desta análise?"*. A resposta, articulada em §10.3 e sustentada por todo o relatório:
+O enunciado exige que a apresentação encerre respondendo *"Quais são as principais mensagens que a liderança deve levar a partir desta análise?"*. A resposta, que fecha o vídeo (§10.3) e é sustentada por todo o relatório:
 
 **1 · Desconto não é estratégia de sortimento.** Dois grupos com **58% e 61%** de desconto — três pontos de distância — terminam com **468 e 13.120** avaliações medianas e notas **3,9 e 4,2**. Se o desconto fosse a alavanca, esses dois grupos não estariam em lados opostos do portfólio.
 
-**2 · Um quarto do catálogo está abaixo de 4,0** (339 produtos, 25,1%), **mas a insatisfação não está onde a atenção está.** Dos 306 produtos que concentram 80% das avaliações, apenas **39 (12,7%)** têm nota abaixo de 4,0 — **metade da taxa da base**. O risco de reputação é concentrado e pequeno, e por isso mesmo tratável: são esses 39, e dentro deles os 19 de Q5.
+**2 · Um quarto do catálogo está abaixo de 4,0** (339 produtos, 25,1%), **e a insatisfação tem endereço: fones (52,4%) e climatização (37,9%).** E ela não está onde a atenção está: dos 306 produtos que concentram 80% das avaliações, apenas **39 (12,7%)** têm nota abaixo de 4,0 — **metade da taxa da base**.
 
-**3 · Existe uma fila de 19 produtos para começar esta semana** — alto engajamento, nota abaixo de 4,0, avaliação escrita disponível para leitura. Não precisa de dado novo, de projeto nem de orçamento.
+**3 · As listas para agir já estão no painel.** Existe uma fila de 19 produtos para começar esta semana — alto engajamento, nota abaixo de 4,0 — e a dos **61** bem avaliados e pouco comentados, com nome e número de avaliações. Nenhuma precisa de dado novo, de projeto ou de orçamento.
 
-**4 · E a mais importante: tudo isso foi medido sobre volume de avaliações, não sobre vendas** — e sobre no máximo 8 avaliações por produto, em rupia indiana, sem conversão. Dentro desses limites a evidência é sólida e sustenta decisão. Fora deles não sustenta, e este relatório não finge que sustenta.
+**Os limites valem para as três.** Tudo foi medido sobre volume de avaliações, não sobre vendas — e sobre no máximo 8 avaliações por produto, em rupia indiana, sem conversão. Fora desses limites, a evidência não sustenta decisão.
 
 ---
 
@@ -62,18 +62,19 @@ O enunciado exige que a apresentação encerre respondendo *"Quais são as princ
 
 | Artefato | Local | Estado |
 |---|---|---|
-| Dashboard Power BI | `03_dashboard/TechChallenge4_G12.pbix` | ⏳ em construção |
-| Vídeo executivo (até 7 min) | `04_video/` | ⏳ em construção |
+| Dashboard Power BI | `03_dashboard/TechChallenge4_G12.pbix` | ✅ página inicial e sete páginas analíticas — versão TC4.R, exportada em PDF em 13/11/2026 (§9) |
+| Manual de leitura do dashboard | `docs/manual_leitura_dashboard_v1.pdf` · `.docx` | ✅ o que cada item de cada página representa, com as telas da versão TC4.R |
+| Vídeo executivo (meta do grupo: 6 min; o enunciado admite 7) | `04_video/roteiro.md` · `roteiro_video_v1.pdf` · `.docx` | ⏳ roteiro fechado em 5:50 (§10); gravação pendente |
 | Este relatório | `docs/technical_report_phase4_v1_powerbi.docx` · `.pdf` | ✅ v1 |
 | Sumário executivo (2 páginas) | `docs/executive_summary_phase4_v1_powerbi.pdf` · `.docx` | ✅ extraído deste relatório por `src/gera_resumo.py` |
 | Folha de defesa (1 página) | `docs/defense_sheet_phase4_v1_powerbi.pdf` | ✅ todos os números falados no vídeo, cada um com base, *n* e a seção onde está |
-| Notebooks de análise | `01_notebooks/01_eda` a `06_storytelling` | ✅ **os 6 executam sem erro**, em ambiente criado do `requirements.txt` |
+| Notebooks de análise | `01_notebooks/01_eda` a `06_storytelling` | ✅ **os 6 executam sem erro** e fecham as próprias validações, em ambiente criado do `requirements.txt` (reexecutados em 10/11/2026) |
 | Validador da base (107 asserções) | `src/valida_base.py` | ✅ exit 0 · 0 puladas |
 | Validador do dicionário (coluna a coluna) | `src/valida_dicionario.py` | ✅ exit 0 · nenhuma divergência |
-| Conferência do `.pbix` | página `Conferência` + `03_dashboard/verifica_pbix.py` | ✅ pronta para a montagem · verificador provado em 36 casos |
-| Saída datada dos controles | `docs/evidence/E01` · `E02` · `E04` | ✅ gerada em 30/10/2026, com versão do Python e SHA da base |
+| Conferência do `.pbix` | página oculta `Conferência` + `03_dashboard/verifica_pbix.py` | ✅ página no arquivo entregue, descrita na página 5 do dashboard · verificador provado em 38 casos |
+| Saída datada dos controles | `docs/evidence/E01` · `E02` · `E04` | ✅ gerada em 10/11/2026, com versão do Python e SHA da base |
 | Paleta aplicável (regra T9) | `src/paleta.py` | ✅ confere com o tema |
-| Gerador de figuras e tabelas | `src/gera_figuras.py` | ✅ 13 figuras · 21 tabelas (`tab01`–`tab08`, `tab15`–`tab22`, `tab24`–`tab28`) |
+| Gerador de figuras e tabelas | `src/gera_figuras.py` | ✅ 13 figuras · 24 tabelas (`tab01`–`tab08`, `tab15`–`tab22`, `tab24`–`tab31`) |
 | Método: definições, T1–T9, limitações | `method/` | ✅ |
 | Figuras e tabelas | `02_results/images/` · `02_results/tables/` | ✅ |
 | Base analítica (17 colunas, sem dado pessoal) | `00_data/gold/base_analitica.csv` | ✅ gerada por `src/prepara_dados.py`, reproduzida pelo notebook 02 |
@@ -139,21 +140,18 @@ Cada elo tem uma variável correspondente na base, e cada um tem uma pergunta do
 
 | Elo do eixo | Variável na base | Onde é testado | Resultado medido |
 |---|---|---|---|
-| **Preço → Desconto** | `actual_price` × `discount_percentage` | §1.2 (medido aqui) | ρ = **−0,063** · p = 0,02 — **não sobrevive à correção de multiplicidade** (abaixo) e é desprezível |
-| Preço | `actual_price` | QA4 | ρ = **+0,032** · p = 0,236 — **sem associação** com a nota. Com o preço **com desconto**, ρ = +0,077 · p = 0,005 — significativa e ínfima (§5.14) |
+| Preço | `actual_price` | QA4 | ρ = **+0,032** · p = 0,236 — **sem associação** com a nota |
 | Desconto | `discount_percentage` | Q3 · QA1 | ρ = **−0,150** · p = 3,1e-08 — significativa, magnitude pequena |
 | Desconto → Engajamento | `discount_percentage` × `rating_count` | QA1 | ρ = **−0,132** · p = 1,1e-06 — o desconto **não** acompanha o volume |
-| Engajamento × Satisfação | `rating_count` × `rating` | Q2 · Q5 · Q6 | ρ = **+0,193** · p = 8,3e-13 — associação fraca positiva |
+| Engajamento × Satisfação | `rating_count` × `rating` | Q5 · Q6 | ρ = **+0,193** · p = 8,3e-13 — associação fraca positiva |
 
-*Fonte: Spearman · base analítica · n = 1.348 · os quatro pares do eixo em `02_results/tables/tab03_correlacoes.csv`; os dois de apoio — preço de tabela × desconto e preço com desconto × nota — em `tab24_correlacoes_apoio.csv`.*
+*Fonte: Spearman · base analítica · n = 1.348 · os quatro pares do eixo em `02_results/tables/tab03_correlacoes.csv`.*
 
-*(ver **Figura 4**, seção 5.5)*
+*(ver **Figura 4**, seção 5.4)*
 
-**O primeiro elo é o mais fraco de todos.** Preço de tabela e desconto têm ρ = −0,063 (p = 0,02, n = 1.348): produtos mais caros descontam marginalmente menos, numa associação que **não ordena nada** — menos de 0,4% de variação compartilhada — e cujo p **não sobrevive à correção de multiplicidade** (parágrafo seguinte). Com uma base deste tamanho, significância estatística é barata; magnitude não é.
+**Multiplicidade.** Este relatório testa seis correlações de Spearman: os quatro pares do eixo (`tab03`) e dois pares de apoio (`tab24`) — um deles, preço de tabela × desconto, exibido na página 3 do dashboard (§5.13). Sem correção, a chance de ao menos um falso positivo entre seis testes a 5% é de cerca de 26%. Corrige-se por Bonferroni — o mais conservador e o mais simples de auditar —, com α = 0,05 ÷ 6 ≈ **0,0083**. Resultado: **desconto × nota (p = 3,1e-08), desconto × volume (1,1e-06) e volume × nota (8,3e-13) sobrevivem; preço de tabela × nota (p = 0,236) e preço de tabela × desconto (p = 0,020) não.** A correção não muda nenhuma leitura do eixo, e a leitura de cada par de apoio está na própria `tab24`. Os outros dois testes do relatório respondem a perguntas distintas e não entram nessa família: o Mann-Whitney B × D (§5.16) tem p tão pequeno que sobreviveria a qualquer correção, e o Levene entre fones e climatização (§5.17) é justamente um resultado **não** significativo.
 
-**Multiplicidade.** Este relatório testa seis correlações de Spearman: as quatro do eixo (`tab03`) e as duas de apoio (`tab24`). Sem correção, a chance de ao menos um falso positivo entre seis testes a 5% é de cerca de 26%. Corrige-se por Bonferroni — o mais conservador e o mais simples de auditar —, com α = 0,05 ÷ 6 = **0,0083**. Resultado: **desconto × nota (p = 3,1e-08), desconto × volume (1,1e-06), volume × nota (8,3e-13) e preço com desconto × nota (0,0047) sobrevivem; preço de tabela × nota (p = 0,236) e preço de tabela × desconto (p = 0,0201) não.** A conclusão do eixo não muda — ele já se rompia no primeiro elo —; o único resultado que a correção derruba, preço × desconto, passa a ser lido como *sem associação após correção*. Os outros dois testes do relatório respondem a perguntas distintas e não entram nessa família: o Mann-Whitney B × D (§5.17) tem p tão pequeno que sobreviveria a qualquer correção, e o Levene entre fones e climatização (§5.18) é justamente um resultado **não** significativo.
-
-**O achado de compreensão do problema é que o eixo se rompe no primeiro elo.** O preço de tabela não tem associação detectável com a nota (p = 0,236, acima de qualquer limiar convencional). O desconto tem associação com a nota, mas **pequena** — ρ = −0,150 corresponde a uma fração mínima de variação compartilhada — e tem associação *negativa* com o engajamento, exatamente o contrário do que a seta do enunciado sugere.
+**O achado de compreensão do problema é que o eixo se rompe no primeiro elo.** O preço de tabela não tem associação detectável com a nota (p = 0,236, acima de qualquer limiar convencional) e não acompanha o desconto (§5.13). O desconto tem associação com a nota, mas **pequena** — ρ = −0,150 corresponde a uma fração mínima de variação compartilhada — e tem associação *negativa* com o engajamento, exatamente o contrário do que a seta do enunciado sugere.
 
 Duas advertências acompanham obrigatoriamente esses números, e elas valem para o relatório inteiro:
 
@@ -174,32 +172,31 @@ O enunciado fecha a seção de critérios com uma frase que funciona como teste 
 
 Traduzimos essas duas frases em uma regra operacional dura, registrada nas diretrizes do projeto:
 
-> **Regra de vinculação —** todo visual, toda medida, todo slide e todo bloco do vídeo responde à pergunta norteadora **por meio de uma das 15 perguntas do escopo fechado**. Análise sem esse vínculo é descartada, ou justificada explicitamente como controle de qualidade.
+> **Regra de vinculação —** todo visual, toda medida, todo slide e todo bloco do vídeo responde à pergunta norteadora **por meio de uma das 14 perguntas do escopo**. Análise sem esse vínculo é descartada, ou justificada explicitamente como controle de qualidade.
 
 Essa regra tem um custo que vale a pena declarar: ela **impediu** análises que eram interessantes e não eram úteis. O exemplo concreto está registrado: a divergência entre o desconto declarado na coluna `discount_percentage` e o desconto recalculado a partir dos dois preços. Medimos — a divergência máxima é de **0,50 p.p.**, média de 0,21 p.p., nenhum caso acima de 1 p.p. É um resultado limpo e rápido de contar, e não decide nada. Em vez de virar a décima sexta pergunta, virou **uma linha de controle de qualidade**: a base é internamente consistente no desconto, e por isso o desconto declarado pode ser usado sem recálculo. Esse é o padrão do projeto — descoberta que não muda decisão não ganha visual, ganha uma linha.
 
 ---
 
-### 1.4 Como as 12 perguntas do enunciado couberam em um escopo fechado de 15
+### 1.4 As perguntas do enunciado e o escopo de 14
 
-O enunciado apresenta **12 perguntas** ao todo: **8** na seção "Problema de Negócio" e mais **4** na seção "Customer Insights". O grupo acrescentou **7 perguntas próprias (QA1–QA7)** e fechou o escopo em **15**. Fechado significa fechado: a auditoria de 23/09/2026 não acrescentou nem removeu nenhuma.
+O enunciado propõe perguntas em duas seções, "Problema de Negócio" e "Customer Insights", e o grupo acrescentou perguntas próprias, numeradas com o prefixo QA. Este relatório trata de **14 perguntas** — as que têm resposta exibida por inteiro no dashboard entregue: **7** do enunciado e **7** do grupo. A numeração é a do dashboard, e por isso não é contínua.
 
-#### 1.4.1 As 8 do enunciado — absorvidas integralmente
+#### 1.4.1 As 7 do enunciado
 
 | # | Pergunta do enunciado | Página do dashboard | Situação medida |
 |---|---|---|---|
-| Q1 | Quais categorias e produtos apresentam maior relevância? | Produtos e Categorias | ✅ **respondida** — matriz de relevância (§5.19): Âncora 41 · Risco 19 · Subexplorado 187 · Cauda frágil 227 |
-| Q2 | Quais produtos possuem maior engajamento? | Visão Executiva | corte fechado: p90 = **36.384** avaliações |
-| Q3 | Existe relação entre descontos e avaliações? | Preços | ρ = **−0,150** · p = 3,1e-08 |
-| Q4 | Quais categorias apresentam maior ou menor satisfação? | Produtos e Categorias | apenas as **4** categorias acima do piso amostral (T2) |
-| Q5 | Existem produtos com alto engajamento e baixa avaliação? | Produtos e Categorias | **19 produtos** · 147 avaliações |
-| Q6 | Existem produtos com boa avaliação e pouca visibilidade? | Produtos e Categorias | ✅ **respondida** — **187** por nota bruta · **61** após Wilson, a lista acionável (§5.19) |
-| Q7 | Quais padrões podem ser identificados nas avaliações? | Customer Insights | corpus de **339** e **418** blocos de review |
-| Q8 | Quais oportunidades ou riscos para o negócio? | Recomendações | consolida as demais |
+| Q1 | Quais categorias e produtos apresentam maior relevância? | 1 · Visão Executiva | ✅ **respondida** — matriz de relevância (§5.18): Âncora 41 · Risco 19 · Subexplorado 187 · Cauda frágil 227 |
+| Q3 | Existe relação entre descontos e avaliações? | 3 · Preços e estratégia | ρ = **−0,150** · p = 3,1e-08 |
+| Q4 | Quais categorias apresentam maior ou menor satisfação? | 2a · Categorias | apenas as **4** categorias acima do piso amostral (T2) |
+| Q5 | Existem produtos com alto engajamento e baixa avaliação? | 2b · Quadrantes | **19 produtos** · 147 avaliações |
+| Q6 | Existem produtos com boa avaliação e pouca visibilidade? | 2b · Quadrantes | ✅ **respondida** — **187** por nota bruta · **61** após Wilson, a lista acionável (§5.18) |
+| Q7 | Quais padrões podem ser identificados nas avaliações dos consumidores? | 4 · Customer Insights | contraste de TF-IDF entre nota < 4,0 e ≥ 4,3 em Electronics — **128** e **136** blocos, 8 termos de cada lado (§5.8) |
+| Q8 | Quais oportunidades ou riscos para o negócio? | 5 · Recomendações | consolida as demais |
 
-*Base analítica · n = 1.348 · `method/definitions/escopo_15_perguntas.md`.*
+*Base analítica · n = 1.348 · `method/definitions/escopo_perguntas.md`.*
 
-*Situação medida de cada uma das 15, com método, resultado, base e *n* em colunas separadas: `02_results/tables/tab13_respostas_15_perguntas.csv` — **14 respondidas e 1 de consolidação (Q8), nenhuma pendente**. O arquivo é gerado pelo notebook `04_analises`, de modo que a situação publicada aqui não pode divergir do que o código produz.*
+*Método, resultado, base e *n* de cada pergunta, em colunas separadas: `02_results/tables/tab13_respostas_perguntas.csv`. O arquivo é gerado pelo notebook `04_analises`, de modo que a situação publicada aqui não pode divergir do que o código produz. Ele cobre as 12 perguntas do escopo de 10/11/2026; Q7 e QA3, que voltaram em 13/11 (§1.5), têm a resposta em `tab14_ngramas.csv` (notebook `05_nlp`) e `tab16_satisfacao_subcategoria.csv`.*
 
 #### 1.4.2 As 7 próprias do grupo — e o que cada uma existe para corrigir
 
@@ -209,47 +206,45 @@ Nenhuma QA foi criada para "somar análises". Cada uma nasceu de um buraco ident
 |---|---|---|
 | QA1 | Existe faixa de desconto em que nota e engajamento se sustentam? | Q3 responde "existe relação?" com um ρ; a liderança precisa de **faixa acionável**, não de coeficiente |
 | QA2 | Quantos produtos concentram 80% das avaliações? | o enunciado pede engajamento; sem Pareto, não se sabe se ele está espalhado ou concentrado — **306 produtos = 22,7%** da base |
-| QA3 | Quais subcategorias (nível 2) têm maior dispersão de notas? | categoria nível 1 tem só 4 grupos utilizáveis; a decisão de sortimento acontece um nível abaixo — **8 subcategorias** acima do piso, cobrindo **88,3%** dos produtos |
+| QA3 | Quais subcategorias têm maior dispersão de notas? | Q4 compara **médias**, e a média esconde se a experiência dentro de uma família é homogênea ou irregular — o desvio-padrão da nota vai de **0,194** a **0,346** entre as 8 subcategorias acima do piso |
 | QA4 | O preço de tabela explica a satisfação? | o eixo do enunciado começa em "Preço" e **ninguém testa esse elo** se a pergunta não for escrita |
 | QA5 | Quais temas de reclamação predominam nos produtos de alto engajamento e baixa nota? | Q5 devolve uma lista de 19 produtos; sem o **porquê**, a lista não vira ação |
 | QA6 | Os produtos no topo do ranking merecem estar lá? | com IQR de nota de 0,4 ponto, todo ranking bruto é ruído — QA6 é a auditoria do próprio ranking |
 | QA7 | Quais arquétipos comerciais emergem ao agrupar preço, desconto, nota e volume? | as quatro variáveis do eixo só fazem sentido **juntas**; o eixo linear do enunciado não comporta a leitura multivariada |
 
-#### 1.4.3 As 4 de Customer Insights — tabela de amarração
+#### 1.4.3 Customer Insights — tabela de amarração
 
-O enunciado lista, na seção Customer Insights, quatro perguntas adicionais. Elas não receberam numeração própria no escopo porque já estão inteiramente cobertas por **Q7** e **QA5**. A amarração explícita, que o enunciado cobra no critério homônimo:
+As perguntas da seção Customer Insights do enunciado não receberam numeração própria no escopo: são respondidas por **Q7** e **QA5**. A amarração explícita, que o enunciado cobra no critério homônimo:
 
 | Pergunta de Customer Insights (enunciado) | Coberta por | Como |
 |---|---|---|
-| O que os clientes mais valorizam? | **Q7** | n-gramas e TF-IDF sobre os **418 blocos** de nota ≥ 4,3 (2.878 reviews distintos) |
-| Quais problemas aparecem com maior frequência? | **Q7** + **QA5** | n-gramas sobre os **339 blocos** de nota < 4,0 (2.502 reviews distintos), mais a leitura dirigida das 147 avaliações dos 19 produtos de Q5 |
-| Quais padrões estão presentes em avaliações positivas? | **Q7** | mesmo corpus de 418 blocos, contrastado contra a faixa baixa |
-| Quais temas aparecem em avaliações negativas? | **Q7** + **QA5** | corpus de 339 blocos (quantitativo) e leitura qualitativa dirigida (19 produtos) |
+| O que os clientes mais valorizam? | **Q7** | o lado da nota ≥ 4,3 do contraste de termos em Electronics: imagem (`picture`, `hdmi`), velocidade (`speed`, `fast`), instalação e atendimento — temas visíveis na vitrine (L1), não um ranking de valor |
+| Quais problemas aparecem com maior frequência? | **QA5** | leitura qualitativa dirigida das 147 avaliações dos 19 produtos de Q5 |
+| Quais padrões estão presentes em avaliações positivas? | **Q7** | o mesmo lado do contraste: `cable`, `picture`, `excellent`, `service`, `speed`, `installation`, `fast` e `hdmi` são mais característicos dos 136 blocos de nota ≥ 4,3 |
+| Quais temas aparecem em avaliações negativas? | **Q7** + **QA5** | o lado da nota < 4,0 do contraste — som, funcionamento e controle remoto, nos 128 blocos de Electronics — e a leitura dirigida dos 19 produtos de Q5, de alto engajamento e nota abaixo de 4,0 |
 
-*Fonte: `02_results/tables/tab06_corpus.csv` · base analítica · n = 1.348 · unidade declarada = **bloco de review**, deduplicado por `review_id` (T8).*
+*Fontes: `02_results/tables/tab14_ngramas.csv` (Q7, recorte Electronics) e `tab23_qa5_temas.csv` (QA5, quadrante Q5, 19 produtos) · unidade declarada = **bloco de review**, deduplicado por `review_id` (T8).*
 
 Duas observações de método que pertencem à compreensão do problema, e não só à execução:
 
-- **O TF-IDF vale em Q7 e é vedado em QA5.** Não é contradição: Q7 opera sobre 339 e 418 blocos, onde frequência relativa tem significado; QA5 opera sobre **19 blocos**, onde qualquer estatística de frequência é anedota com decimais. Em QA5 o método é leitura qualitativa dirigida, com protocolo de codificação declarado. Escolher a ferramenta pelo tamanho do corpus, e não pelo nome bonito do método, é parte da resposta a este critério.
-- **A faixa intermediária fica de fora, e isso se diz.** O contraste de Q7 é entre nota < 4,0 e nota ≥ 4,3. Os **591 produtos** da faixa 4,0–4,29 — **44% do portfólio** — não entram no contraste. É escolha de método (contrastar extremos dá sinal mais limpo), não esquecimento, e está declarada.
-
-*(ver **Figura 12**, seção 6.4)*
+- **Em Q7 o método é estatística de texto, porque há massa para ela.** O contraste compara 128 blocos de nota baixa com 136 de nota alta, dentro de Electronics; com esse tamanho, a frequência inversa de documento significa alguma coisa (§5.8).
+- **Em QA5 o método é leitura dirigida, não estatística de frequência.** QA5 opera sobre **19 blocos**, onde qualquer estatística de frequência é anedota com decimais. O método é leitura qualitativa dirigida, com protocolo de codificação declarado. Escolher a ferramenta pelo tamanho do corpus, e não pelo nome bonito do método, é parte da resposta a este critério.
 
 ---
 
-### 1.5 Por que tratamos como obrigatórias perguntas que o enunciado declara sugestões
+### 1.5 Como o grupo usou a liberdade de escolher as perguntas
 
-O enunciado é explícito: *"As perguntas apresentadas são apenas sugestões. A equipe deverá definir quais análises são mais relevantes para responder ao desafio."* A liberdade é real. O grupo abriu mão dela de propósito, e a justificativa importa porque ela define a forma de todo o trabalho.
+O enunciado é explícito: *"As perguntas apresentadas são apenas sugestões. A equipe deverá definir quais análises são mais relevantes para responder ao desafio."* A liberdade é real, e o grupo a usou com um critério único: entram as perguntas cuja resposta o dashboard entregue mostra por inteiro, e as perguntas próprias que fecham buracos das sugeridas (§1.4.2). A justificativa importa porque ela define a forma de todo o trabalho.
 
-**Argumento 1 — a sugestão é o modelo mental de quem avalia.** Os 9 critérios de avaliação do enunciado começam por "Compreensão do problema — capacidade de interpretar o contexto de negócio". Quem escreveu as 8 perguntas escreveu também a rubrica. Uma pergunta não respondida obriga o avaliador a inferir se foi decisão consciente ou omissão. Inferência não pontua.
+**Argumento 1 — a sugestão é o modelo mental de quem avalia.** Os 9 critérios de avaliação do enunciado começam por "Compreensão do problema — capacidade de interpretar o contexto de negócio". Quem escreveu as perguntas escreveu também a rubrica — por isso elas são o ponto de partida do escopo.
 
-**Argumento 2 — responder é barato; explicar a ausência é caro.** As 8 perguntas compartilham as mesmas quatro variáveis (preço, desconto, volume de avaliações, nota) e a mesma base de 1.348 produtos. O custo marginal de responder a oitava, depois de ter respondido a sétima, é de um visual. Já o custo de defender oralmente, em um vídeo de 7 minutos, por que uma pergunta do enunciado ficou de fora, é de meio minuto de narração que não sobra.
+**Argumento 2 — responder é barato.** As perguntas compartilham as mesmas quatro variáveis (preço, desconto, volume de avaliações, nota) e a mesma base de 1.348 produtos. O custo marginal de responder mais uma, depois de ter respondido as anteriores, é de um visual.
 
 **Argumento 3 — resposta inconclusiva também é resposta.** QA4 devolve ρ = +0,032 com p = 0,236: **não há associação** entre preço de tabela e nota. Esse é um resultado, não um fracasso. Ele elimina uma hipótese que a liderança traria para a reunião ("produto caro é melhor avaliado") e economiza a discussão. O mesmo vale para Q3: a relação existe e é pequena — dizer isso com o ρ na tela é mais defensável do que exibir um gráfico sugestivo sem coeficiente.
 
-**O trade-off que isso cria, e como foi contido.** Responder tudo empurra o projeto exatamente na direção que o enunciado proíbe: *"o objetivo não é criar a maior quantidade possível de gráficos"*. Se cada pergunta virasse duas páginas, a solução ficaria volumosa e indecisa. Três mecanismos contêm isso:
+**O trade-off que isso cria, e como foi contido.** Responder muitas perguntas empurra o projeto exatamente na direção que o enunciado proíbe: *"o objetivo não é criar a maior quantidade possível de gráficos"*. Se cada pergunta virasse duas páginas, a solução ficaria volumosa e indecisa. Três mecanismos contêm isso:
 
-1. **Escopo fechado.** 15 perguntas, nenhuma a mais. "Fechado" é um estado formal do documento, não uma intenção — acrescentar a décima sexta exige decisão registrada.
+1. **Escopo fechado.** 14 perguntas, nenhuma a mais. "Fechado" é um estado formal do documento, não uma intenção — mudar o escopo exige decisão registrada. A última é de 13/11/2026: **Q7 e QA3 voltaram ao escopo** quando a versão final do dashboard passou a mostrar as duas respostas por inteiro, nas páginas 4 e 2a.
 2. **Regra de vinculação.** Cada pergunta tem **uma** página do dashboard atribuída de antemão (tabela da seção 1.4.1). Não existe análise órfã procurando onde morar.
 3. **Teto de esforço.** Os 9 critérios não incluem modelagem. Nenhuma aplicação de machine learning consome tempo adicional depois que seu destino no `.pbix` ou no vídeo estiver montado. O mesmo teto vale para este relatório, que é apoio e não entrega.
 
@@ -259,8 +254,8 @@ O enunciado é explícito: *"As perguntas apresentadas são apenas sugestões. A
 |---|---|
 | Escolher 3 ou 4 perguntas "de maior impacto" e aprofundar | aproveita a liberdade do enunciado, mas o avaliador não distingue recorte deliberado de omissão sem uma justificativa que custaria mais espaço do que as respostas |
 | Responder as 8 e mais o que fosse aparecendo na exploração | escopo aberto dispersa; a exploração de uma base com 16 colunas gera curiosidade infinita e decisão nenhuma |
-| Responder só as 7 perguntas próprias, por serem mais ambiciosas | abandona a rubrica; ambição que ignora o enunciado não pontua em nenhum dos 9 critérios |
-| Responder as 12 do enunciado e nada mais | cumpre o pedido e deixa buracos reais — sem QA2 não se sabe que o engajamento é concentrado; sem QA6 o ranking é ruído; sem QA1 o desconto não vira faixa acionável |
+| Responder só as perguntas próprias, por serem mais ambiciosas | abandona a rubrica; ambição que ignora o enunciado não pontua em nenhum dos 9 critérios |
+| Responder só as perguntas do enunciado e nada mais | cumpre o pedido e deixa buracos reais — sem QA2 não se sabe que o engajamento é concentrado; sem QA6 o ranking é ruído; sem QA1 o desconto não vira faixa acionável |
 
 ---
 
@@ -282,9 +277,9 @@ Os arquivos da raiz seguem o mesmo critério, com um motivo adicional: **dois do
 | 2. Tratamento | `01_notebooks/02_tratamento` | conversão de tipos, deduplicação, base processada sem `user_id`/`user_name` |
 | 3. Medidas | `01_notebooks/03_medidas` | cortes operacionais, `nota_corrigida`, valores de referência de cada medida DAX |
 | 4. Análises | `01_notebooks/04_analises` | correlações, quadrantes, Pareto, faixas, segmentação |
-| 5. NLP | `01_notebooks/05_nlp` | corpus declarado, n-gramas, leitura dirigida |
+| 5. NLP | `01_notebooks/05_nlp` | corpus declarado, leitura dirigida |
 | 6. Storytelling | `01_notebooks/06_storytelling` | narrativa, figuras finais |
-| 7. Dashboard | `03_dashboard/` | `.pbix` com as 5 áreas, em 7 páginas |
+| 7. Dashboard | `03_dashboard/` | `.pbix` com as 5 áreas em 7 páginas analíticas, mais a página inicial |
 | 8. Vídeo | `04_video/` | executivo, até 7 minutos |
 
 **Por que Python antes, e não em paralelo.** Três razões, todas custosas de aprender depois:
@@ -340,11 +335,11 @@ Registrar a reversão em vez de apagá-la é deliberado. Um relatório que só m
 
 T2 merece nota, porque foi a regra mais difícil de escrever. Na primeira redação, o piso de n ≥ 30 eliminaria por engano o quadrante de **19 produtos** de Q5 — que é um dos achados mais acionáveis do trabalho. A redação final distingue **grupo agregado** (categoria, subcategoria, faixa, cluster — sujeito ao piso) de **lista nominal de produtos** (Q5, Q6, QA5 — não sujeita, mas exibindo o *n* de avaliações produto a produto). É a diferença entre "esta categoria é pior que aquela" e "estes 19 produtos específicos merecem sua atenção".
 
-**O que o piso significa na prática.** Das 9 categorias de nível 1, apenas **4** têm 30 produtos ou mais: Electronics (490), Home & Kitchen (447), Computers & Accessories (373) e Office Products (31, no limite). As outras **5 somam 7 produtos**. Ou seja: "análise de portfólio por categoria" significa, honestamente, **três famílias mais uma no limite amostral** — e **97,2%** do portfólio está nas três primeiras. É por isso que QA3 desce ao nível 2 da hierarquia: é lá que a comparação tem grupos suficientes para existir.
+**O que o piso significa na prática.** Das 9 categorias de nível 1, apenas **4** têm 30 produtos ou mais: Electronics (490), Home & Kitchen (447), Computers & Accessories (373) e Office Products (31, no limite). As outras **5 somam 7 produtos**. Ou seja: "análise de portfólio por categoria" significa, honestamente, **três famílias mais uma no limite amostral** — e **97,2%** do portfólio está nas três primeiras. É por isso que a comparação de dispersão desce ao nível 2 da hierarquia: é lá que ela tem grupos suficientes para existir.
 
-*(ver **Figura 5**, seção 5.6)*
+*(ver **Figura 5**, seção 5.5)*
 
-**Machine learning, com teto declarado.** Os 9 critérios de avaliação **não incluem modelagem**. O projeto usa ML onde ele responde a uma pergunta do escopo e não além disso: **ML2** (atributos associados à baixa satisfação, AUC **0,70 ± 0,01** entre as cinco partições, com as listagens-gêmeas agrupadas — poder de discriminação moderado, e isso se declara), **ML3** (n-gramas e TF-IDF sobre blocos de review, destino Q7) e **ML4** (segmentação descritiva multivariada, k = 4, semente 42, destino QA7). ML1 — regressão explicativa da nota — foi **absorvido no ML2**: com R² de 0,10, a regressão respondia pior à mesma pergunta que o modelo de classificação responde melhor. Previsão de vendas, séries temporais, filtragem colaborativa, detecção de anomalia de preço e classificação de sentimento por modelo pré-treinado foram avaliadas e descartadas, com motivo registrado — a maioria delas por ausência da variável necessária na base, não por dificuldade.
+**Machine learning, com teto declarado.** Os 9 critérios de avaliação **não incluem modelagem**. O projeto usa ML onde ele responde a uma pergunta do escopo e não além disso: **ML2** (atributos associados à baixa satisfação, AUC **0,70 ± 0,01** entre as cinco partições, com as listagens-gêmeas agrupadas — poder de discriminação moderado, e isso se declara), **ML3** (contraste de termos por TF-IDF entre os blocos de nota baixa e alta, destino Q7) e **ML4** (segmentação descritiva multivariada, k = 4, semente 42, destino QA7). ML1 — regressão explicativa da nota — foi **absorvido no ML2**: com R² de 0,10, a regressão respondia pior à mesma pergunta que o modelo de classificação responde melhor. Previsão de vendas, séries temporais, filtragem colaborativa, detecção de anomalia de preço e classificação de sentimento por modelo pré-treinado foram avaliadas e descartadas, com motivo registrado — a maioria delas por ausência da variável necessária na base, não por dificuldade.
 
 ---
 
@@ -357,7 +352,7 @@ Compreender o problema inclui compreender onde ele termina. As oito limitações
 - **Mercado e moeda (L5)** — marketplace indiano, valores em rupia, sem conversão. Transpor as faixas de preço para outro mercado é analogia, não resultado.
 - **Concentração de categorias (L3)** — as 5 categorias abaixo do piso somam 7 produtos e nunca são ranqueadas; nenhuma recomendação se estende a elas.
 
-Além das limitações, **duas perguntas do enunciado dependiam de definições de negócio** que o projeto deliberadamente manteve abertas em vez de preencher com vocabulário inventado — **Q1** (fórmula de relevância) e **Q6** (o que é "visibilidade"). Em ambas o número já existia; faltava o nome. **As duas foram fechadas em 24/09/2026**, por decisão do responsável pelo projeto, e nenhuma criou limiar novo: cada uma reaproveitou cortes já medidos e publicados (§5.19).
+Além das limitações, **duas perguntas do enunciado dependiam de definições de negócio** que o projeto deliberadamente manteve abertas em vez de preencher com vocabulário inventado — **Q1** (fórmula de relevância) e **Q6** (o que é "visibilidade"). Em ambas o número já existia; faltava o nome. **As duas foram fechadas em 24/09/2026**, por decisão do responsável pelo projeto, e nenhuma criou limiar novo: cada uma reaproveitou cortes já medidos e publicados (§5.18).
 
 O registro fica porque o **processo** é defensável e vale ser mostrado: publicar um rótulo antes de fechar a definição seria inventar vocabulário — e vocabulário inventado é a primeira coisa que cai sob questionamento. A regra do projeto é explícita: apontar o risco é obrigação de quem constrói; decidir a mudança é do responsável pelo projeto (Lei de Falkland). As **oito** decisões registradas em `method/open_decisions.md` estão **fechadas**.
 
@@ -551,7 +546,7 @@ Três fatos estruturais saem daqui e condicionam todo o resto do relatório.
 
 ### 2.6 Concentração do portfólio e o piso amostral
 
-*(ver **Figura 5**, seção 5.6)*
+*(ver **Figura 5**, seção 5.5)*
 
 | Categoria de nível 1 | Produtos | Acima do piso |
 |---|---|---|
@@ -600,7 +595,7 @@ A base bruta contém **duas colunas de dado pessoal**: `user_id` e `user_name`. 
 | Reprodutibilidade sem o arquivo | garantida por **SHA-256 + instrução de download** do Kaggle |
 | Saída do validador | `src/valida_base.py` **não imprime** nenhum identificador — há uma asserção explícita para isso |
 
-**Por que remover e não anonimizar.** A alternativa óbvia era aplicar um *hash* em `user_id` e manter a coluna. Foi descartada por dois motivos. O primeiro é jurídico: *hash* de identificador é **pseudonimização**, não anonimização — o dado continua sendo dado pessoal sob a LGPD, e manter a coluna num repositório público apenas troca um risco por outro menos visível. O segundo é analítico: **nenhuma das 15 perguntas do escopo usa o consumidor como unidade de análise**. A unidade é o produto. Uma coluna pseudonimizada que ninguém usa é risco sem contrapartida.
+**Por que remover e não anonimizar.** A alternativa óbvia era aplicar um *hash* em `user_id` e manter a coluna. Foi descartada por dois motivos. O primeiro é jurídico: *hash* de identificador é **pseudonimização**, não anonimização — o dado continua sendo dado pessoal sob a LGPD, e manter a coluna num repositório público apenas troca um risco por outro menos visível. O segundo é analítico: **nenhuma das 14 perguntas do escopo usa o consumidor como unidade de análise**. A unidade é o produto. Uma coluna pseudonimizada que ninguém usa é risco sem contrapartida.
 
 Vale registrar que a remoção **custou uma possibilidade real**, e o projeto sabe exatamente qual: na base analítica há **9.036 `user_id` distintos**, dos quais **909 avaliam mais de um produto**. Havia, portanto, material para uma análise de comportamento por avaliador. Ela foi **deliberadamente não feita**. O `00_data/README.md` registra ainda 9.050 `user_id` e 7.699 `user_name` distintos no arquivo como baixado.
 
@@ -807,7 +802,7 @@ Uma ressalva de vocabulário, exigida por **T6**: `rating_count` é **volume de 
 
 A coluna `category` chega como um caminho concatenado por `|`, com até **7 níveis**. Escolher em que nível comparar é uma decisão de modelagem, não de limpeza.
 
-*(ver **Figura 5**, seção 5.6)*
+*(ver **Figura 5**, seção 5.5)*
 
 No **nível 1** há 9 categorias, e a distribuição inviabiliza a comparação (`02_results/tables/tab04_categorias.csv`):
 
@@ -823,7 +818,7 @@ Soma: 490 + 447 + 373 + 31 + 7 = **1.348**. **97,2% do portfólio está em três
 
 A regra **T2** — nenhum grupo agregado com **n < 30** é ranqueado ou comparado — elimina as cinco categorias menores. Sobram quatro grupos, um deles no limite. "Análise de categorias" no nível 1 significa, na prática, comparar três caixas grandes: é descrição de portfólio, não análise.
 
-No **nível 2**, a base oferece **8 subcategorias acima do piso, cobrindo 88,3% dos produtos**. É o nível que combina granularidade suficiente para diferenciar comportamento comercial com massa suficiente para comparar. Por isso o nível 2 é a unidade de comparação — e é sobre ele que se mede a dispersão de notas em QA3.
+No **nível 2**, a base oferece **8 subcategorias acima do piso, cobrindo 88,3% dos produtos**. É o nível que combina granularidade suficiente para diferenciar comportamento comercial com massa suficiente para comparar. Por isso o nível 2 é a unidade de comparação — e é sobre ele que se mede a dispersão de notas (QA3, §5.12).
 
 *Alternativas descartadas:*
 - **Nível 1 como unidade de análise:** três grupos comparáveis não sustentam nenhuma pergunta de portfólio. Fica como unidade de *descrição* (figura 5) e como preditor categórico no modelo de baixa satisfação, onde funciona bem.
@@ -846,7 +841,7 @@ A coluna de avaliações chega concatenada: um **bloco** por produto. Explodir e
 
 São **1.333 referências repetidas**, e **759 `review_id` aparecem em mais de um produto**. Sem a deduplicação por `review_id`, o corpus é reportado **14% maior do que é**. A regra **T8** fixa o procedimento: declarar a unidade, deduplicar por `review_id` e citar o truncamento.
 
-*(ver **Figura 12**, seção 6.4)*
+*(ver **Figura 13**, seção 7.3)*
 
 | Faixa de nota | Blocos | Referências | Reviews distintos |
 |---|---|---|---|
@@ -878,7 +873,7 @@ O efeito aparece limpo nas faixas de desconto (`02_results/tables/tab08_faixas_d
 | 61–80% | 324 | 4,1 | **4,035** | 4.147 |
 | 81–100% | 51 | 4,0 | 3,906 | 4.426 |
 
-*(ver **Figura 7**, seção 5.11)*
+*(ver **Figura 7**, seção 5.10)*
 
 Três faixas têm **exatamente a mesma nota mediana (4,1)** e são indistinguíveis por ela. A nota corrigida as separa, e a ordem que produz é coerente com o volume: a faixa de 41–60%, com mediana de 3.025 avaliações, termina abaixo da faixa de 61–80%, com 4.147. **Magnitude, como exige T5: a diferença entre as duas é de 0,010 ponto.** É um instrumento de desempate de ranking, não uma diferença de qualidade que alguém deva agir sobre. Dizer isso é parte do método — com n = 1.348, um coeficiente pode ser estatisticamente significativo e comercialmente irrelevante ao mesmo tempo, e essa frase vale para toda a seção de resultados.
 
@@ -913,11 +908,11 @@ O enunciado abre pedindo uma análise "utilizando informações sobre" cinco fon
 
 | Fonte listada no enunciado | Colunas da base | Onde é tratada |
 |---|---|---|
-| Produtos e Categorias | `product_id` · `product_name` · `category` | Q1 · Q4 · QA3 |
+| Produtos e Categorias | `product_id` · `product_name` · `category` | Q1 · Q4 |
 | Preços e Descontos | `actual_price` · `discounted_price` · `discount_percentage` | Q3 · QA1 · QA4 |
-| Avaliações e Quantidade de Reviews | `rating` · `rating_count` | Q2 · Q5 · Q6 · QA2 · QA6 |
+| Avaliações e Quantidade de Reviews | `rating` · `rating_count` | Q5 · Q6 · QA2 · QA6 |
 | **Descrições Dos Produtos** | `about_product` | **fora da camada analítica** (D-5) — a resposta está logo abaixo |
-| Comentários Realizados Pelos Consumidores | `review_title` · `review_content` | Q7 · QA5 |
+| Comentários Realizados Pelos Consumidores | `review_title` · `review_content` | QA5 |
 
 Quatro das cinco entram na análise. A quinta fica de fora por decisão registrada, e a omissão não pode ficar implícita:
 
@@ -925,11 +920,11 @@ Quatro das cinco entram na análise. A quinta fica de fora por decisão registra
 
 O enunciado lista, entre as cinco fontes de informação do desafio, as **Descrições Dos Produtos** — que é a coluna `about_product`. Ela **não entra na análise**, e a omissão não pode ficar implícita: é uma fonte que o enunciado nomeia.
 
-**Por que fica fora.** `about_product` é texto **escrito pelo vendedor**: especificação, atributo anunciado, argumento de venda. Customer Insights, no enunciado, pede a **percepção do consumidor** — *o que os clientes valorizam*, *quais problemas aparecem*, *quais temas aparecem em avaliações negativas*. Misturar as duas fontes num mesmo corpus confundiria **promessa com experiência**: um termo frequente passaria a significar "o vendedor escreve muito isso" ou "o cliente comenta muito isso", sem que o leitor soubesse qual dos dois. A decisão **D-5** fechou em 01/10/2026 pela separação.
+**Por que fica fora.** `about_product` é texto **escrito pelo vendedor**: especificação, atributo anunciado, argumento de venda. Customer Insights, no enunciado, pede a **percepção do consumidor** — *quais problemas aparecem*, *quais temas aparecem em avaliações negativas*. Misturar as duas fontes num mesmo corpus confundiria **promessa com experiência**: um termo frequente passaria a significar "o vendedor escreve muito isso" ou "o cliente comenta muito isso", sem que o leitor soubesse qual dos dois. A decisão **D-5** fechou em 01/10/2026 pela separação.
 
 **O que se perde com isso, dito sem suavizar.** Perde-se uma análise que seria legítima e que o projeto não fez: **confrontar atributo anunciado com queixa recebida** — por exemplo, se os produtos que anunciam "longa duração de bateria" concentram reclamação de bateria. Essa leitura é o uso natural da coluna, foi registrada como recomendação antes de a decisão fechar, e ficou fora do escopo por tempo, não por falta de valor.
 
-**O que foi feito no lugar.** A percepção do consumidor é lida por dois caminhos independentes, nenhum deles dependente de `about_product`: o contraste de n-gramas entre faixas de nota (§7.7) e a leitura qualitativa dirigida dos 19 produtos de Q5 (§7.8). As quatro perguntas de Customer Insights do enunciado estão amarradas em §7.1, e nenhuma delas exige a descrição do vendedor para ser respondida.
+**O que foi feito no lugar.** A percepção do consumidor é lida pela leitura qualitativa dirigida dos 19 produtos de Q5 (§7.6), que não depende de `about_product`. As perguntas de Customer Insights do enunciado estão amarradas em §7.1.
 
 **Onde a coluna está.** Preservada em `00_data/silver/produtos_texto.csv`, que não é versionado. Quem quiser fazer a análise descartada tem o dado à mão — o que fica fora é a leitura, não o insumo.
 
@@ -997,7 +992,7 @@ Os percentis da nota e das avaliações saem da distribuição publicada (`tab02
 
 **Por que o p90 para o topo.** O p90 entrega 136 produtos (10,1% da base analítica) — um recorte que cabe numa lista de gestão e que ainda sustenta cruzamento com nota. É o ponto em que a curva de Pareto já virou: **306 produtos, 22,7% da base, concentram 80% das avaliações**. Ou seja, o topo já é pequeno de qualquer jeito; o p90 apenas o formaliza.
 
-*(ver **Figura 8**, seção 5.12)*
+*(ver **Figura 8**, seção 5.11)*
 
 **As alternativas testadas e descartadas.** O corte foi submetido a sensibilidade antes de fechar — porque um limiar que muda a conclusão quando se desloca um percentil não é um limiar, é uma escolha estética.
 
@@ -1012,7 +1007,7 @@ O que a tabela mostra é o mais importante: **o achado de Q5 não depende do cor
 
 > *Procedência destes quatro limiares:* medidos sobre `00_data/bronze/amazon.csv` com a regra de deduplicação declarada (maior `rating_count`; no empate, menor índice de linha na origem), base analítica n = 1.348. O p90 e o Q5 = 19 estão homologados na base factual; as linhas p80, p85 e p95 são medição auxiliar desta seção e precisam ser incorporadas ao documento de base factual (ver *lacunas*).
 
-*(ver **Figura 6**, seção 5.7)*
+*(ver **Figura 6**, seção 5.6)*
 
 ---
 
@@ -1035,7 +1030,7 @@ Fechados os dois cortes, a base analítica se parte em três — e a reconcilia�
 
 Por isso a faixa recebe nome próprio e entra no filtro como categoria de primeira classe, não como "outros". O nome adotado é **engajamento intermediário**, com a definição sempre visível: *acima da mediana, abaixo do p90*. O rótulo não é enfeite — é o que impede que a soma dos filtros do dashboard seja diferente do total do portfólio, que é o primeiro erro que um avaliador atento procura.
 
-O mesmo fenômeno acontece do lado da satisfação, e vale registrar o paralelo: nota < 4,0 tem 339 produtos e nota ≥ 4,3 tem 418, o que deixa **591 produtos (43,8%) na faixa 4,0–4,29** (`tab06_corpus`). 339 + 591 + 418 = 1.348 ✅. Essa faixa intermediária é explicitamente **excluída** do contraste textual de ML3 — e isso é escolha de método, declarada, não esquecimento.
+O mesmo fenômeno acontece do lado da satisfação, e vale registrar o paralelo: nota < 4,0 tem 339 produtos e nota ≥ 4,3 tem 418, o que deixa **591 produtos (43,8%) na faixa 4,0–4,29** (`tab06_corpus`). 339 + 591 + 418 = 1.348 ✅.
 
 **Alternativa descartada:** dividir engajamento em tercis (três blocos de ~33%) resolveria a nomenclatura de uma vez. Foi recusada porque os tercis não têm leitura de negócio: o limite superior do tercil não é "o topo do catálogo", é um artefato de contagem. Mediana e p90 respondem a perguntas que uma liderança faz em voz alta — *está acima da metade?* e *está entre os 10% mais avaliados?*. Tercil não responde a nenhuma.
 
@@ -1063,7 +1058,7 @@ A tentação é óbvia: em vez de arbitrar 36.384 e 4,0, deixar um algoritmo "ac
 |---|---|---|---|---|
 | Silhueta | 0,215 | **0,234** | **0,237** | 0,227 |
 
-*(ver **Figura 13**, seção 6.5)*
+*(ver **Figura 12**, seção 6.4)*
 
 **A silhueta máxima é 0,237.** Esse número não é um detalhe técnico — é o veredito. Uma silhueta nesse patamar significa que **não há estrutura natural de agrupamento nesta base**: os pontos não se separam, eles formam uma nuvem contínua. Se os grupos não existem, um limiar derivado deles é uma linha desenhada sobre névoa, que muda de lugar a cada mudança de semente, de variável ou de escala.
 
@@ -1071,7 +1066,7 @@ E muda mesmo. A leitura de "preço" é decisiva na curva: trocando preço de tab
 
 Daí a **fronteira declarada**: clusterização é **vedada para definir limiar de qualquer conceito univariado**. Relevância, engajamento, visibilidade e satisfação seguem cortes fixos, lidos da distribuição, escritos em uma linha, reproduzíveis em Python, em DAX e em Power Query por qualquer pessoa. A segmentação permanece — mas **apenas em QA7, como convenção descritiva**, e nunca apresentada como descoberta.
 
-*(ver **Figura 10**, seção 5.17)*
+*(ver **Figura 9**, seção 5.16)*
 
 A redação obrigatória do k, que aparece sempre que os arquétipos forem exibidos: *a silhueta foi calculada para k de 2 a 7 e atinge o máximo em k = 5 (0,237); adotou-se k = 4 (0,234) por interpretabilidade, com diferença desprezível entre os dois*. Dizer "k escolhido pela silhueta" seria impreciso — e derrubaria o argumento na primeira pergunta.
 
@@ -1103,7 +1098,7 @@ O motivo está na tabela de categorias e é brutal:
 
 490 + 447 + 373 + 31 + 7 = **1.348** ✅ (`tab04_categorias`)
 
-*(ver **Figura 5**, seção 5.6)*
+*(ver **Figura 5**, seção 5.5)*
 
 Sem o piso, "Car & Motorbike" — **um único produto** — apareceria num ranking de categorias com a nota desse produto como se fosse o desempenho de uma família inteira. É o erro mais comum e mais caro deste tipo de dashboard: um slide inteiro construído sobre n = 1.
 
@@ -1111,13 +1106,13 @@ Com o piso, a consequência precisa ser dita sem eufemismo (L3): **"análise por
 
 O piso vale em todas as agregações, e nas três que importam ele foi verificado:
 
-- **Subcategorias de nível 2 (QA3):** 8 grupos acima do piso, cobrindo **88,3%** dos produtos. As demais ficam fora da comparação de dispersão.
+- **Subcategorias de nível 2:** 8 grupos acima do piso, cobrindo **88,3%** dos produtos. As demais ficam fora da comparação de dispersão (§5.17).
 - **Faixas de desconto (QA1):** todas as cinco passam — 175 · 329 · 469 · 324 · 51 (`tab08_faixas_desconto`). A mais estreita, 81–100%, tem n = 51: acima do piso, mas exibida sempre com o n, porque é a faixa em que a nota corrigida cai para 3,906, a menor das cinco.
 - **Arquétipos (QA7):** os quatro grupos têm n entre 268 e 447 (`tab05_arquetipos`), todos folgadamente acima do piso.
 
-*(ver **Figura 9**, seção 5.13)*
+*(ver **Figura 10**, seção 5.17)*
 
-*(ver **Figura 7**, seção 5.11)*
+*(ver **Figura 7**, seção 5.10)*
 
 #### A exceção — e por que ela é indispensável
 
@@ -1173,11 +1168,11 @@ Quatro particionamentos independentes da mesma base analítica, todos fechando e
 
 ---
 
-## 5. Análises — as 15 Perguntas
+## 5. Análises — as 14 Perguntas
 
 ### 5.1 O contrato de leitura desta seção
 
-O enunciado apresenta oito perguntas e diz, textualmente, que são **apenas sugestões**. O projeto tomou a decisão oposta à mais confortável: respondeu as oito integralmente — inclusive as que terminam em conclusão negativa — e acrescentou sete perguntas próprias, numeradas QA1 a QA7. O escopo foi fechado em 23/09/2026 e não foi alterado depois. Quinze perguntas, nenhuma abandonada no meio do caminho.
+O enunciado apresenta oito perguntas e diz, textualmente, que são **apenas sugestões**. O projeto tomou a decisão oposta à mais confortável: tratou as perguntas do enunciado como obrigatórias — inclusive as que terminam em conclusão negativa — e acrescentou perguntas próprias, numeradas com o prefixo QA. Esta seção traz as **14** cuja resposta aparece por inteiro no dashboard entregue: sete do enunciado e sete do grupo.
 
 A justificativa é simples: o critério de avaliação **Análise** pede "capacidade de identificar padrões e oportunidades". Uma pergunta respondida com "não há associação" identifica um padrão — a ausência de relação entre preço e satisfação é um resultado, não uma falha. O que não pontua é a pergunta silenciada.
 
@@ -1191,33 +1186,32 @@ Antes dos resultados, cinco compromissos que valem para cada um dos parágrafos 
 | **T6** | `rating_count` é **volume de avaliações**. Nunca vendas, receita, demanda ou popularidade real |
 | **T2** | Nenhum grupo agregado com n < 30 é ranqueado ou comparado. **Listas nominais de produtos não são grupos agregados** e não estão sujeitas ao piso |
 
-**A analogia para quem não é técnico.** A base é a vitrine de uma loja, fotografada uma única vez. Dá para contar quantos produtos há na prateleira, ler a etiqueta de preço, ver a nota e contar quantas pessoas deixaram comentário. Não dá para saber quantas unidades saíram, quanto a loja faturou, nem o que aconteceu no mês passado. Todas as quinze perguntas foram formuladas para caber dentro dessa fotografia.
+**A analogia para quem não é técnico.** A base é a vitrine de uma loja, fotografada uma única vez. Dá para contar quantos produtos há na prateleira, ler a etiqueta de preço, ver a nota e contar quantas pessoas deixaram comentário. Não dá para saber quantas unidades saíram, quanto a loja faturou, nem o que aconteceu no mês passado. Todas as catorze perguntas foram formuladas para caber dentro dessa fotografia.
 
-### 5.2 Mapa das 15 perguntas
+### 5.2 Mapa das 14 perguntas
 
 | # | Pergunta | Evidência | Situação |
 |---|---|---|---|
 | Q1 | Categorias e produtos de maior relevância | fig05 · tab04 · tab17 | ✅ respondida — **matriz de relevância** (D-2 fechada): Âncora 41 · Risco 19 · Subexplorado 187 · Cauda frágil 227 |
-| Q2 | Produtos de maior engajamento | fig03 · fig08 · tab02 | respondida — corte p90 = 36.384 |
 | Q3 | Relação entre descontos e avaliações | fig04 · tab03 | respondida — ρ = −0,150 · p = 3,14e-08 |
 | Q4 | Categorias de maior e menor satisfação | fig05 · fig09 · fig11 · tab04 | respondida **com escopo reduzido** — 4 categorias elegíveis |
 | Q5 | Alto engajamento e baixa avaliação | fig06 | respondida — **19 produtos** |
 | Q6 | Boa avaliação e pouca visibilidade | fig06 | ✅ respondida (D-1 fechada) — **187** candidatos por nota bruta · **61** após Wilson, a lista acionável |
-| Q7 | Padrões nas avaliações | fig12 · tab06 · tab14 | ✅ respondida — corpus dimensionado (339 e 418 blocos) **e temas extraídos** por contraste de TF-IDF (§7.7) |
+| Q7 | Padrões nas avaliações dos consumidores | tab06 · tab14 · fig12 | respondida — contraste de TF-IDF em Electronics: **som** na nota baixa, **imagem** na alta (§5.8) |
 | Q8 | Oportunidades e riscos | consolida as demais | respondida por síntese |
 | QA1 | Faixa de desconto em que nota e volume se sustentam | fig07 · tab08 | respondida |
 | QA2 | Quantos produtos concentram 80% das avaliações | fig08 | respondida — **306 = 22,7%** |
-| QA3 | Subcategorias de maior dispersão de notas | fig09 | respondida — 8 grupos, 88,3% de cobertura |
-| QA4 | O preço de tabela explica a satisfação | fig04 · tab03 | respondida — **não há associação** |
-| QA5 | Temas de reclamação em alto engajamento e baixa nota | fig06 · tab19 · tab23 | ✅ respondida — leitura dirigida dos 19 executada (§7.8), com a composição medida e a lista nominal publicada |
-| QA6 | O topo do ranking merece estar lá | fig07 · tab08 · tab21 | ✅ respondida — Wilson 95% (D-3) **aplicado a ranking nominal** nas 41 âncoras (`tab21`) |
+| QA3 | Subcategorias de maior dispersão de notas | fig09 · tab16 | respondida — desvio-padrão de **0,346** na climatização contra **0,194** em celulares; 8 grupos, 88,3% de cobertura (§5.12) |
+| QA4 | O preço de tabela explica a satisfação | fig04 · tab03 · tab24 | respondida — **não há associação**; e o preço de tabela não acompanha o desconto (§5.13) |
+| QA5 | Temas de reclamação em alto engajamento e baixa nota | fig06 · tab19 · tab23 | ✅ respondida — leitura dirigida dos 19 executada (§7.6), com a composição medida e a lista nominal publicada |
+| QA6 | O topo do ranking merece estar lá | fig07 · tab08 | ✅ respondida — Wilson 95% (D-3) **aplicado ao ranking do dashboard**: top 10 por nota bruta ao lado do top 10 corrigido |
 | QA7 | Arquétipos comerciais | fig13 · fig10 · tab05 | respondida — k = 4 |
 
 ---
 
 ### 5.3 Q1 · Quais categorias e produtos apresentam maior relevância?
 
-**Estado: respondida.** A definição de relevância foi fechada em 24/09/2026 (§5.19). O que segue documenta as alternativas consideradas e por que a matriz venceu.
+**Estado: respondida.** A definição de relevância foi fechada em 24/09/2026 (§5.18). O que segue documenta as alternativas consideradas e por que a matriz venceu.
 
 "Relevância" não é uma variável da base. É um conceito que precisava ser **definido** antes de ser medido — a decisão **D-2**, reservada ao responsável pelo projeto e **fechada em 24/09/2026**. Publicar um ranking de relevância sem essa definição seria construir um índice composto por conveniência e chamá-lo de resultado, e o projeto preferiu esperar a decisão a improvisar o critério.
 
@@ -1227,7 +1221,7 @@ Antes dos resultados, cinco compromissos que valem para cada um dos parágrafos 
 
 **A estrutura do portfólio, que nunca dependeu da fórmula.** Ela estava medida antes de D-2 fechar, e é a metade de Q1 que responde "quais categorias":
 
-*(ver **Figura 5**, seção 5.6)*
+*(ver **Figura 5**, seção 5.5)*
 
 | Categoria nível 1 | Produtos | Acima do piso |
 |---|---|---|
@@ -1243,48 +1237,7 @@ Antes dos resultados, cinco compromissos que valem para cada um dos parágrafos 
 
 ---
 
-### 5.4 Q2 · Quais produtos possuem maior engajamento?
-
-**Estado: respondida, com o rótulo corrigido.**
-
-A pergunta do enunciado diz "engajamento dos consumidores". A base tem `rating_count`. A regra T6 existe para impedir o deslize que essa proximidade convida: `rating_count` é **volume de avaliações**, um proxy de engajamento — nunca vendas, receita ou demanda. O rótulo "engajamento" é a tradução de negócio do proxy, e o proxy é declarado toda vez.
-
-**O corte, e por que é um percentil e não um número redondo.** Engajamento alto = `rating_count ≥ p90 = 36.384`. A alternativa descartada era um limiar redondo — "acima de 30 mil avaliações". Foi recusada porque um número redondo é uma opinião disfarçada de critério: muda com o gosto de quem escolhe e não se reproduz em outra base. O percentil é uma regra, não uma preferência, e sobrevive à pergunta "por que esse valor?".
-
-*(ver **Figura 3**, seção 4.3)*
-
-| Faixa de engajamento | Corte | Leitura |
-|---|---|---|
-| Alto | ≥ 36.384 avaliações (p90) | décimo superior da base |
-| Intermediária | entre 4.740 e 36.384 | **539 produtos**, rotulados `engajamento intermediário` (§4.4) |
-| Baixo | < 4.740 (mediana) | metade inferior |
-
-*Base analítica, n = 1.348. Máximo observado: 426.973 avaliações; mediana: 4.740; p25: 1.108; p75: 16.052 (tab02).*
-
-**Quais produtos: os 10 de maior volume, e a lista inteira.** São **136 produtos** no engajamento alto, e a tabela abaixo traz os dez primeiros. A lista completa, com todos os 136, está em `02_results/tables/tab31_q2_engajamento_alto_nominal.csv`, com o volume de avaliações e a nota de cada produto.
-
-| # | Produto | Categoria | Avaliações | Nota | Nota corrigida |
-|---|---|---|---|---|---|
-| 1 | AmazonBasics Flexible Premium HDMI Cable (Black, 4K@60Hz, 18… | Electronics | 426.973 | 4,4 | 4,396 |
-| 2 | Amazon Basics High-Speed HDMI Cable, 6 Feet - Supports Ether… | Electronics | 426.973 | 4,4 | 4,396 |
-| 3 | Amazon Basics High-Speed HDMI Cable, 6 Feet (2-Pack),Black | Electronics | 426.973 | 4,4 | 4,396 |
-| 4 | boAt Bassheads 100 in Ear Wired Earphones with Mic(Taffy Pink) | Electronics | 363.713 | 4,1 | 4,095 |
-| 5 | boAt Bassheads 100 in Ear Wired Earphones with Mic(Furious R… | Electronics | 363.713 | 4,1 | 4,095 |
-| 6 | boAt BassHeads 100 in-Ear Wired Headphones with Mic (Black) | Electronics | 363.711 | 4,1 | 4,095 |
-| 7 | Redmi 9 Activ (Carbon Black, 4GB RAM, 64GB Storage) / Octa-c… | Electronics | 313.836 | 4,1 | 4,094 |
-| 8 | Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) / 2GHz O… | Electronics | 313.836 | 4,1 | 4,094 |
-| 9 | Redmi 9A Sport (Carbon Black, 2GB RAM, 32GB Storage) / 2GHz… | Electronics | 313.832 | 4,1 | 4,094 |
-| 10 | Redmi 9A Sport (Coral Green, 3GB RAM, 32GB Storage) / 2GHz O… | Electronics | 313.832 | 4,1 | 4,094 |
-
-*Fonte: `tab31_q2_engajamento_alto_nominal.csv` · base analítica, n = 1.348 · engajamento alto = volume de avaliações ≥ p90 (36.384) · volume de avaliações, nunca venda (T6) · lista nominal — não sujeita ao piso n ≥ 30, e exibindo o n de avaliações produto a produto (T2).*
-
-**A escala é o achado, não o ranking.** O produto mediano tem 4.740 avaliações e o máximo tem **426.973** — uma razão de 90 para 1. Por isso a `fig03` plota o volume em log₁₀: em escala linear, 95% da base vira uma barra colada no eixo e o gráfico não informa nada. A escolha do log é uma decisão de leitura, não de estética.
-
-**A faixa intermediária tem nome, e é só isso que ela tem.** São 539 produtos entre a mediana e o p90, rotulados `engajamento intermediário` na camada gold e no filtro do dashboard (§4.4). O nome é de rótulo, não de recomendação: batizá-los de "engajamento médio" criaria um terceiro rótulo de negócio que nenhuma recomendação usa — e todo rótulo publicado vira uma linha que alguém pede para filtrar. A faixa existe na medição e não existe no vocabulário.
-
----
-
-### 5.5 Q3 · Existe relação entre descontos e avaliações?
+### 5.4 Q3 · Existe relação entre descontos e avaliações?
 
 **Estado: respondida. Sim, existe — e é pequena. As duas metades da frase são obrigatórias.**
 
@@ -1310,7 +1263,7 @@ Dito para a liderança: **existe uma inclinação, e ela é rasa.** Se alguém a
 
 ---
 
-### 5.6 Q4 · Quais categorias apresentam maior ou menor satisfação?
+### 5.5 Q4 · Quais categorias apresentam maior ou menor satisfação?
 
 **Estado: respondida com escopo reduzido e declarado.**
 
@@ -1323,7 +1276,7 @@ Esta é a pergunta do enunciado em que a regra T2 mais morde. Das 9 categorias d
 **O que foi medido, apesar do escopo reduzido.** Três evidências convergentes:
 
 1. **Elegibilidade e tamanho** (`fig05`, tab04): Electronics 490 · Home & Kitchen 447 · Computers & Accessories 373 · Office Products 31.
-2. **A satisfação varia mais dentro do que entre famílias** — é a resposta de QA3, na seção 5.13, e ela reposiciona Q4: comparar Electronics com Home & Kitchen esconde que a dispersão relevante está um nível abaixo, na subcategoria.
+2. **A satisfação varia mais dentro do que entre famílias** — é o que mostra a tabela das oito subcategorias, na seção 5.17, e ela reposiciona Q4: comparar Electronics com Home & Kitchen esconde que a dispersão relevante está um nível abaixo, na subcategoria.
 3. **A categoria carrega informação sobre baixa satisfação, e isso é mensurável.** No ML2, o bloco de preditores comerciais isolado alcança AUC 0,583; acrescentar a categoria de nível 1 eleva a métrica para **0,658** (tab07). O salto de 0,075 é a evidência quantitativa de que a família do produto está associada ao risco de nota abaixo de 4,0 — sem que isso autorize dizer que a categoria *causa* a nota.
 
 *(ver **Figura 11**, seção 6.3)*
@@ -1334,7 +1287,7 @@ Esta é a pergunta do enunciado em que a regra T2 mais morde. Das 9 categorias d
 
 ![Figura 5 — Produtos por categoria de nível 1, com o piso amostral de n ≥ 30 marcado · base analítica · n = 1.348](../02_results/images/fig05_portfolio_categoria.png)
 
-### 5.7 Q5 · Existem produtos com alto engajamento e baixa avaliação?
+### 5.6 Q5 · Existem produtos com alto engajamento e baixa avaliação?
 
 **Estado: respondida. Sim — 19 produtos.**
 
@@ -1342,25 +1295,25 @@ Esta é a pergunta do enunciado em que a regra T2 mais morde. Das 9 categorias d
 
 Regra: `rating_count ≥ 36.384` (p90) **e** `rating < 4,0`. Resultado: **19 produtos**, base analítica, n = 1.348.
 
-**Por que este é o quadrante de ação mais imediata das quinze perguntas.** São produtos no decil superior de volume de avaliações — proxy declarado de exposição (D-1) — e que estão abaixo do limiar de satisfação. Não é um problema de exposição; é um problema de produto ou de expectativa. E são **dezenove**, um número que cabe numa reunião: dá para listar nome a nome, abrir a página de cada um e ler o que os clientes escreveram. Nenhum outro resultado deste projeto entrega uma lista desse tamanho.
+**Por que este é o quadrante de ação mais imediata das catorze perguntas.** São produtos no decil superior de volume de avaliações — proxy declarado de exposição (D-1) — e que estão abaixo do limiar de satisfação. Não é um problema de exposição; é um problema de produto ou de expectativa. E são **dezenove**, um número que cabe numa reunião: dá para listar nome a nome, abrir a página de cada um e ler o que os clientes escreveram. Nenhum outro resultado deste projeto entrega uma lista desse tamanho.
 
 **A regra T2 quase matou este achado, e a segunda frase da regra o salvou.** Um grupo de 19 está abaixo do piso de 30. Se T2 fosse lida ao pé da letra, o quadrante inteiro seria suprimido. Por isso a regra foi redigida com uma cláusula explícita: **listas nominais de produtos não são grupos agregados** e não estão sujeitas ao piso — elas exibem o *n* de avaliações produto a produto, e nenhuma média de grupo é publicada. O piso existe para impedir que a média de 5 produtos vire ranking, não para impedir que 19 produtos sejam nomeados.
 
-**O material textual que esse quadrante gera:** 19 produtos, **147 avaliações** em 19 blocos, **49,5 mil caracteres de `review_content`** (53,1 mil contando os títulos, que é a unidade do pipeline de texto). É o corpus da QA5 (seção 5.15), e o tamanho dele é a razão de QA5 usar leitura dirigida em vez de TF-IDF.
+**O material textual que esse quadrante gera:** 19 produtos, **147 avaliações** em 19 blocos, **49,5 mil caracteres de `review_content`** (53,1 mil contando os títulos, que é a unidade do pipeline de texto). É o corpus da QA5 (seção 5.14), e o tamanho dele é a razão de QA5 usar leitura dirigida em vez de TF-IDF.
 
-**Alternativa descartada — coluna de probabilidade de risco por produto.** A formulação inicial do ML2 previa uma pontuação de risco por item. Foi revogada. Um modelo com AUC de 0,70 ± 0,01 tem poder de discriminação **moderado**: publicar "este produto tem 73% de chance de ser mal avaliado" veste uma incerteza grande com a roupa de uma previsão precisa. O ML2 entrega **ranking de importância de atributos** — o que está associado ao risco — e a lista nominal fica com o quadrante, onde é fato observado e não estimativa.
+**Alternativa descartada — coluna de probabilidade de risco por produto.** A formulação inicial do ML2 previa uma pontuação de risco por item. Foi revogada. Um modelo com AUC de 0,70 ± 0,01 tem poder de discriminação **moderado**: publicar "este produto tem 73% de chance de ser mal avaliado" veste uma incerteza grande com a roupa de uma previsão precisa. O ML2 entrega a **escada de AUC por bloco de preditores** — o quanto cada grupo de atributos está associado ao risco — e a lista nominal fica com o quadrante, onde é fato observado e não estimativa.
 
 ---
 
-### 5.8 Q6 · Existem produtos com boa avaliação, mas pouca visibilidade?
+### 5.7 Q6 · Existem produtos com boa avaliação, mas pouca visibilidade?
 
-**Estado: respondida.** O rótulo de visibilidade foi fechado em 24/09/2026 como **proxy declarado** (§5.19).
+**Estado: respondida.** O rótulo de visibilidade foi fechado em 24/09/2026 como **proxy declarado** (§5.18).
 
 O problema é de vocabulário, e ele é real. "Visibilidade" — quantas pessoas **viram** o produto — exige impressões ou cliques. **A base não tem nenhum dos dois.** O que existe é `rating_count`, que já foi batizado de "engajamento". Usar a mesma variável para os dois conceitos e não dizer nada é o erro que a **D-1** existe para impedir: dois rótulos de negócio distintos apoiados na mesma coluna, sem declaração.
 
 **A decisão adotada** foi unificar e declarar o limite: volume de avaliações como ***proxy* declarado** de exposição, dizendo em voz alta que visibilidade real não existe na base. Fica **vedado** escrever "baixa visibilidade" em visual, slide ou frame; o rótulo publicado é *"bem avaliados com baixo volume de avaliações"*.
 
-**Duas contagens, e a segunda é a que se recomenda.** Aplicando o proxy — `rating ≥ 4,3` **e** `rating_count < 4.740` (mediana) — o resultado é **187 produtos**: é o **funil de triagem**, o grupo azulado da `fig06`. Mas T1 exige nota corrigida em todo ranking, e uma lista de oportunidades é um ranking: aplicando Wilson, **126 caem e restam 61**. Os 61 são a **lista acionável**, publicada nominalmente em `02_results/tables/tab20_q6_acionavel_nominal.csv` e materializada como medida **M22** no catálogo DAX. O detalhamento está em §5.19.
+**Duas contagens, e a segunda é a que se recomenda.** Aplicando o proxy — `rating ≥ 4,3` **e** `rating_count < 4.740` (mediana) — o resultado é **187 produtos**: é o **funil de triagem**, o grupo azulado da `fig06`. Mas T1 exige nota corrigida em todo ranking, e uma lista de oportunidades é um ranking: aplicando Wilson, **126 caem e restam 61**. Os 61 são a **lista acionável**, publicada nominalmente em `02_results/tables/tab20_q6_acionavel_nominal.csv` e materializada como medida **M22** no catálogo DAX. O detalhamento está em §5.18.
 
 **Por que o corte de visibilidade é a mediana e o de engajamento alto é o p90.** Não é inconsistência; é assimetria proposital. Para *sinalizar risco* (Q5) o corte precisa ser exigente — o p90 seleciona o décimo superior, e 19 produtos cabem numa reunião. Para *encontrar oportunidade* (Q6) o corte precisa ser generoso — a mediana devolve um funil de 187 candidatos a triagem, não uma lista final. Cortes com propósitos opostos não têm por que ter a mesma severidade, desde que ambos estejam declarados no visual. Estão.
 
@@ -1368,40 +1321,76 @@ O problema é de vocabulário, e ele é real. "Visibilidade" — quantas pessoas
 
 ---
 
-### 5.9 Q7 · Quais padrões podem ser identificados nas avaliações dos consumidores?
+### 5.8 Q7 · Quais padrões podem ser identificados nas avaliações dos consumidores?
 
-**Estado: respondida.** O corpus está dimensionado e declarado, e os **temas foram extraídos** por contraste de TF-IDF entre as faixas de nota — o resultado está em §7.7, com a tabela de Δ TF-IDF termo a termo.
+**Estado: respondida, no recorte Electronics.** É a página 4 do dashboard, no gráfico *"Som aparece onde a nota é baixa; imagem, onde é alta"*.
 
-Antes de qualquer tema extraído, uma declaração de tamanho — e ela é o resultado mais importante de Q7:
+**Antes dos temas, o tamanho do corpus — e ele é parte da resposta.** Cada produto traz um bloco de até 8 avaliações, rotulado pela nota do produto (T8). As 10.588 referências de avaliação caem para **9.255 reviews distintos** depois da deduplicação por `review_id` (§7.3):
 
-*(ver **Figura 12**, seção 6.4)*
+| Faixa de satisfação | Blocos (= produtos) | Reviews distintos |
+|---|---|---|
+| baixa (nota < 4,0) | 339 | 2.502 |
+| média (4,0 a 4,29) | 591 | 3.875 |
+| alta (nota ≥ 4,3) | 418 | 2.878 |
+| **Total** | **1.348** | **9.255** |
 
-| Faixa de nota | Blocos (= produtos) | Referências | **Reviews distintos** |
-|---|---|---|---|
-| < 4,0 | 339 | 2.652 | **2.502** |
-| 4,0–4,29 | 591 | 4.674 | **3.875** |
-| ≥ 4,3 | 418 | 3.262 | **2.878** |
-| **Total** | **1.348** | **10.588** | **9.255** |
+*Fonte: `02_results/tables/tab06_corpus.csv` · base analítica, n = 1.348 · unidade: bloco de review (T8).*
 
-*Fonte: tab06_corpus.csv · base analítica, n = 1.348.*
+*(ver **Figura 13**, seção 7.3)*
 
-**O achado de método:** há **1.333 referências repetidas** — o mesmo `review_id` aparece em mais de um produto em **759** casos. Publicar "10.588 avaliações analisadas" infla o corpus em **14%** contra a contagem honesta de 9.255. É por isso que a regra T8 obriga toda análise textual a declarar a unidade, deduplicar por `review_id` e citar o truncamento. Uma contagem inflada é o tipo de erro que ninguém percebe até percebê-lo — e aí derruba o resto.
+**Por que contraste, e não frequência.** Os termos mais frequentes são praticamente os mesmos nas três faixas: `good` aparece em 93% dos blocos de nota < 4,0. É consequência direta de **L1**: a vitrine mostra até 8 avaliações escolhidas pelo marketplace, e esse recorte é elogioso por construção. Publicar "os clientes valorizam qualidade e preço" a partir dessa contagem seria descrever o viés da vitrine. O que se mede, por isso, é **contraste**: a diferença de TF-IDF médio de cada termo entre os blocos de nota < 4,0 e os de nota ≥ 4,3. Δ positivo = mais característico da nota baixa; Δ negativo = da nota alta.
 
-**A unidade escolhida é o bloco, e a escolha tem custo.** Cada produto traz um bloco concatenado de até 8 avaliações; o bloco é rotulado pela nota do produto. A alternativa era a avaliação individual. Foi descartada porque **a nota é do produto, não da avaliação**: atribuir 3,7 a cada uma das 8 avaliações de um produto cria oito rótulos onde existe um, e infla artificialmente o tamanho amostral do classificador. O custo da escolha é que um comentário elogioso dentro de um produto mal avaliado herda o rótulo negativo — e isso está declarado.
+**Por que Electronics.** Sobre a base inteira, o contraste mistura famílias de vocabulário incompatível — cabo, aquecedor e liquidificador não disputam os mesmos termos — e o sinal se dilui: `remote` cai de +0,0349 para +0,0162. Electronics é a maior família do catálogo (490 produtos), com **128 blocos** de nota < 4,0 e **136** de nota ≥ 4,3 — massa suficiente dos dois lados. Os temas abaixo valem para Electronics, e não para o catálogo inteiro; a `tab14` publica os dois recortes, na coluna `recorte`.
 
-**TF-IDF vale aqui, e é vedado na QA5.** As duas decisões coexistem e não se contradizem. Em Q7 o contraste é entre 339 e 418 blocos — massa suficiente para que uma estatística de frequência signifique alguma coisa. Em QA5 o corpus tem 19 blocos, e nenhuma estatística de frequência sobrevive a isso.
+**Os oito termos de cada lado, como o dashboard os mostra:**
 
-**A lacuna de método, declarada:** a faixa intermediária — **591 produtos, 44% do portfólio** — fica fora do contraste entre satisfação alta e baixa. É uma escolha, não um descuido, e por isso está escrita.
+| Termo (nota < 4,0) | Δ TF-IDF | Leitura |
+|---|---|---|
+| `remote` | +0,0349 | controle remoto |
+| `bass` | +0,0328 | **som** |
+| `original` | +0,0291 | peça genuína, autenticidade |
+| `buttons` | +0,0247 | controles físicos |
+| `working` | +0,0234 | funcionamento |
+| `noise` | +0,0225 | **som** |
+| `properly` | +0,0212 | funcionamento |
+| `ear` | +0,0207 | **som** |
 
-**A limitação que reposiciona todo o bloco (L1).** A base traz no máximo **8 avaliações por produto** (média medida: 7,85). Esse recorte **não é uma amostra aleatória** do que os consumidores escreveram — é o que o marketplace escolheu exibir na página. Apresentado como "a voz do cliente", o achado cai na primeira pergunta de quem conhece a base. Apresentado como **"os temas visíveis na vitrine"**, permanece íntegro. Nenhuma conclusão deste bloco é expressa como "a maioria dos clientes pensa que…".
+| Termo (nota ≥ 4,3) | Δ TF-IDF | Leitura |
+|---|---|---|
+| `cable` | −0,0300 | cabo |
+| `picture` | −0,0233 | **imagem** |
+| `excellent` | −0,0233 | avaliação geral |
+| `service` | −0,0217 | atendimento |
+| `speed` | −0,0213 | velocidade |
+| `installation` | −0,0213 | instalação |
+| `fast` | −0,0209 | velocidade |
+| `hdmi` | −0,0207 | **imagem**, conexão |
+
+*Fonte: `02_results/tables/tab14_ngramas.csv`, `secao = contraste`, `recorte = Electronics` · 128 blocos de nota < 4,0 e 136 de nota ≥ 4,3 · unidade: bloco de review (T8).*
+
+**A leitura.** Na nota baixa aparecem três assuntos: **som** (`bass`, `noise`, `ear`), **funcionamento** (`working`, `properly`) e **controle remoto**, inclusive peça não original (`remote`, `original`, `buttons`). Na nota alta: **imagem** (`picture`, `hdmi`), **velocidade** (`speed`, `fast`), **instalação** e **atendimento**. O título do gráfico resume o contraste mais nítido: som aparece onde a nota é baixa; imagem, onde é alta.
+
+**`working` pede cuidado.** O termo isolado é ambíguo: aparece tanto em "não está funcionando" quanto em "está funcionando". O Δ diz só que ele é mais característico da faixa baixa, e por isso é lido junto com `properly`, como tema de funcionamento — não como prova de defeito.
+
+**TF-IDF vale aqui e é vedado em QA5.** As duas decisões coexistem; o que muda é o tamanho do corpus. Aqui são 128 e 136 blocos. Em QA5 são 19, e com 19 documentos um termo que aparece em dois blocos recebe peso alto sem ser tema (§7.6).
+
+**O que estes termos não autorizam a dizer.**
+
+- **Não são "a voz do cliente".** São os temas visíveis em até 8 avaliações por produto, escolhidas pelo marketplace (L1).
+- **Não são causa.** `bass` estar associado à nota baixa não quer dizer que o som cause a insatisfação; quer dizer que quem escreveu sobre som estava, com mais frequência, num produto mal avaliado (T4).
+- **Não confirmam sozinhos o achado dos fones.** Mais da metade dos fones (52,4%) está na faixa baixa, e o eixo de som aparece no contraste em boa parte por isso: é a mesma medição vista de outro ângulo, não uma segunda prova (§5.17).
+- **A magnitude é pequena.** Os Δ ficam entre 0,02 e 0,035: ordenam os temas, não medem intensidade de sentimento (T5).
+- **Não são exaustivos.** O pipeline descarta tokens não latinos (L2).
+
+**Ficha de reprodução — ML3.** Notebook `01_notebooks/05_nlp` · pipeline: remoção de URLs → remoção de tokens não latinos → stopwords em inglês → n-gramas de 1 a 3 termos presentes em pelo menos 10 blocos (`min_df = 10`) → TF-IDF com `sublinear_tf` → diferença da média de TF-IDF entre as faixas · saída: `02_results/tables/tab14_ngramas.csv`.
 
 ---
 
-### 5.10 Q8 · Quais oportunidades ou riscos podem ser identificados para o negócio?
+### 5.9 Q8 · Quais oportunidades ou riscos podem ser identificados para o negócio?
 
 **Estado: respondida por consolidação.**
 
-Q8 não tem medição própria. Ela amarra as outras quatorze — e a amarração só é honesta porque cada peça já declarou sua base, sua magnitude e seu limite.
+Q8 não tem medição própria. Ela amarra as outras treze — e a amarração só é honesta porque cada peça já declarou sua base, sua magnitude e seu limite.
 
 | Sinal | Evidência | Onde está | Leitura |
 |---|---|---|---|
@@ -1409,15 +1398,15 @@ Q8 não tem medição própria. Ela amarra as outras quatorze — e a amarraçã
 | **Risco — desconto profundo sem tração** | arquétipo B: 335 produtos, desconto mediano 58%, **468 avaliações medianas**, nota mediana **3,9** | QA7 · tab05 | único arquétipo abaixo do limiar de satisfação. Candidato natural a revisão de sortimento |
 | **Risco — fragilidade da base de comparação** | 4 categorias acima do piso, 5 somando 7 produtos | Q4 · L3 | "análise por categoria" significa três famílias mais uma no limite |
 | **Risco — dependência de poucos itens** | **306 produtos = 22,7%** concentram 80% das avaliações | QA2 · fig08 | a atenção do consumidor está concentrada em menos de um quarto do catálogo |
+| **Risco — insatisfação com endereço** | fones **52,4%** e climatização **37,9%** abaixo de 4,0, contra 25,1% da base | Q4 · QA3 · tab16 | as duas subcategorias concentram a insatisfação; a revisão começa por elas |
 | **Oportunidade — bem avaliados com pouco volume** | **61 produtos** acionáveis (de um funil de 187) | Q6 · fig06 · tab20 | os 187 são triagem; os 61 sobrevivem à correção de Wilson e formam a lista nominal publicada |
 | **Oportunidade — faixa comercial que se sustenta** | 21–40%: nota corrigida 4,083 e **maior volume mediano (7.241)** | QA1 · tab08 | a única faixa que combina nota alta e volume alto |
-| **Achado positivo de qualidade** | divergência entre desconto declarado e recalculado: **máx. 0,50 p.p.**, média 0,21 | controle | a base é internamente coerente. Deixou de ser pergunta e virou controle de qualidade |
 
 **O teto do que pode ser dito (L4).** A base não contém unidades vendidas, receita, margem, estoque ou data. Nenhuma recomendação deste projeto é expressa em receita, volume vendido ou retorno financeiro — e nenhuma afirmação sobre tendência, sazonalidade ou evolução é possível, porque não há dimensão temporal. A pergunta do enunciado fala em "oportunidades para o negócio"; a resposta devolve **prioridades de investigação com nome e número**, não projeções.
 
 ---
 
-### 5.11 QA1 · Existe faixa de desconto em que nota e engajamento se sustentam?
+### 5.10 QA1 · Existe faixa de desconto em que nota e engajamento se sustentam?
 
 **Estado: respondida. A resposta útil é a negativa.**
 
@@ -1464,7 +1453,7 @@ Q3 entrega um coeficiente, e coeficiente não vira decisão de preço. QA1 exist
 
 Os dois cortes não se contradizem: a mediana mede o **produto típico** da faixa, a fatia mede a **cauda de insatisfação**. A leitura que ambos autorizam é a mesma, e é modesta: *quanto maior o desconto, maior a presença de produtos abaixo de 4,0* — associação coerente com ρ = −0,150, de magnitude pequena (T5), e **não** causa (T4). Duas cautelas: a faixa acima de 80% tem n = 51, e seus 43,1% são 22 produtos; e as faixas de 41–60% e 61–80% estão acima da taxa da base sem formar um degrau entre si. Por isso a recomendação 3 pede **rever a política**, não atribuir ao desconto um efeito.
 
-### 5.12 QA2 · Quantos produtos concentram 80% das avaliações?
+### 5.11 QA2 · Quantos produtos concentram 80% das avaliações?
 
 **Estado: respondida. 306 produtos — 22,7% da base analítica.**
 
@@ -1472,7 +1461,7 @@ Os dois cortes não se contradizem: a mediana mede o **produto típico** da faix
 
 *Base analítica, n = 1.348. Soma de `rating_count` na base analítica: 23.801.471 avaliações.*
 
-**Por que esta pergunta foi criada.** O enunciado pergunta quem tem **maior** engajamento (Q2). O grupo perguntou **quão concentrado** ele é — porque a resposta muda a natureza da recomendação. Se 80% da atenção estivesse espalhada por 900 produtos, a conversa seria sobre portfólio. Estando em 306, a conversa é sobre um núcleo que dá para gerenciar item a item.
+**Por que esta pergunta foi criada.** Saber quais produtos têm mais avaliações não diz se a atenção está espalhada ou concentrada — e a resposta muda a natureza da recomendação. Se 80% da atenção estivesse espalhada por 900 produtos, a conversa seria sobre portfólio. Estando em 306, a conversa é sobre um núcleo que dá para gerenciar item a item.
 
 **E o resultado surpreende por ser pouco extremo.** A regra de bolso 80/20 preveria ~20%. O medido é **22,7%** — perto o bastante para que a intuição funcione, mas medido em vez de presumido. A diferença entre citar "80/20" e citar "306 produtos, 22,7%, base analítica n = 1.348" é a diferença entre um clichê e um resultado.
 
@@ -1484,36 +1473,38 @@ Os dois cortes não se contradizem: a mediana mede o **produto típico** da faix
 *Base analítica, n = 1.348 · subconjunto Pareto, n = 306 · `00_data/gold/base_analitica.csv`, colunas `pareto_80` e `nota`.*
 ---
 
-### 5.13 QA3 · Quais subcategorias têm maior dispersão de notas?
+### 5.12 QA3 · Quais subcategorias têm maior dispersão de notas?
 
-**Estado: respondida. 8 grupos acima do piso, cobrindo 88,3% dos produtos.**
+**Estado: respondida. 8 subcategorias acima do piso, cobrindo 88,3% dos produtos.** É a página 2a do dashboard: o gráfico *"A dispersão quase dobra entre a primeira e a última subcategoria"* e a tabela das 8 subcategorias com *n*, desvio-padrão, IQR e % abaixo de 4,0.
 
-Esta pergunta é a correção de rota de Q4. Comparar **médias** entre categorias esconde a informação que interessa: dentro de uma mesma família, a experiência do cliente é homogênea ou irregular? Uma subcategoria com nota média 4,1 e desvio 0,35 é um problema de **consistência**; uma com 4,1 e desvio 0,19 é um patamar.
+Esta pergunta é a correção de rota de Q4. Comparar **médias** entre categorias esconde o que interessa: dentro de uma mesma família, a experiência do cliente é homogênea ou irregular? Uma subcategoria com nota mediana 4,1 e desvio 0,35 tem um problema de **consistência**; uma com 4,1 e desvio 0,19 está num patamar.
 
-![Figura 9 — Dispersão de notas nas 8 subcategorias acima do piso (QA3) · base analítica · n = 1.348 · piso n ≥ 30 · cobertura 88,3%](../02_results/images/fig09_dispersao_subcategoria.png)
-
-| Subcategoria (nível 2) | n | Desvio-padrão da nota |
+| Subcategoria (nível 2) | *n* | Desvio-padrão da nota |
 |---|---|---|
-| Heating, Cooling & Air Quality | 116 | **0,346** |
-| Kitchen & Home Appliances | 307 | **0,336** |
-| Wearable Technology | 62 | 0,326 |
-| Home Theater, TV & Video | 156 | 0,310 |
-| Networking Devices | 30 | 0,276 |
-| Accessories & Peripherals | 305 | 0,258 |
-| Headphones, Earbuds & Accessories | 63 | 0,224 |
-| Mobiles & Accessories | 151 | **0,194** |
+| Home & Kitchen \| Heating, Cooling & Air Quality | 116 | **0,346** |
+| Home & Kitchen \| Kitchen & Home Appliances | 307 | 0,336 |
+| Electronics \| Wearable Technology | 62 | 0,326 |
+| Electronics \| Home Theater, TV & Video | 156 | 0,310 |
+| Computers & Acc. \| Networking Devices | 30 | 0,276 |
+| Computers & Acc. \| Accessories & Peripherals | 305 | 0,258 |
+| Electronics \| Headphones, Earbuds & Acc. | 63 | 0,224 |
+| Electronics \| Mobiles & Accessories | 151 | **0,194** |
 
-*Base analítica, n = 1.348 · 8 grupos acima do piso n ≥ 30 · cobertura 88,3% dos produtos (1.190 de 1.348) · desvio-padrão **amostral** (ddof = 1), o mesmo do `STDEV.S` no dashboard · `tab16_satisfacao_subcategoria.csv`.*
+*Base analítica · n = 1.348 · 8 grupos acima do piso n ≥ 30 (T2) · cobertura de 88,3% dos produtos (1.190 de 1.348) · desvio-padrão **amostral** (ddof = 1), o mesmo do `STDEV.S` no dashboard · `02_results/tables/tab16_satisfacao_subcategoria.csv` · a tabela completa, com nota corrigida, IQR e % abaixo de 4,0, está em §5.17.*
 
-**A leitura.** A dispersão quase dobra entre os extremos: **0,346 em Heating, Cooling & Air Quality contra 0,194 em Mobiles & Accessories**. Em Mobiles & Accessories, o cliente sabe o que vai receber. Em Heating, Cooling & Air Quality, o mesmo rótulo de subcategoria cobre experiências muito diferentes — e é nesse tipo de grupo que uma lista nominal (Q5, Q6) rende mais do que uma média.
+*(ver **Figura 10**, seção 5.17)*
 
-**Networking Devices passa no piso com n = 30 exatos.** Está na tabela porque a regra é n ≥ 30, e a regra não se dobra para conveniência em nenhuma das duas direções. O *n* está impresso ao lado do nome na figura, para que quem lê saiba que aquele desvio-padrão se apoia em trinta observações e não em trezentas.
+**A leitura.** A dispersão quase dobra entre os extremos: **0,346 na climatização contra 0,194 em celulares e acessórios**. Em Mobiles & Accessories, o cliente sabe o que vai receber. Em Heating, Cooling & Air Quality, o mesmo rótulo cobre experiências muito diferentes — e é nesse tipo de grupo que uma lista nominal rende mais do que uma média.
 
-**A alternativa descartada — comparar as 9 categorias de nível 1 e pronto.** Seria mais simples e caberia numa barra. Foi recusada porque, no nível 1, três famílias concentram 97,2% e a comparação vira "Electronics contra Home & Kitchen" — dois rótulos grandes demais para gerar ação. O nível 2 devolve granularidade sem perder cobertura: **88,3% do portfólio** continua representado. Descer ao nível 3 foi testado conceitualmente e abandonado: o piso amostral derruba quase todos os grupos e a cobertura despenca.
+**Por que fones e climatização estão em laranja no dashboard.** São os dois extremos que interessam à ação: a climatização tem a maior dispersão e a segunda maior taxa abaixo de 4,0 (37,9%); os fones têm dispersão baixa (0,224) e a maior taxa (52,4%). **A diferença de dispersão entre os dois não é estatisticamente significativa** (Levene, p = 0,18; `tab30`), e o dashboard diz isso no subtítulo da página 2b. A sugestão que ela traz — fones como problema de categoria, climatização produto a produto — é hipótese (§5.17).
+
+**Networking Devices passa no piso com n = 30 exatos.** Está na tabela porque a regra é n ≥ 30, e a regra não se dobra em nenhuma das duas direções. O *n* aparece ao lado do nome na tabela do dashboard, para que quem lê saiba que aquele desvio-padrão se apoia em trinta observações e não em trezentas.
+
+**A alternativa descartada — comparar as categorias de nível 1 e pronto.** Seria mais simples e caberia numa barra. Foi recusada porque, no nível 1, três famílias concentram 97,2% e a comparação vira "Electronics contra Home & Kitchen" — rótulos grandes demais para gerar ação. O nível 2 devolve granularidade sem perder cobertura: **88,3% do portfólio** continua representado (§3.5).
 
 ---
 
-### 5.14 QA4 · O preço de tabela explica a satisfação?
+### 5.13 QA4 · O preço de tabela explica a satisfação?
 
 **Estado: respondida. Não. E a resposta negativa é publicada com o mesmo destaque das positivas.**
 
@@ -1523,7 +1514,7 @@ Esta pergunta é a correção de rota de Q4. Comparar **médias** entre categori
 
 *Fonte: tab03_correlacoes.csv · base analítica, n = 1.348 · painel direito da `fig04`.*
 
-**Por que esta pergunta existe.** O problema de negócio do enunciado é uma cadeia: **Preço → Desconto → Engajamento → Satisfação**. Q3 testa o segundo elo. QA4 testa o primeiro, que o enunciado sugere e nenhuma das oito perguntas mede. Sem QA4, a cadeia fica com um elo declarado e não verificado.
+**Por que esta pergunta existe.** O problema de negócio do enunciado é uma cadeia: **Preço → Desconto → Engajamento → Satisfação**. Q3 testa o desconto contra a nota. QA4 testa se o preço de tabela, o começo da cadeia, chega à satisfação — ligação que o enunciado sugere e nenhuma das oito perguntas mede. O elo imediato, Preço → Desconto, está no fim desta seção. Sem os dois, a cadeia fica com o primeiro elo declarado e não verificado.
 
 **O resultado.** ρ = +0,032 com **p = 0,236**. Com n = 1.348 — uma amostra grande o suficiente para tornar significativo quase qualquer efeito real — o teste **não rejeita** a hipótese de ausência de associação. Isso é informativo: não é "não conseguimos medir", é "medimos com potência de sobra e não há sinal".
 
@@ -1531,23 +1522,29 @@ Esta pergunta é a correção de rota de Q4. Comparar **médias** entre categori
 
 **Por que a resposta negativa vale tanto quanto uma positiva.** Um relatório que só publica correlações significativas está selecionando resultados, e quem avalia sabe disso. Publicar ρ = +0,032 com p = 0,236 ao lado de ρ = −0,150 com p = 3,14e-08, no **mesmo gráfico** (`fig04`), é a evidência de que as quatro associações foram medidas antes de se saber quais dariam certo.
 
+#### O primeiro elo, medido no dashboard: o preço de tabela não acompanha o desconto
+
+QA4 liga o começo da cadeia ao fim. O elo imediato, **Preço → Desconto**, é o que o enunciado pede na área de Preços e Descontos: *"análise da relação entre preço original, preço com desconto e percentual de desconto"*. A página 3 do dashboard o mede no gráfico *"O preço de tabela não acompanha o desconto"*:
+
+| Faixa de desconto | *n* | Preço de tabela mediano | Preço com desconto mediano |
+|---|---|---|---|
+| 0–20% | 175 | 1.052 | 980 |
+| 21–40% | 329 | 3.045 | 1.999 |
+| 41–60% | 469 | 1.899 | 899 |
+| 61–80% | 324 | 1.299 | 389 |
+| 81–100% | 51 | 1.499 | 199 |
+
+*Rupia indiana, sem conversão (L5) · base analítica, n = 1.348 · mediana de `preco_tab` e `preco_desc` por `faixa_desconto` em `00_data/gold/base_analitica.csv`, os mesmos valores das medidas Preço de Tabela Mediano (T2) e Preço Mediano (T2) do dashboard · ρ e p em `02_results/tables/tab24_correlacoes_apoio.csv`.*
+
+**A leitura.** O preço de tabela mediano **não tem ordem** ao longo das faixas: fica entre 1.052 e 3.045, e a faixa de maior desconto não é a de produto mais caro. Quem desce com o desconto é o preço final, de 980 para 199. A correlação diz o mesmo: preço de tabela × desconto, **ρ = −0,063, p = 0,020**, n = 1.348 — abaixo de 0,05, mas acima do limiar corrigido para os seis testes de Spearman do relatório (0,0083, §1.2). **Não resiste à correção de multiplicidade**, e o dashboard diz isso no subtítulo do gráfico.
+
+**A frase para a liderança:** nesta base, desconto profundo não é marca de produto caro — a profundidade do desconto não acompanha o preço de partida. É mais um elo da cadeia que não sustenta a leitura do desconto como estratégia por si só (Q3).
+
 ---
 
-**O preço praticado, que o enunciado também cita.** QA4 pergunta pelo preço de tabela, e é ele que não tem associação. O **preço com desconto** — o que o consumidor efetivamente paga — tem:
+### 5.14 QA5 · Quais temas de reclamação predominam em alto engajamento e baixa nota?
 
-| Variável de preço | ρ (Spearman) | p | Leitura |
-|---|---|---|---|
-| Preço de tabela | +0,032 | 0,236 | **sem associação detectável** |
-| **Preço com desconto** | **+0,077** | **0,0047** | significativa e de magnitude **muito pequena** |
-
-*Fonte: `02_results/tables/tab24_correlacoes_apoio.csv` · Spearman · base analítica · n = 1.348.*
-
-A diferença não muda a conclusão de negócio, e é importante dizer por quê: ρ = +0,077 corresponde a menos de **0,6%** de variação compartilhada. É significativa porque n = 1.348, e irrelevante porque a magnitude é ínfima — exatamente o caso que T5 existe para tornar visível. Publicar só o resultado não significativo seria seleção de evidência; publicar o significativo sem a magnitude seria pior ainda.
-
-
-### 5.15 QA5 · Quais temas de reclamação predominam em alto engajamento e baixa nota?
-
-**Estado: respondida.** O protocolo está fechado e **a leitura foi executada** — a composição medida dos 19 produtos e os eixos temáticos verificados nos blocos estão em §7.8, e a lista nominal em `tab19`.
+**Estado: respondida.** O protocolo está fechado e **a leitura foi executada** — a composição medida dos 19 produtos e os eixos temáticos verificados nos blocos estão em §7.6, e a lista nominal em `tab19`.
 
 O alvo é o quadrante de Q5: **19 produtos, 147 avaliações em 19 blocos, 49,5 mil caracteres de `review_content`** — 53,1 mil com os títulos.
 
@@ -1555,17 +1552,15 @@ O alvo é o quadrante de Q5: **19 produtos, 147 avaliações em 19 blocos, 49,5 
 
 O que substitui: **leitura qualitativa dirigida com protocolo de codificação** — um livro de códigos de 9 eixos temáticos, fixado antes da contagem e aplicado de forma determinística aos 19 blocos (147 avaliações). O eixo é marcado quando um termo de inclusão aparece no bloco, e recebe marcador negativo quando um termo de insatisfação ocorre a até 60 caracteres dele. A contagem é **por bloco, sobre o denominador 19** — nunca por avaliação, nunca como proporção de clientes. É o método adequado a 19 unidades: não depende de estatística de frequência, e qualquer pessoa o reexecuta e chega ao mesmo número (`01_notebooks/05_nlp.ipynb` → `tab23_qa5_temas.csv`).
 
-**O ponto que a banca costuma cobrar, respondido antes da pergunta:** o TF-IDF **não** foi abandonado no projeto. Ele permanece válido em **Q7**, onde o contraste tem 339 e 418 blocos. Vedar o método num corpus de 19 e usá-lo num de 339 não é incoerência — é a mesma regra aplicada duas vezes: o método tem de caber no tamanho do corpus. As duas decisões foram registradas juntas, na mesma data, exatamente para que a coexistência ficasse explícita.
-
 **O que sustenta o achado, e o que não sustenta.** Por L1, os temas encontrados serão **os temas visíveis na vitrine** — o recorte de até 8 avaliações que o marketplace exibe. Por L2, a leitura cobre o subconjunto em alfabeto latino; o pipeline remove tokens não latinos e **descarta conteúdo real** antes da análise, numa parcela que não foi quantificada por idioma. Nenhuma frase do tipo "a maioria dos clientes reclama de X" sai deste bloco.
 
 **Um complemento que foi considerado aqui e recusado.** A ideia era cruzar os atributos de `about_product` com o que as avaliações dizem, nesses mesmos 19 produtos — a diferença entre o que a ficha promete e o que o comentário relata. **A decisão D-5, fechada em 01/10/2026, excluiu `about_product` da camada analítica**, e o motivo vale para este cruzamento também: a coluna descreve o que o **vendedor promete**, não o que o **consumidor percebe**. Customer Insights mede percepção, e misturar as duas fontes confundiria promessa com experiência. A coluna permanece fora, com o motivo registrado.
 
 ---
 
-### 5.16 QA6 · Os produtos no topo do ranking merecem estar lá?
+### 5.15 QA6 · Os produtos no topo do ranking merecem estar lá?
 
-**Estado: respondida.** O método está fechado (Wilson 95%, decisão D-3) **e aplicado a ranking nominal**: as 41 âncoras — volume ≥ p90 e nota ≥ 4,3 — estão em `02_results/tables/tab21_ancoras_nominal.csv`, ordenadas pela nota corrigida e com o *n* de avaliações ao lado, como a regra operacional desta seção exige.
+**Estado: respondida.** O método está fechado (Wilson 95%, decisão D-3) **e aplicado ao ranking que o dashboard exibe**: na página 2c, o top 10 por nota bruta — 11 produtos, por empate em 4,7 — aparece ao lado do top 10 por nota corrigida, com o *n* de avaliações em cada linha, como a regra operacional desta seção exige.
 
 **O problema, em uma frase.** Sem correção, um produto com **nota 5,0 e 3 avaliações** lidera qualquer lista de "melhores produtos" e empurra para baixo um produto com 4,6 e 40.000 avaliações. O primeiro não é melhor — é menos medido.
 
@@ -1579,11 +1574,11 @@ O que substitui: **leitura qualitativa dirigida com protocolo de codificação**
 
 ---
 
-### 5.17 QA7 · Quais arquétipos comerciais emergem ao agrupar preço, desconto, nota e volume?
+### 5.16 QA7 · Quais arquétipos comerciais emergem ao agrupar preço, desconto, nota e volume?
 
 **Estado: respondida, e apresentada como convenção descritiva — nunca como descoberta.**
 
-*(ver **Figura 13**, seção 6.5)*
+*(ver **Figura 12**, seção 6.4)*
 
 **A redação obrigatória, porque a imprecisão aqui derruba o argumento inteiro.** O coeficiente de silhueta foi calculado para k de 2 a 7 e **atinge o máximo em k = 5 (0,237)**. Adotou-se **k = 4 (0,234)** por interpretabilidade, com diferença estatística desprezível entre os dois. Valores medidos: k = 3 → 0,215 · **k = 4 → 0,234** · k = 5 → 0,237 · k = 6 → 0,227.
 
@@ -1591,7 +1586,7 @@ Dizer "k escolhido pela silhueta" seria falso — a silhueta aponta 5. A frase h
 
 **A fraqueza declarada, que é o achado mais importante de QA7.** Silhueta **≤ 0,237** indica que **não há estrutura natural de agrupamento nesta base**. Os quatro grupos não são populações que os dados revelam — são uma **convenção descritiva útil** para conversar sobre o portfólio. Esta seção nunca os apresenta como descoberta, e a `fig10` carrega a ressalva no rodapé.
 
-![Figura 10 — Os quatro arquétipos comerciais (QA7 · k = 4 · n = 1.348)](../02_results/images/fig10_arquetipos.png)
+![Figura 9 — Os quatro arquétipos comerciais (QA7 · k = 4 · n = 1.348)](../02_results/images/fig10_arquetipos.png)
 
 | Arquétipo | n | Preço de tabela mediano | Desconto mediano | Avaliações medianas | Nota mediana |
 |---|---|---|---|---|---|
@@ -1654,30 +1649,31 @@ A correção de Wilson **alarga** a distância em vez de suavizá-la: a nota cor
 
 Se profundidade de desconto explicasse o destino de um produto, B e D estariam no mesmo lugar. **Estão nos extremos opostos do portfólio.**
 
-**A ressalva obrigatória sobre estes grupos.** O coeficiente de silhueta máximo é 0,237, o que indica que **não há estrutura natural de agrupamento** nesta base. Os quatro grupos são **convenção descritiva útil**, jamais apresentados como descoberta (§6.5). Servem para organizar a conversa sobre o portfólio, não para afirmar que o catálogo "se divide naturalmente" em quatro perfis.
+**A ressalva obrigatória sobre estes grupos.** O coeficiente de silhueta máximo é 0,237, o que indica que **não há estrutura natural de agrupamento** nesta base. Os quatro grupos são **convenção descritiva útil**, jamais apresentados como descoberta (§6.4). Servem para organizar a conversa sobre o portfólio, não para afirmar que o catálogo "se divide naturalmente" em quatro perfis.
 
 ---
 
-### 5.18 Q4 e QA3 · Satisfação consolidada por categoria e subcategoria
+### 5.17 Q4 e QA3 · Satisfação consolidada por categoria e subcategoria
 
 #### A tabela consolidada das quatro categorias elegíveis
 
-| Categoria | *n* | Nota mediana | **Nota corrigida** | % abaixo de 4,0 | Avaliações medianas | Desconto mediano |
-|---|---|---|---|---|---|---|
-| Office Products | 31 | 4,3 | **4,248** | **0,0%** | 4.426 | 5% |
-| Computers & Accessories | 373 | 4,2 | 4,150 | 17,4% | 7.317 | 56% |
-| Electronics | 490 | 4,1 | 4,076 | 26,1% | 9.130 | 52% |
-| Home & Kitchen | 447 | 4,1 | **3,975** | **32,2%** | 2.311 | 42% |
+| Categoria | *n* | Nota mediana | **Nota corrigida** | % abaixo de 4,0 |
+|---|---|---|---|---|
+| Office Products | 31 | 4,3 | **4,248** | **0,0%** |
+| Computers & Accessories | 373 | 4,2 | 4,150 | 17,4% |
+| Electronics | 490 | 4,1 | 4,076 | 26,1% |
+| Home & Kitchen | 447 | 4,1 | **3,975** | **32,2%** |
 
 *Ordenado pela nota corrigida de Wilson (T1). Base analítica · n = 1.348 · só categorias com n ≥ 30 (T2) · `02_results/tables/tab15_satisfacao_categoria.csv`.*
 
-**Três leituras:**
+**Duas leituras:**
 
 1. **Office Products lidera, e a leitura exige cuidado.** Nenhum dos seus 31 produtos está abaixo de 4,0 — o único caso assim entre as quatro categorias acima do piso. Mas 31 é o **limite exato** do piso amostral: um grupo desse tamanho é volátil, e a liderança não deveria tratar essa primeira posição com a mesma confiança que trataria a de Electronics, que tem 490. A correção de Wilson já embute parte dessa cautela; o piso T2 embute o resto.
-2. **Home & Kitchen é o oposto de Office Products.** Última em nota corrigida e primeira em insatisfação — **32,2% dos 447 produtos abaixo do limiar**, contra 25,1% da base. É também a categoria com o **menor volume mediano** (2.311), então recebe menos atenção pública do que seu tamanho sugere.
-3. **Desconto não ordena a tabela.** Computers & Accessories desconta 56% e é a segunda melhor; Home & Kitchen desconta 42% e é a pior. Office Products desconta 5% e lidera. A ordenação por satisfação **não acompanha** a ordenação por desconto — coerente com o que Q3 mediu (ρ = −0,150, associação pequena) e com o contraste entre os arquétipos B e D.
+2. **Home & Kitchen é o oposto de Office Products.** Última em nota corrigida e primeira em insatisfação — **32,2% dos 447 produtos abaixo do limiar**, contra 25,1% da base.
 
 #### As oito subcategorias de nível 2, ordenadas por satisfação corrigida
+
+![Figura 10 — Dispersão de notas nas 8 subcategorias acima do piso · base analítica · n = 1.348 · piso n ≥ 30 · cobertura 88,3%](../02_results/images/fig09_dispersao_subcategoria.png)
 
 | Subcategoria (nível 2) | *n* | Nota mediana | **Nota corrigida** | Desvio-padrão | IQR | % abaixo de 4,0 |
 |---|---|---|---|---|---|---|
@@ -1690,25 +1686,21 @@ Se profundidade de desconto explicasse o destino de um produto, B e D estariam n
 | Home & Kitchen \| Heating, Cooling & Air Quality | 116 | 4,1 | 3,918 | **0,346** | 0,400 | 37,9% |
 | **Electronics \| Headphones, Earbuds & Acc.** | 63 | **3,9** | **3,888** | 0,224 | 0,300 | **52,4%** |
 
-*Base analítica · n = 1.348 · 8 grupos acima do piso, cobrindo 88,3% dos produtos · `02_results/tables/tab16_satisfacao_subcategoria.csv`.*
+*Base analítica · n = 1.348 · 8 grupos acima do piso, cobrindo 88,3% dos produtos (1.190 de 1.348) · desvio-padrão **amostral** (ddof = 1), o mesmo do `STDEV.S` no dashboard · `02_results/tables/tab16_satisfacao_subcategoria.csv`.*
 
 **O achado desta tabela — o mais acionável em escala estrutural.** Dois achados deste relatório disputam o rótulo "mais acionável", e eles não competem: operam em escalas diferentes. Os **19 produtos de Q5** são a ação mais *imediata* — lista nominal, acionável numa reunião. O achado abaixo é o de maior *concentração* de insatisfação — pede leitura da subcategoria, e não de um produto isolado.
 
 **Headphones, Earbuds & Accessories tem 52,4% dos produtos abaixo do limiar de satisfação.** Mais da metade. A taxa da base é 25,1%: a subcategoria é **duas vezes pior** que o portfólio, e é a única em que a insatisfação é maioria.
 
-A dispersão das notas dela é baixa **em estimativa pontual** — desvio-padrão de 0,224 (IC95% de 0,19 a 0,25), o segundo menor das oito subcategorias —, o que sugere uma **distribuição deslocada**, e não poucos produtos puxando a média. **Mas isso é hipótese, não conclusão:** a diferença de dispersão para a climatização não é estatisticamente distinguível (Levene, p = 0,18; `tab30`). O que está bem sustentado é a **taxa**: 52,4% abaixo de 4,0, com IC95% de 40% a 64% — inteiro acima dos 25,1% da base. "É um problema de categoria" é a leitura mais provável e fica como **ponto de partida da revisão**, não como diagnóstico fechado.
+A dispersão das notas dela é baixa **em estimativa pontual** — desvio-padrão de 0,224, o segundo menor das oito subcategorias —, o que sugere uma **distribuição deslocada**, e não poucos produtos puxando a média. **Mas isso é hipótese, não conclusão:** a diferença de dispersão para a climatização não é estatisticamente distinguível (Levene, p = 0,18; `tab30`). O que está bem sustentado é a **taxa**: 52,4% abaixo de 4,0, o dobro dos 25,1% da base. "É um problema de categoria" é a leitura mais provável e fica como **ponto de partida da revisão**, não como diagnóstico fechado.
 
-**O texto das avaliações não é evidência independente disto — e dizer o contrário seria erro.** O contraste de n-gramas (§7.7) coloca `bass`, `ear`, `music`, `noise` e o bigrama `sound quality` entre os termos mais característicos da faixa de nota baixa. É tentador tratar isso como segunda confirmação, e uma versão anterior deste relatório tratou. **Submetemos a hipótese a teste e ela não passou:** excluindo os fones do corpus, o eixo de áudio colapsa de seis termos para um (§7.7). Os fones são **33 dos 339 produtos da faixa baixa e 1 dos 418 da faixa alta** — o tema de áudio aparece no contraste *porque* eles estão quase todos de um lado. É **a mesma medição vista de dois ângulos**, não duas.
+**Onde a dispersão é maior:** Heating, Cooling & Air Quality (dp 0,346). Em estimativa pontual, a qualidade é mais irregular *dentro* do grupo que em Headphones, onde as notas são mais uniformemente fracas — mas a diferença não é estatisticamente significativa (Levene, p = 0,18). Sugere abordagens diferentes — produto a produto na climatização, categoria nos fones —, **como hipótese**.
 
-Isso **não enfraquece o achado desta tabela**, e a distinção importa: os 52,4% se sustentam na distribuição de notas de 63 produtos, que é evidência suficiente por si. O que cai é apenas a alegação de corroboração cruzada. Um relatório que mantivesse as duas medições como independentes estaria contando a mesma evidência duas vezes — e é exatamente o tipo de reforço aparente que uma banca testa.
-
-**Onde a dispersão é maior:** Heating, Cooling & Air Quality (dp 0,346) — é a resposta de QA3. Em estimativa pontual, a qualidade é mais irregular *dentro* do grupo que em Headphones, onde as notas são mais uniformemente fracas — mas a diferença não é estatisticamente significativa (Levene, p = 0,18), e o intervalo da climatização (0,26–0,45) inclui o de Kitchen & Home Appliances. Sugere abordagens diferentes — produto a produto na climatização, categoria nos fones —, **como hipótese**.
-
-**O extremo oposto:** Mobiles & Accessories tem o menor desvio (0,194) e apenas 13,9% abaixo do limiar — a subcategoria mais previsível do catálogo.
+**Dois focos.** A climatização tem **37,9%** dos produtos abaixo do limiar, também acima da base. A insatisfação do portfólio, portanto, não está espalhada, mas também não tem um único endereço: tem dois, fones e climatização (`tab30_levene_fones_climatizacao.csv`).
 
 ---
 
-### 5.19 Q1 e Q6 · As duas definições que fecharam em 24/09/2026
+### 5.18 Q1 e Q6 · As duas definições que fecharam em 24/09/2026
 
 Estas duas perguntas do enunciado estiveram com a definição em aberto até esta versão. Ambas foram fechadas por decisão de Ricardo, e nenhuma das duas criou limiar novo.
 
@@ -1725,47 +1717,32 @@ Q1 esteve com a fórmula em aberto até esta versão. A definição adotada **n�
 
 *Os 874 produtos restantes (64,8%) ficam na faixa intermediária de um dos dois eixos. Soma: 41 + 19 + 187 + 227 + 874 = 1.348 ✅ · base analítica · `02_results/tables/tab17_matriz_relevancia.csv`.*
 
+**No dashboard, o quadro aparece como os quatro grupos de ação.** A página 1 o apresenta assim — *474 produtos estão num dos quatro grupos de ação: 874 são intermediários* —, porque os 874 não formam quadrante de ação: estão na faixa intermediária de pelo menos um dos dois eixos. O nome muda; os cortes, as contagens e a regra de ordenação são os desta seção.
+
 **Por que os eixos usam nota bruta, e não a corrigida.** Os cortes 4,0 e 4,3 são os mesmos que Q5 e Q6 já usavam — e é por isso que a matriz **reproduz 19 e 187 exatamente**, em vez de criar uma quinta definição concorrente. Usar nota corrigida nos eixos daria outros quadrantes (23 âncoras e 61 subexplorados) e desalinharia a matriz das duas perguntas do enunciado que ela serve. A correção de Wilson entra onde T1 a exige: **na ordenação dentro de cada quadrante**.
 
 **Por que uma matriz e não um índice composto.** Um índice único — do tipo `0,4 × volume + 0,6 × nota` — convida à pergunta *"por que esses pesos?"*, e não existe resposta boa: qualquer par de pesos é arbitrário e atacável. A matriz é defensável porque **não pondera nada**. Ela apenas cruza dois cortes que já estavam medidos, publicados e justificados, e cada quadrante vira uma ação diferente.
 
 **E ela absorve Q5 e Q6 em vez de competir com eles.** Os quadrantes de risco e de subexploração reproduzem exatamente as contagens já publicadas — 19 e 187. A matriz não é uma quinta definição de relevância; é o **quadro que dá nome aos dois quadrantes que ainda não tinham** (Âncora e Cauda frágil).
 
-**Dentro de cada quadrante, o ranking usa nota corrigida de Wilson** (T1), com o *n* de avaliações ao lado. A correção importa no ranking geral por nota, onde um produto com 5 avaliações lideraria sem ela — é o que T1 impede. No quadrante de âncoras o risco não existe, porque o próprio corte exige volume ≥ p90: o menor volume entre as 41 âncoras é 37.974.
-
-**As oito âncoras mais bem avaliadas:**
-
-| Nota corrigida | Nota | Avaliações | Produto |
-|---|---|---|---|
-| 4,793 | 4,8 | 53.803 | Swiffer Instant Electric Water Heater Faucet Tap |
-| 4,494 | 4,5 | 205.052 | SanDisk Extreme SD UHS-I 64GB |
-| 4,492 | 4,5 | 107.687 | AmazonBasics USB 2.0 Cable A-Male to B-Male |
-| 4,491 | 4,5 | 92.925 | Crucial BX500 240GB SSD |
-| 4,490 | 4,5 | 74.977 | AmazonBasics USB 2.0 Extension Cable |
-| 4,490 | 4,5 | 74.976 | AmazonBasics USB 2.0 A-Male to A-Female |
-| 4,489 | 4,5 | 54.405 | Logitech M235 Wireless Mouse |
-| 4,488 | 4,5 | 50.810 | Seagate Expansion 1TB External HDD |
-
-*Fonte: `02_results/tables/tab21_ancoras_nominal.csv` · base analítica · n = 1.348 · as 8 primeiras das **41 âncoras**, ordenadas por nota corrigida de Wilson 95% (T1) · com o *n* de avaliações ao lado de cada uma, como T1 exige.*
-
-*Lista nominal — não sujeita ao piso n ≥ 30, e exibindo o n de avaliações produto a produto (T2).*
+**Dentro de cada quadrante, o ranking usa nota corrigida de Wilson** (T1), com o *n* de avaliações ao lado. A correção importa no ranking geral por nota, onde um produto com 5 avaliações lideraria sem ela — é o que T1 impede.
 
 #### Categorias, por relevância
 
-| Categoria | Produtos | Participação no volume | Nota corrigida | Âncoras | Em Q5 |
-|---|---|---|---|---|---|
-| Electronics | 490 | **59,7%** · *53,1% colapsando variantes (L8)* | 4,076 | 21 | **13** |
-| Computers & Accessories | 373 | 26,6% | 4,150 | 18 | **0** |
-| Home & Kitchen | 447 | 12,6% · *16,4% colapsando variantes (L8)* | **3,975** | 2 | 6 |
-| Office Products | 31 | 0,6% | **4,248** | 0 | 0 |
+| Categoria | Produtos | Participação no volume | Nota corrigida |
+|---|---|---|---|
+| Electronics | 490 | **59,7%** · *53,1% colapsando variantes (L8)* | 4,076 |
+| Computers & Accessories | 373 | 26,6% | 4,150 |
+| Home & Kitchen | 447 | 12,6% · *16,4% colapsando variantes (L8)* | **3,975** |
+| Office Products | 31 | 0,6% | **4,248** |
 
 *Base analítica · só categorias com n ≥ 30 (T2) · `02_results/tables/tab18_relevancia_categoria.csv`.*
 
 **A leitura que esta tabela permite, e que a contagem de produtos sozinha esconde:**
 
-1. **Electronics é a categoria mais relevante e a mais arriscada ao mesmo tempo.** Concentra 59,7% de todo o volume de avaliações e 21 das 41 âncoras — mas também **13 dos 19 produtos de risco de vitrine**. É onde a atenção rende mais, nos dois sentidos.
-2. **Computers & Accessories é a mais saudável.** Segunda em volume (26,6%), 18 âncoras, e **nenhum produto em Q5**. Descontando 56%, é a categoria que melhor converte exposição em percepção.
-3. **Home & Kitchen é a mais frágil.** Tem quase o mesmo número de produtos que Electronics (447 contra 490) e apenas 12,6% do volume — recebe pouca atenção pública para o seu tamanho. Pior nota corrigida, apenas 2 âncoras e 6 produtos em Q5.
+1. **Electronics é a categoria mais relevante.** Concentra 59,7% de todo o volume de avaliações — 53,1% sem contar as listagens variantes (L8).
+2. **Computers & Accessories é a segunda em volume (26,6%) e em nota corrigida (4,150).**
+3. **Home & Kitchen é a mais frágil.** Tem quase o mesmo número de produtos que Electronics (447 contra 490) e apenas 12,6% do volume — recebe pouca atenção pública para o seu tamanho. Tem a pior nota corrigida (3,975) e a maior taxa abaixo de 4,0 (32,2%).
 4. **Office Products lidera em nota e não existe em volume.** 0,6% do total. A liderança não deveria tirar conclusão de portfólio de um grupo de 31 produtos no limite exato do piso.
 
 #### A ressalva de T1 sobre os 187 — e a lista realmente acionável
@@ -1802,23 +1779,24 @@ Q6 esteve com o rótulo em aberto até esta versão. A definição adotada é de
 
 ---
 
-### 5.20 O que as quinze respostas dizem juntas
+### 5.19 O que as catorze respostas dizem juntas
 
 A cadeia do enunciado — **Preço → Desconto → Engajamento → Satisfação** — foi testada elo a elo, e o resultado é consistente em toda a seção:
 
+- **Preço → Desconto:** ρ = −0,063, p = 0,020. Não resiste à correção de multiplicidade: o preço de tabela **não acompanha** o desconto (QA4, §5.13).
 - **Preço → Satisfação:** ρ = +0,032, p = 0,236. **Sem associação** (QA4).
 - **Desconto → Satisfação:** ρ = −0,150, p = 3,14e-08. Associação **real e pequena** (Q3).
 - **Desconto → Engajamento:** ρ = −0,132, p = 1,12e-06. Negativa e pequena — desconto **não** acompanha volume (Q3).
-- **Engajamento → Satisfação:** ρ = +0,193, p = 8,29e-13. A mais forte das quatro, e ainda assim pequena (Q3).
+- **Engajamento → Satisfação:** ρ = +0,193, p = 8,29e-13. A mais forte das cinco, e ainda assim pequena (Q3).
 
 **Nenhum elo isolado explica o desempenho de um produto.** Este é o resultado central, e ele é confirmado por um caminho inteiramente independente: no ML2, nenhum bloco de preditores sozinho se aproxima do conjunto — volume 0,556 · comerciais 0,583 · comerciais + categoria 0,658 · **completo 0,704 ± 0,006** (tab07, validação agrupada por variante). O sinal é **multivariado**, e é por isso que o modelo existe.
 
 Duas consequências práticas, ditas sem verbo causal:
 
 1. **A alavanca única não existe.** Uma política de preço, ou uma política de desconto, tomada isoladamente, tem associação fraca demais com a satisfação para justificar uma aposta. O que separa B de D na `fig10` não é o desconto — é a combinação.
-2. **O que decide é a lista, não a média.** Os achados de ação imediata das quinze perguntas são listas nominais: **19 produtos** de alto volume e nota baixa (Q5) e, em Q6, **61 produtos** bem avaliados e pouco comentados — os que restam dos 187 candidatos depois da correção de Wilson (§5.19). Ambos sobrevivem à ausência de variável de venda, porque não prometem receita — prometem uma fila de investigação com nome e número. O achado de **maior alcance estrutural** é outro e não é uma lista: a subcategoria de fones, com 52,4% do sortimento abaixo do limiar (§5.18).
+2. **O que decide é a lista, não a média.** Os achados de ação imediata das catorze perguntas são listas nominais: **19 produtos** de alto volume e nota baixa (Q5) e, em Q6, **61 produtos** bem avaliados e pouco comentados — os que restam dos 187 candidatos depois da correção de Wilson (§5.18). Ambos sobrevivem à ausência de variável de venda, porque não prometem receita — prometem uma fila de investigação com nome e número. O achado de **maior alcance estrutural** é outro e não é uma lista: a subcategoria de fones, com 52,4% do sortimento abaixo do limiar (§5.17).
 
-### 5.21 O que ficou de fora destas quinze perguntas, e por quê
+### 5.20 O que ficou de fora destas catorze perguntas, e por quê
 
 Registrar o que **não** foi feito é parte da defesa. Cinco recusas, com o motivo:
 
@@ -1837,15 +1815,15 @@ A última linha merece atenção. Era uma pergunta candidata; a medição mostro
 
 ## 6. Machine Learning
 
-O enunciado da Fase 4 não pede modelagem: os nove critérios de avaliação cobrem tratamento de dados, análise, dashboard, storytelling e entrega. Modelo, aqui, é meio — e só entra quando responde a uma pergunta do escopo das 15 que a estatística descritiva não responde sozinha. Foi esse o critério de entrada, e ele eliminou mais aplicações do que aprovou.
+O enunciado da Fase 4 não pede modelagem: os nove critérios de avaliação cobrem tratamento de dados, análise, dashboard, storytelling e entrega. Modelo, aqui, é meio — e só entra quando responde a uma pergunta do escopo que a estatística descritiva não responde sozinha. Foi esse o critério de entrada, e ele eliminou mais aplicações do que aprovou.
 
-Quatro aplicações foram registradas. Uma delas foi absorvida por outra, três chegaram à entrega. Cada uma tem destino declarado, métrica publicada e ficha de reprodução — sem as três coisas, o número não é verificável e não entra no material.
+Quatro aplicações estão registradas aqui. Uma foi absorvida por outra e três chegaram à entrega; uma delas, ML3, é estatística de texto e não modelo preditivo, e está descrita com a pergunta que atende (§5.8). Cada uma tem destino declarado, métrica publicada e ficha de reprodução — sem as três coisas, o número não é verificável e não entra no material.
 
 | # | Aplicação | Status | Pergunta que atende | Métrica publicada |
 |---|---|---|---|---|
 | ML1 | Regressão explicativa da nota | **Absorvida no ML2** | — | R² = 0,10 (justificativa da absorção) |
 | ML2 | Atributos associados à baixa satisfação | Adotado | Q5, apoio a Q8 | AUC = **0,70 ± 0,01** |
-| ML3 | n-gramas e TF-IDF sobre blocos de review | Mantido | Q7 | 339 e 418 blocos |
+| ML3 | Contraste de termos por TF-IDF | Adotado | Q7 | Δ TF-IDF por termo, Electronics: 128 e 136 blocos (§5.8) |
 | ML4 | Segmentação descritiva multivariada | Obrigatório | QA7 | k = 4, silhueta **0,234** |
 
 Base de todas as medições deste capítulo: **base analítica, n = 1.348** (regra T3). As outras quatro bases oficiais — 1.465 bruta, 1.351 produtos, 1.350 nota válida, 1.349 engajamento válido — não são usadas em nenhuma modelagem, porque toda modelagem aqui é cruzada e exige `rating` e `rating_count` simultaneamente válidos.
@@ -1890,24 +1868,6 @@ Três decisões de formulação merecem ser ditas:
 | **completo** | **0,704** | **0,006** | 0,750 | +0,047 |
 
 *Fonte: `tab07_ml2_blocos.csv` (a coluna que se publica) e `tab27_ml2_vazamento.csv` (a comparação) · base analítica, n = 1.348 · taxa de eventos 25,1%.*
-
-**Quais atributos carregam esse sinal.** A escada diz que o sinal é multivariado; o ranking abaixo diz de onde ele vem. É a importância de impureza do Random Forest, medida sobre o **modelo completo ajustado na base inteira** — as partições servem para medir o AUC, não para ler importância. As nove colunas de categoria foram somadas numa linha só: interessa o peso da **variável**, não o de cada categoria dentro dela.
-
-| Atributo | Importância | % do total | Leitura |
-|---|---|---|---|
-| volume de avaliações | 0,3015 | **30,2%** | maior peso isolado — é a associação de Q5 aparecendo no modelo |
-| desconto (%) | 0,2215 | 22,2% | segundo peso, na mesma direção de Q3 (ρ = −0,150) |
-| preço com desconto | 0,2203 | 22,0% | empatado com desconto e com preço de tabela |
-| preço de tabela | 0,2082 | 20,8% | empatado com os outros dois de preço, apesar de QA4 não achar associação univariada |
-| categoria nível 1 | 0,0484 | 4,8% | menor peso **aqui** — ver a ressalva abaixo |
-
-*Fonte: `02_results/tables/tab25_ml2_importancia.csv` · base analítica · n = 1.348 · `RandomForestClassifier(n_estimators=300, random_state=42)` ajustado na base inteira · soma das importâncias = 1.*
-
-**A ressalva que impede a leitura errada, e que vale mais que o ranking.** A importância de impureza **subestima variável categórica em *one-hot* e superestima variável contínua com muitos pontos de corte**. Por isso `categoria nível 1` aparece em último com 4,8% — e, ao mesmo tempo, a escada de AUC sobe de **0,583 para 0,658** exatamente quando a categoria entra. Os dois números não se contradizem: medem coisas diferentes, e **a escada mede melhor a contribuição da família**. Quem ler só o ranking conclui que categoria não importa, e conclui errado.
-
-**O que o ranking autoriza dizer, e o que não autoriza.** Autoriza: *o volume de avaliações é o atributo que mais acompanha a baixa satisfação, e os três atributos de preço e desconto se dividem quase igualmente o resto*. Não autoriza: que algum deles **cause** nota baixa (**T4**), nem que o peso de um atributo seja estável — com n = 1.348 e desvio de até 0,04 entre partições, a diferença entre 22,2% e 20,8% não ordena nada.
-
-**O que a quase igualdade entre os três de preço confirma.** Ela repete, dentro do modelo, o que as correlações univariadas já diziam: nenhuma variável comercial isolada separa satisfeito de insatisfeito. Se uma delas fosse a alavanca, apareceria destacada aqui — e não aparece.
 
 O achado é a **escada**, não o número do topo. Nenhum bloco isolado passa de 0,58 — e o volume de avaliações sozinho, com 0,556, fica a seis centésimos do acaso. A categoria acrescenta 7,5 pontos de AUC ao bloco comercial, e o conjunto completo acrescenta outros 5. Ou seja: **o sinal é multivariado**. É exatamente por isso que o modelo existe. Se um único atributo explicasse a baixa satisfação, a tabela cruzada da EDA já teria resolvido, e o modelo seria enfeite.
 
@@ -1956,56 +1916,7 @@ A analogia serve à liderança: é como avaliar um comprador de eletrônicos ped
 | Balanceamento do alvo (SMOTE ou pesos) | 25,1% de positivos não é desbalanceamento severo; AUC é insensível à prevalência, e o balanceamento distorceria a leitura das importâncias |
 | Regressão logística no lugar da floresta | descartada como modelo principal por não capturar interação entre categoria e faixa de preço, que é justamente onde o ganho de AUC aparece na escada de blocos |
 
-### 6.4 ML3 — o corpus textual e as três contagens
-
-#### O que foi feito
-
-A unidade de modelagem é o **bloco de review**: o conjunto truncado de até oito avaliações que o marketplace exibe na página de um produto, rotulado pela nota daquele produto. O contraste é entre a faixa de satisfação baixa (nota < 4,0) e a faixa de satisfação alta (nota ≥ 4,3), com n-gramas e TF-IDF sobre o texto.
-
-#### Por que a unidade precisa ser declarada
-
-Porque a mesma base produz três contagens de corpus, e escolher a maior infla o material.
-
-![Figura 12 — ML3: blocos, referências e reviews distintos por faixa de nota · base analítica · n = 1.348](../02_results/images/fig12_corpus.png)
-
-| Faixa de nota | Blocos (= produtos) | Referências de avaliação | **Reviews distintos** |
-|---|---|---|---|
-| < 4,0 | 339 | 2.652 | **2.502** |
-| 4,0–4,29 | 591 | 4.674 | **3.875** |
-| ≥ 4,3 | 418 | 3.262 | **2.878** |
-| **Total** | **1.348** | **10.588** | **9.255** |
-
-*Fonte: `tab06_corpus.csv` · base analítica, n = 1.348 · deduplicação por `review_id` (T8).*
-
-São **1.333 referências repetidas** — identificadores de avaliação que aparecem em mais de um produto. Publicar "10.588 avaliações analisadas" apresenta um corpus **14% maior do que ele é**. A regra T8 fecha isso: todo método textual declara a unidade, deduplica por `review_id` e cita o truncamento. As três contagens aparecem lado a lado na figura justamente para que ninguém escolha a conveniente.
-
-#### Pipeline e limitações que o pipeline não resolve
-
-Pipeline: remoção de URLs → remoção de tokens não latinos → remoção de *stopwords* em inglês → extração de n-gramas → TF-IDF.
-
-Três limitações ficam de pé depois dele, e entram no material junto com os achados:
-
-- **L1 — truncamento em 8 avaliações por produto** (média medida 7,85). O texto analisado **não é amostra aleatória** do que os consumidores escreveram: é o recorte que o marketplace escolheu exibir. Consequência de redação: os achados descrevem **os temas visíveis na vitrine**, e nenhuma frase do bloco pode começar com "a maioria dos clientes acha que…".
-- **L2 — idioma.** A remoção de tokens não latinos descarta conteúdo real, e a parcela descartada não foi quantificada por idioma.
-- **Lacuna de método declarada:** a faixa intermediária — **591 produtos, 44% do portfólio** — fica fora do contraste entre satisfação alta e baixa. É escolha deliberada, para que o contraste tenha extremos nítidos, e é dita em vez de omitida.
-
-#### A fronteira com QA5 — duas decisões que parecem se contradizer e não se contradizem
-
-O TF-IDF **permanece válido em Q7**, onde há 339 e 418 blocos. Ele é **vedado em QA5**, cujo corpus são os 19 produtos do quadrante de alto engajamento e nota baixa — 147 avaliações, cerca de 49,5 mil caracteres. Com 19 blocos, TF-IDF produz termos que parecem padrões e são ruído de um punhado de documentos. QA5 usa **leitura qualitativa dirigida com protocolo de codificação**. A mesma técnica é adequada num corpus e inadequada no outro; o critério é o tamanho do corpus, não o gosto pela técnica.
-
-#### Ficha de reprodução — ML3
-
-| Item | Valor |
-|---|---|
-| Unidade | bloco de review (1 por produto), rotulado pela nota do produto |
-| Contraste | nota < 4,0 (339 blocos) × nota ≥ 4,3 (418 blocos) |
-| Deduplicação | explodir `review_id` por `,`, remover espaços, `nunique` por faixa (T8) |
-| Pipeline | URLs → tokens não latinos → *stopwords* (inglês) → n-gramas → TF-IDF |
-| Fora do contraste | faixa 4,0–4,29 (591 blocos, 44% do portfólio) — declarado |
-| Limitações acopladas | L1 (truncamento em 8), L2 (idioma) |
-| Script | `src/gera_figuras.py` (bloco fig12) para o dimensionamento do corpus |
-
-### 6.5 ML4 — segmentação descritiva, e a redação honesta do k
+### 6.4 ML4 — segmentação descritiva, e a redação honesta do k
 
 #### O que foi feito
 
@@ -2015,7 +1926,7 @@ Agrupamento por k-médias sobre quatro variáveis padronizadas: **preço de tabe
 
 #### O k — dito como foi decidido, não como conviria
 
-![Figura 13 — Coeficiente de silhueta por k, de 2 a 7 (base analítica, n = 1.348)](../02_results/images/fig13_silhueta.png)
+![Figura 12 — Coeficiente de silhueta por k, de 2 a 7 (base analítica, n = 1.348)](../02_results/images/fig13_silhueta.png)
 
 O coeficiente de silhueta foi calculado para k de 2 a 7 e **atinge o máximo em k = 5 (0,237)**. Adotou-se **k = 4 (0,234) por interpretabilidade**, com diferença desprezível entre os dois. Quatro arquétipos têm leitura comercial imediata e cabem em uma página do dashboard; o quinto grupo, na inspeção, dividia um dos quatro sem acrescentar leitura.
 
@@ -2031,7 +1942,7 @@ A consequência para a redação é rígida: os arquétipos são **convenção d
 
 #### Os quatro arquétipos
 
-*(ver **Figura 10**, seção 5.17)*
+*(ver **Figura 9**, seção 5.16)*
 
 | Grupo | n | Preço de tabela mediano | Desconto mediano | Avaliações medianas | Nota mediana |
 |---|---|---|---|---|---|
@@ -2072,7 +1983,7 @@ A leitura correta, em linguagem T4: **desconto profundo não separa os dois grup
 | Incluir categoria nível 1 nas variáveis | os grupos passariam a reproduzir a concentração de portfólio (97,2% em três famílias, L3) e os arquétipos virariam rótulos de categoria |
 | Usar os clusters para definir cortes de engajamento ou satisfação | vedado por fronteira de método: transformaria o resultado do algoritmo em limiar de conceito univariado, num raciocínio circular |
 
-### 6.6 O que este bloco não permite concluir
+### 6.5 O que este bloco não permite concluir
 
 Três frases que o material **não** dirá, com a razão de cada uma:
 
@@ -2082,7 +1993,7 @@ Três frases que o material **não** dirá, com a razão de cada uma:
 
 Acrescente-se a magnitude (T5): com n = 1.348, coeficientes atravessam o limiar de significância com facilidade. Significativo e irrelevante são estados que convivem, e a publicação traz sempre os dois números lado a lado.
 
-### 6.7 Aplicações avaliadas e descartadas
+### 6.6 Aplicações avaliadas e descartadas
 
 O que não foi feito é parte do método, e é aqui que o critério de entrada fica visível.
 
@@ -2107,18 +2018,18 @@ Esta seção trata das duas partes do trabalho em que o erro é invisível no n�
 
 ### 7.1 O que o enunciado pede em Customer Insights, e onde cada pergunta foi respondida
 
-O enunciado abre a seção de Customer Insights com quatro perguntas. Elas não viraram análises novas: foram absorvidas pelas duas perguntas do escopo fechado que tratam de texto — Q7 e QA5. A amarração é esta:
+As perguntas de Customer Insights do enunciado não viraram análises novas: foram absorvidas pelas duas perguntas do escopo que tratam de texto — Q7 e QA5. A amarração é esta:
 
 | Pergunta do enunciado | Onde é respondida | Método | Corpus |
 |---|---|---|---|
-| O que os clientes mais valorizam? | **Q7** | n-gramas e TF-IDF sobre blocos de review da faixa nota ≥ 4,3 | 418 blocos · 2.878 reviews distintos |
-| Quais padrões estão presentes em avaliações positivas? | **Q7** | idem | 418 blocos · 2.878 reviews distintos |
-| Quais temas aparecem em avaliações negativas? | **Q7** + **QA5** | n-gramas e TF-IDF sobre blocos da faixa nota < 4,0, mais a leitura dirigida dos 19 produtos de Q5 | 339 blocos · 2.502 reviews distintos |
-| Quais problemas aparecem com maior frequência? | **Q7** + **QA5** | n-gramas sobre os 339 blocos de nota < 4,0, mais a leitura qualitativa dirigida — **não** TF-IDF em QA5 | 339 blocos; e 19 produtos · 147 avaliações · ≈ 49,5 mil caracteres |
+| O que os clientes mais valorizam? | **Q7** | contraste de TF-IDF, lado da nota ≥ 4,3 | Electronics · 136 blocos |
+| Quais problemas aparecem com maior frequência? | **QA5** | leitura qualitativa dirigida — **não** TF-IDF | 19 produtos · 147 avaliações · ≈ 49,5 mil caracteres |
+| Quais padrões estão presentes em avaliações positivas? | **Q7** | contraste de TF-IDF, lado da nota ≥ 4,3 | Electronics · 136 blocos |
+| Quais temas aparecem em avaliações negativas? | **Q7** + **QA5** | contraste de TF-IDF, lado da nota < 4,0, e leitura dirigida dos 19 produtos de Q5 | Electronics · 128 blocos · 19 blocos · 147 avaliações |
 
 *Base: analítica, n = 1.348. Fonte: Kaggle — `karkavelrajaj/amazon-sales-dataset`.*
 
-A tabela acima é a resposta formal a **D-8, fechada em 01/10/2026** com esta amarração: as quatro perguntas já estavam cobertas, faltava dizer onde.
+A tabela acima é a resposta formal a **D-8, fechada em 01/10/2026**: declarar onde cada pergunta de Customer Insights é respondida.
 
 ### 7.2 A unidade de modelagem: o bloco de review, não a avaliação
 
@@ -2130,9 +2041,9 @@ A origem traz uma linha por produto, com as avaliações **concatenadas em um ú
 | **Referência de avaliação** | item obtido ao explodir o bloco por `,` | **10.588** |
 | **Review individual** | referência após deduplicar por `review_id` | **9.255** |
 
-A unidade de modelagem adotada em ML3 é o **bloco**, rotulado pela nota do produto. Essa escolha não é neutra e precisa ser justificada, porque a alternativa parecia mais natural: tratar cada avaliação como documento independente.
+A unidade adotada é o **bloco**, rotulado pela nota do produto. Essa escolha não é neutra e precisa ser justificada, porque a alternativa parecia mais natural: tratar cada avaliação como documento independente.
 
-A alternativa foi descartada por dois motivos. Primeiro, o rótulo. O que se quer contrastar é "texto de produto bem avaliado" contra "texto de produto mal avaliado", e a nota existe **no produto**, não na avaliação individual — não há nota por review na base. Atribuir a nota do produto a cada uma das suas 8 avaliações replicaria o rótulo oito vezes e daria a produtos com bloco cheio oito vezes mais peso do que a produtos com bloco curto, sem que isso signifique nada sobre o mercado. Segundo, o peso. Com o bloco como documento, cada produto entra exatamente uma vez no corpus — a mesma granularidade de todas as outras análises do projeto, o que permite reconciliar as contagens de texto com as contagens de portfólio linha a linha.
+A alternativa foi descartada por dois motivos. Primeiro, o rótulo: a nota existe **no produto**, não na avaliação individual — não há nota por review na base. Atribuir a nota do produto a cada uma das suas 8 avaliações replicaria o rótulo oito vezes e daria a produtos com bloco cheio oito vezes mais peso do que a produtos com bloco curto, sem que isso signifique nada sobre o mercado. Segundo, o peso. Com o bloco como documento, cada produto entra exatamente uma vez no corpus — a mesma granularidade de todas as outras análises do projeto, o que permite reconciliar as contagens de texto com as contagens de portfólio linha a linha.
 
 **Em linguagem de liderança:** cada produto tem uma "página de comentários". O projeto analisa a página inteira como um documento, e não cada comentário solto, porque o que sabemos (a nota) é da página, não do comentário.
 
@@ -2144,9 +2055,9 @@ A repetição não é aleatória. **759 `review_id` aparecem em mais de um produ
 
 A regra fechada, que é a regra T8 do projeto, tem três partes e todas são obrigatórias: **declarar a unidade** (bloco ou review individual), **deduplicar por `review_id`** ao dimensionar o corpus e **citar o truncamento em 8 avaliações**. Falta uma delas, o número publicado deixa de ser verificável.
 
-Um ponto de método que merece precisão, porque é onde a regra costuma ser mal aplicada: **a deduplicação serve para dimensionar o corpus, não para mutilar os blocos**. O bloco de cada produto permanece íntegro na modelagem — é ele que carrega o rótulo. O que a deduplicação governa é o número que vai ao slide e ao rodapé do visual. A pergunta óbvia, então, é se essa repetição contamina o contraste entre faixas de nota. Foi medido: **zero `review_id` aparece em mais de uma faixa de nota**. As repetições ocorrem inteiramente dentro da mesma faixa. O contraste entre "nota < 4,0" e "nota ≥ 4,3" — que é o eixo de Q7 — não é atravessado por nenhum texto compartilhado.
+Um ponto de método que merece precisão, porque é onde a regra costuma ser mal aplicada: **a deduplicação serve para dimensionar o corpus, não para mutilar os blocos**. O bloco de cada produto permanece íntegro na modelagem — é ele que carrega o rótulo. O que a deduplicação governa é o número que vai ao slide e ao rodapé do visual. E a repetição não atravessa faixas de nota: **zero `review_id` aparece em mais de uma faixa** — as repetições ocorrem inteiramente dentro da mesma faixa.
 
-*(ver **Figura 12**, seção 6.4)*
+![Figura 13 — Blocos, referências e reviews distintos por faixa de nota · base analítica · n = 1.348](../02_results/images/fig12_corpus.png)
 
 **Tabela 7.1 — Corpus textual por faixa de nota** (`tab06_corpus.csv`)
 
@@ -2159,28 +2070,7 @@ Um ponto de método que merece precisão, porque é onde a regra costuma ser mal
 
 *Base: analítica, n = 1.348. As três colunas fecham nos três totais oficiais — é essa reconciliação que autoriza usar qualquer uma das contagens, desde que declarada.*
 
-A faixa intermediária — **591 produtos, 43,8% do portfólio** — fica fora do contraste de Q7, que compara apenas os extremos. Isso é escolha de método, não esquecimento: o objetivo é caracterizar o que distingue texto de produto bem e mal avaliado, e a faixa do meio dilui exatamente esse contraste. A consequência precisa ser dita junto ao resultado: **os temas de Q7 descrevem as pontas da distribuição, e quase metade do portfólio não participou da comparação.**
-
-### 7.4 Por que TF-IDF vale em Q7 e é vedado em QA5
-
-As duas decisões parecem contraditórias e não são. O que muda entre uma e outra é o tamanho do corpus.
-
-**Q7 — TF-IDF permanece válido.** O contraste tem 339 e 418 blocos, com 2.502 e 2.878 reviews distintos. É corpus suficiente para que a frequência inversa de documento signifique alguma coisa: um termo que aparece em 30 dos 339 blocos de baixa nota e em 3 dos 418 de alta nota é um sinal, não um acidente de escrita. O pipeline é declarado: remoção de URLs → remoção de tokens não latinos → stopwords em inglês → n-gramas.
-
-**QA5 — TF-IDF é vedado.** A pergunta olha o quadrante de alto engajamento e baixa nota: **19 produtos, 147 avaliações, ≈ 49,5 mil caracteres** (ver Figura 6, `fig06_quadrantes.png`). Dezenove documentos não sustentam o método. Com esse *n*, a estatística de TF-IDF vira ruído com aparência de resultado: um termo que apareça em 2 dos 19 blocos recebe peso alto e pode ser apenas o jargão de um fabricante, ou a mesma frase copiada em duas avaliações. Pior, o resultado seria apresentado com a mesma cara de rigor do resultado de Q7 — mesma tabela, mesmas colunas, mesmo ar de método — sem ter a mesma sustentação.
-
-A alternativa adotada é **leitura qualitativa dirigida com protocolo de codificação**: os 19 blocos — 147 avaliações — são codificados segundo um livro de códigos declarado antes da contagem e aplicado de forma determinística, e a frequência é reportada como contagem de blocos sobre o denominador 19, não como peso estatístico. É um método mais barato em ferramenta e mais caro em honestidade — obriga a dizer "15 dos 19 blocos" em vez de deixar o algoritmo parecer que decidiu sozinho.
-
-**Alternativas descartadas nesta frente:**
-
-| Alternativa | Por que foi descartada |
-|---|---|
-| TF-IDF sobre os 19 blocos de QA5 | corpus insuficiente; produziria número com aparência de método e sem sustentação |
-| Classificador de sentimento pré-treinado | reprodutibilidade frágil no escopo do módulo — o resultado não poderia ser reproduzido pelo validador do projeto |
-| Filtragem colaborativa a partir dos avaliadores | apenas **909 de 9.036 usuários distintos (10,1%)** avaliam mais de um produto na base analítica; a matriz é esparsa demais. Nenhum identificador de consumidor aparece em qualquer saída (T7) |
-| Tratar cada review como documento independente | o rótulo (nota) é do produto, não da avaliação — ver 7.2 |
-
-### 7.5 L1 — o truncamento em 8 avaliações, e por que é a limitação mais importante do projeto
+### 7.4 L1 — o truncamento em 8 avaliações, e por que é a limitação mais importante do projeto
 
 A base disponibiliza **no máximo 8 avaliações por produto**; a média medida é **7,85**. Os blocos estão quase todos cheios, o que parece bom e não é: significa que o teto foi atingido em praticamente todo o catálogo. Um produto com 426.973 avaliações registradas em `rating_count` contribui com as mesmas 8 avaliações de texto que um produto com 200.
 
@@ -2196,177 +2086,23 @@ Por isso a redação é fixada e não é negociável:
 
 Uma segunda limitação incide sobre o mesmo bloco (L2): as avaliações estão predominantemente em inglês, e o pipeline **remove tokens não latinos**, o que descarta conteúdo real antes da análise. Os temas extraídos representam o subconjunto em alfabeto latino. A parcela descartada não foi quantificada por idioma — e isso está declarado como lacuna, não resolvido por estimativa.
 
-### 7.6 O que este bloco não afirma
+### 7.5 O que este bloco não afirma
 
 Três vedações se aplicam com força particular ao texto, porque é aqui que a linguagem escorrega com mais facilidade:
 
-- **T4 — nenhuma frase causal.** "Clientes reclamam de durabilidade porque o produto tem desconto alto" é indefensável a partir de co-ocorrência de termos. A forma correta é "o tema durabilidade aparece com mais frequência nos blocos da faixa de nota < 4,0".
+- **T4 — nenhuma frase causal.** "Clientes reclamam de durabilidade porque o produto tem desconto alto" é indefensável a partir de co-ocorrência de termos. A forma correta é "o eixo falha e durabilidade aparece com marcador negativo em 7 dos 19 blocos de Q5".
 - **T6 — `rating_count` é volume de avaliações.** Um produto muito comentado não é um produto muito vendido. Não há variável de venda na base (L4).
 - **T7 — nenhum identificador de consumidor.** `user_id` e `user_name` não aparecem em visual, slide ou frame de vídeo, e a base versionada do projeto não os contém. Comentários são tratados de forma agregada; nenhum autor é identificado.
 
 ---
 
-### 7.7 Os temas encontrados — o que o texto efetivamente diz
-
-As seções anteriores descreveram o método. Esta traz o resultado: **quais temas aparecem**, separados por faixa de nota.
-
-#### O achado que vem antes dos temas: frequência bruta não separa nada
-
-O primeiro resultado é negativo, e precisa ser dito porque explica todo o resto. Os termos mais frequentes são **praticamente os mesmos nas três faixas de nota**:
-
-| Faixa | *n* blocos | Termos mais frequentes (% de blocos em que aparecem) |
-|---|---|---|
-| Nota < 4,0 | 339 | good 93% · product 88% · quality 59% · use 52% · price 50% · nice 47% |
-| Nota 4,0–4,29 | 591 | good 98% · product 92% · quality 68% · use 57% · price 57% · nice 51% |
-| Nota ≥ 4,3 | 418 | good 97% · product 88% · quality 66% · use 55% · one 54% · like 52% |
-
-*Fonte: `02_results/tables/tab14_ngramas.csv` · base analítica · n = 1.348 · unidade: bloco de review (T8).*
-
-**`good` aparece em 93% dos blocos de produtos mal avaliados.** Isso não é erro de medição — é consequência direta de **L1**. A base entrega no máximo 8 avaliações por produto, e são as que o marketplace escolheu exibir na página. Esse recorte é positivamente enviesado por construção: mesmo um produto com nota mediana 3,9 tem avaliações elogiosas na vitrine.
-
-A consequência metodológica é séria e vale registrar: **um relatório que publicasse "os clientes valorizam qualidade e preço" a partir dessa contagem estaria descrevendo o viés da vitrine, não a percepção do consumidor.** É o tipo de conclusão que parece robusta — 93% é um número grande — e não sustenta nada.
-
-Por isso o que reportamos abaixo não é frequência, é **contraste**: o quanto um termo é mais característico de uma faixa do que da outra, medido pela diferença de TF-IDF médio entre os blocos de nota < 4,0 e os de nota ≥ 4,3.
-
-**O recorte das três tabelas é Electronics, e isso muda o alcance da leitura.** O contraste sobre a base inteira mistura famílias com vocabulário incompatível — cabo, aquecedor e liquidificador não disputam os mesmos termos —, e o sinal se dilui: `remote` cai de +0,0349 para +0,0162 e metade dos termos sai do top-15. As tabelas abaixo são o contraste **dentro de Electronics**, a maior família do catálogo (490 produtos), com **128 blocos** de nota < 4,0 e **136** de nota ≥ 4,3. Não é a única com massa: Home & Kitchen tem 144 e 106, e Computers & Accessories, 65 e 153. Esse contraste **não foi feito** nelas — é lacuna declarada, e é por ela que os eixos abaixo valem para Electronics e não para o catálogo. Os eixos que elas nomeiam valem para Electronics, não para o catálogo inteiro, e a `tab14` publica os dois recortes na coluna `recorte`.
-
-#### Temas associados à insatisfação (nota < 4,0)
-
-| Termo | Δ TF-IDF | Leitura |
-|---|---|---|
-| `remote` | +0,0349 | controle remoto |
-| `bass` | +0,0328 | **áudio** |
-| `original` | +0,0291 | autenticidade / peça genuína |
-| `buttons` | +0,0247 | controles físicos |
-| `working` | +0,0234 | **parada de funcionamento** |
-| `noise` | +0,0225 | **áudio** |
-| `properly` | +0,0212 | funcionamento parcial |
-| `ear` | +0,0207 | **áudio** |
-| `music` | +0,0202 | **áudio** |
-| `sound quality` (bigrama) | +0,0179 | **áudio** |
-| `original remote` (bigrama) | +0,0169 | controle remoto não genuíno |
-
-*Δ positivo = mais característico da faixa de nota baixa. Recorte **Electronics** (n = 490) · **128 blocos** na faixa · `tab14_ngramas.csv`, `recorte = Electronics`.*
-
-**Verificação da leitura de `working`.** Um termo isolado é ambíguo: "working" poderia indicar tanto funcionamento quanto falha. Medimos a construção em que ele aparece nas avaliações de nota < 4,0:
-
-| Construção | Ocorrências |
-|---|---|
-| *is not working* | 30 |
-| *it is working* | 10 |
-| *it stopped working* | 7 |
-| *remote is working* | 5 |
-| *was not working* | 4 |
-| *cable stopped working* | 3 |
-| *are not working* | 3 |
-
-A leitura se confirma: **`working` é reclamação de parada de funcionamento**, não de uso. Sem essa verificação, o tema teria sido publicado por inferência — e a inferência oposta era igualmente plausível.
-
-**Dois eixos temáticos emergem em Electronics:**
-
-1. **Falha e durabilidade** — `working`, `properly`, `stopped working`. O produto para de funcionar, às vezes depois de já ter funcionado.
-2. **Áudio** — `bass`, `noise`, `ear`, `music`, `sound quality`. Quatro dos onze termos, e um dos dois bigramas.
-
-#### Temas associados à satisfação (nota ≥ 4,3)
-
-| Termo | Δ TF-IDF | Leitura |
-|---|---|---|
-| `cable` | −0,0300 | cabo que cumpre o prometido |
-| `picture` | −0,0233 | **imagem** |
-| `excellent` | −0,0233 | avaliação geral |
-| `service` | −0,0217 | atendimento |
-| `speed` | −0,0213 | **velocidade** (carga / transferência) |
-| `installation` | −0,0213 | facilidade de instalação |
-| `fast` | −0,0209 | **velocidade** |
-| `hdmi` | −0,0207 | **imagem** / conectividade |
-| `picture quality` (bigrama) | −0,0203 | **imagem** |
-
-*Fonte: `02_results/tables/tab14_ngramas.csv`, coluna `delta_tfidf`, `recorte = Electronics` · unidade: bloco de review (T8) · faixa alta = nota ≥ 4,3, **136 blocos** dentro de Electronics.*
-
-*Δ negativo = mais característico da faixa de nota alta.*
-
-**Três eixos de valorização em Electronics:** velocidade (`speed`, `fast`), qualidade de imagem (`picture`, `hdmi`, `picture quality`) e facilidade — instalação simples, cabo que funciona, atendimento.
-
-#### O contraste mais informativo: som × imagem
-
-Os dois bigramas de qualidade caem em lados opostos, e a simetria é quase perfeita:
-
-| Bigrama | Δ TF-IDF | Faixa |
-|---|---|---|
-| `sound quality` | **+0,0179** | característico da nota **baixa** |
-| `picture quality` | **−0,0203** | característico da nota **alta** |
-
-*Fonte: `02_results/tables/tab14_ngramas.csv`, coluna `delta_tfidf`, `recorte = Electronics` · faixa baixa = **128 blocos**, faixa alta = **136 blocos**.*
-
-A palavra "quality" sozinha aparece em ~60% dos blocos das duas faixas e não distingue nada. **O que distingue é o substantivo que ela qualifica.** Quem comenta qualidade de som tende a estar insatisfeito; quem comenta qualidade de imagem, satisfeito.
-
-#### Onde a insatisfação se concentra — e o teste que quase derrubou este achado
-
-A versão anterior deste relatório afirmava haver **convergência independente** entre o eixo de áudio no texto e a subcategoria **Headphones, Earbuds & Accessories** (52,4% dos produtos abaixo do limiar). Submetemos a afirmação a um teste, e ela **não passou**.
-
-**O teste.** Se as duas medições fossem independentes, excluir os fones do corpus deixaria o eixo de áudio em pé. Refizemos o contraste sem eles:
-
-| Corpus | Termos de áudio no top-25 da faixa baixa |
-|---|---|
-| Todos os produtos | `bass` · `ear` · `music` · `noise` · `sound` · `sound quality` |
-| **Sem Headphones/Earbuds** | **apenas `noise`** |
-
-As duas medições **não são independentes**: dos 339 produtos da faixa baixa, **33 são fones (9,7%)**; da faixa alta, **1 (0,2%)**. O tema de áudio aparece no contraste **porque** os fones estão quase todos de um lado. É uma medição vista de dois ângulos, não duas.
-
-**O que o teste revelou, e que é mais útil.** Excluindo os fones, o contraste não fica vazio — ele muda de assunto:
-
-> `remote` · `water` · `working` · `heater` · `heating` · `cord` · `item`
-
-Isso aponta para um **segundo foco**: aquecedores e produtos de climatização, mais falha de funcionamento. E ele tem endereço na tabela de subcategorias: **Home & Kitchen | Heating, Cooling & Air Quality**, com **37,9% abaixo do limiar** — a segunda pior taxa das oito (IC95% de 30% a 47%, também acima da base) — e a maior dispersão das oito **em estimativa pontual** (dp 0,346; IC95% de 0,26 a 0,45), sem se distinguir, porém, de Kitchen & Home Appliances (0,336) nem de TV (0,310).
-
-**A leitura correta, portanto, é esta:** a insatisfação do portfólio não está espalhada, mas também **não tem um único endereço**. Tem **dois**, e a dispersão das notas sugere ações diferentes — **como hipótese**:
-
-| Foco | Subcategoria | % abaixo de 4,0 (IC95%) | Dispersão (IC95% do dp) | O que a dispersão sugere — hipótese |
-|---|---|---|---|---|
-| **Áudio** | Headphones, Earbuds & Acc. | **52,4%** (40–64%) | 0,224 (0,19–0,25) | distribuição deslocada — começar pela categoria |
-| **Climatização** | Heating, Cooling & Air Quality | **37,9%** (30–47%) | 0,346 (0,26–0,45) | bons e ruins misturados — começar pelo produto |
-
-*Fonte: `02_results/tables/tab16_satisfacao_subcategoria.csv`, `tab29_dispersao_intervalos.csv` e `tab30_levene_fones_climatizacao.csv` · base analítica · n = 1.348 · Headphones n = 63 · Heating n = 116 · ambas acima do piso n ≥ 30 (T2) · dispersão = desvio-padrão da nota.*
-
-**Essa distinção é hipótese, e precisa ser dita como tal:** a diferença de dispersão entre os dois focos **não é estatisticamente significativa** (Levene, p = 0,18). O que a evidência autoriza é que **as duas subcategorias concentram insatisfação acima da base** e que, em ambas, a revisão começa **lendo os produtos abaixo de 4,0** — 33 nos fones e 44 na climatização. A ação específica de cada uma sai dessa leitura, e não da dispersão.
-
-#### Um teste de robustez que o achado passou
-
-Blocos de review idênticos entre produtos diferentes poderiam inflar o contraste de forma assimétrica — a faixa alta tem 18,9% de blocos duplicados contra 8,0% da faixa baixa. Refizemos o contraste contando **cada bloco uma única vez**: os termos característicos de cada faixa **permanecem os mesmos**, na mesma ordem. A duplicação não contamina o resultado.
-
-> **Em linguagem de liderança:** o problema de percepção não está espalhado pelo catálogo — mas também não tem um endereço só. Tem **dois**: fones e climatização, ambos com taxas de insatisfação acima da base. A dispersão das notas sugere tratar os fones como categoria e a climatização produto a produto — hipótese que a leitura dos produtos abaixo de 4,0 confirma ou desfaz. Do outro lado, o que o comprador elogia é previsível e barato de proteger: que instale fácil, que seja rápido, que o cabo funcione.
-
-#### O que estes temas **não** autorizam a dizer
-
-- **Não são "a voz do cliente".** São os temas visíveis em até 8 avaliações por produto, escolhidas pelo marketplace (L1). Nenhuma frase deste bloco começa com "a maioria dos clientes".
-- **Não são causa.** `sound quality` estar associado à nota baixa não significa que o som cause a insatisfação; significa que quem escreveu sobre som estava, com mais frequência, insatisfeito (T4).
-- **Não são exaustivos.** O pipeline descarta tokens não latinos (L2), e a parcela descartada não foi quantificada por idioma.
-- **Magnitude é pequena.** Os Δ TF-IDF estão na terceira casa decimal. Eles ordenam os temas de forma confiável; não medem intensidade de sentimento (T5).
-
----
-
-### 7.8 QA5 — os 19 produtos de alto risco, lidos um a um
+### 7.6 QA5 — os 19 produtos de alto risco, lidos um a um
 
 Q5 devolve uma lista de **19 produtos** com volume ≥ p90 (36.384 avaliações) e nota < 4,0. Eles concentram **147 avaliações** no corpus, distribuídas em **19 blocos** (um por produto, como T8 exige): **49,5 mil caracteres de `review_content`**, ou 53,1 mil contando também os títulos, que é a unidade que o pipeline de texto usa.
 
-**Por que aqui não se usa TF-IDF.** Dezenove blocos não sustentam estatística de texto: qualquer termo que apareça em três deles já vira 16% do corpus. A vedação está registrada em `escopo_15_perguntas.md` §4 e é a razão de QA5 usar **leitura qualitativa dirigida com protocolo de codificação**, e não o método de Q7.
+**Por que aqui não se usa TF-IDF.** Dezenove blocos não sustentam estatística de texto: qualquer termo que apareça em três deles já vira 16% do corpus. A vedação está registrada em `escopo_perguntas.md` §4 e é a razão de QA5 usar **leitura qualitativa dirigida com protocolo de codificação**, e não estatística de frequência. Em Q7 o mesmo método vale porque o contraste tem 128 e 136 blocos (§5.8): o que muda entre as duas decisões é o tamanho do corpus.
 
-**Qual dos dois focos aparece aqui — e por que só um.** A §7.7 isolou dois focos de insatisfação, com dispersões de nota diferentes — hipótese, não conclusão: fones e climatização. A composição dos 19 responde de forma direta:
-
-| Composição dos 19 produtos de Q5 | *n* | % |
-|---|---|---|
-| **Electronics \| Headphones, Earbuds & Acc.** | **10** | **52,6%** |
-| Home & Kitchen \| Kitchen & Home Appliances | 6 | 31,6% |
-| Electronics \| Home Audio | 1 | 5,3% |
-| Electronics \| Mobiles & Accessories | 1 | 5,3% |
-| Electronics \| Cameras & Photography | 1 | 5,3% |
-| **Home & Kitchen \| Heating, Cooling & Air Quality** | **0** | **0%** |
-
-*Base analítica · n = 1.348 · os 19 produtos com `q5_risco_vitrine` = verdadeiro.*
-
-**O primeiro foco domina a lista:** mais da metade dos 19 são fones, e os dois eixos temáticos de §7.7 são visíveis nos blocos de texto desses produtos — o eixo **som, ruído e microfone** aparece em **15 dos 19 blocos**, os 15 com marcador negativo, e o de **falha e durabilidade** em **8**, 7 deles com marcador negativo.
-
-**Mas esses dois não são os que mais predominam, e dizer isso é a resposta de QA5.** A pergunta é *quais temas de reclamação predominam*, e o livro de códigos tem nove eixos. Ordenados pelo número de blocos com marcador negativo:
+**A resposta de QA5.** A pergunta é *quais temas de reclamação predominam*, e o livro de códigos tem nove eixos. Ordenados pelo número de blocos com marcador negativo:
 
 | Eixo temático | Blocos com o eixo | Com marcador negativo | % dos 19 |
 |---|---|---|---|
@@ -2382,29 +2118,24 @@ Q5 devolve uma lista de **19 produtos** com volume ≥ p90 (36.384 avaliações)
 
 *Fonte: `tab23_qa5_temas.csv` · base analítica · quadrante Q5, 19 produtos · unidade: bloco de review (= produto), até 8 avaliações por bloco (L1) · marcador negativo a até 60 caracteres do termo · denominador 19, nunca por avaliação.*
 
-O tema que mais aparece com marcador negativo é **som, ruído e microfone** (15), mas o segundo é **preço e custo-benefício** (14 — o eixo está presente em 18 dos 19 blocos), seguido de **bateria e autonomia** (10). **Falha e durabilidade**, o tema que o contraste de n-gramas destaca em Electronics (§7.7), é só o sétimo (7). A leitura que a lista autoriza é de **presença**, e não de proporção de clientes (L1): o eixo de preço é frequente porque quase todo bloco comenta preço, e o marcador negativo a 60 caracteres não distingue "caro" de "vale o preço". Com 19 blocos, a ordem entre eixos próximos — conforto e desempenho, com 9 cada — não é informativa. Os 6 de Home & Kitchen **não são de climatização**: são eletrodomésticos de cozinha — chaleiras elétricas, cooktop de indução, liquidificadores.
-
-**O segundo foco está ausente, e a ausência é informativa — não é lacuna.** Nenhum produto de *Heating, Cooling & Air Quality* entra em Q5, e isso não é coincidência de amostra: dos **116 produtos da subcategoria, apenas 1 alcança o decil superior de volume**, e **nenhum** combina esse volume com nota abaixo de 4,0. Ou seja, o problema de climatização **não pode** aparecer num quadrante que exige alta exposição — ele vive em produtos pouco avaliados, espalhados, e é por isso que sua assinatura estatística é a **dispersão** (dp 0,346), não a concentração.
-
-Isso fecha o argumento de §7.7 em vez de apenas repeti-lo: os dois focos pedem ações diferentes **porque aparecem em lugares diferentes do catálogo**. O de fones é capturável por um quadrante de exposição; o de climatização só aparece quando se olha a dispersão interna da subcategoria. Um relatório que usasse só Q5 como lente **nunca encontraria o segundo**.
+O tema que mais aparece com marcador negativo é **som, ruído e microfone** (15), mas o segundo é **preço e custo-benefício** (14 — o eixo está presente em 18 dos 19 blocos), seguido de **bateria e autonomia** (10). A leitura que a lista autoriza é de **presença**, e não de proporção de clientes (L1): o eixo de preço é frequente porque quase todo bloco comenta preço, e o marcador negativo a 60 caracteres não distingue "caro" de "vale o preço". Com 19 blocos, a ordem entre eixos próximos — conforto e desempenho, com 9 cada — não é informativa.
 
 **A lista nominal dos 19 produtos está publicada em `02_results/tables/tab19_q5_risco_vitrine_nominal.csv`**, com nome, categoria, nível 2, volume de avaliações, nota bruta, nota corrigida, preço de tabela e desconto — produto a produto, como T2 exige para que a exceção ao piso amostral seja válida.
 
-**As outras duas listas nominais do relatório também estão publicadas**, e a razão de estarem é a mesma: recomendar ação sobre um conjunto que o leitor não consegue recuperar não é recomendação.
+**A outra lista nominal do relatório também está publicada**, e a razão de estar é a mesma: recomendar ação sobre um conjunto que o leitor não consegue recuperar não é recomendação.
 
 | Lista | Arquivo | *n* |
 |---|---|---|
 | Q5 — risco de vitrine | `tab19_q5_risco_vitrine_nominal.csv` | **19** |
 | Q6 — lista acionável, já corrigida por Wilson (M22) | `tab20_q6_acionavel_nominal.csv` | **61** |
-| Âncoras — volume ≥ p90 e nota ≥ 4,3 | `tab21_ancoras_nominal.csv` | **41** |
 
-As três são geradas por `src/gera_figuras.py`, que **falha** se as contagens divergirem de 19, 61 e 41 — a lista não pode silenciosamente deixar de bater com o número publicado no texto.
+As duas são geradas por `src/gera_figuras.py`, que **falha** se as contagens divergirem de 19 e 61 — a lista não pode silenciosamente deixar de bater com o número publicado no texto.
 
 > **Por que estes 19 são a ação mais imediata do relatório:** são os produtos **mais avaliados** — todos no decil superior de volume, proxy declarado de exposição (D-1) — e que **pior avaliação recebem**. São poucos e nominais: dá para agir produto a produto, em vez de sobre centenas de produtos de cauda.
 
 ---
 
-### 7.9 Padrão visual: a paleta v06 e a regra 60-30-10
+### 7.7 Padrão visual: a paleta v06 e a regra 60-30-10
 
 O padrão visual do projeto é uma **tabela única de tokens** (v06, de 24/09/2026), e não uma sugestão de estilo. A estrutura segue a regra 60-30-10 — 60% de base, 30% de estrutura, 10% de chamada — que existe para garantir que o olho encontre o ponto importante da página em vez de disputar atenção com seis elementos coloridos.
 
@@ -2420,7 +2151,7 @@ A versão anterior (v05) resolvia esse caso criando um token extra, `atencao_tex
 
 A **regra dos 10%** é verificada ao fechar cada página: há **um único** elemento em âmbar. Se há dois, não há foco — há decoração.
 
-### 7.10 Por que a ordem das séries foi alterada
+### 7.8 Por que a ordem das séries foi alterada
 
 A prancha aprovada trazia a escala categórica nesta ordem: `âmbar · teal · ardósia · laranja · azul · ardósia clara`. A v06 usa `âmbar · azul · ardósia clara · laranja · teal · ardósia`. **Nenhuma cor foi trocada — só a ordem de atribuição.** E a razão não é estética.
 
@@ -2438,7 +2169,7 @@ Pior separação do conjunto, por número de séries no visual:
 
 **O trade-off foi real.** A ordem da prancha é mais bonita: âmbar e teal juntos dão o contraste quente-frio que caracteriza a identidade do projeto, e a v06 empurra o teal para a quinta posição, onde ele quase nunca aparece. Trocamos identidade visual imediata por legibilidade de todos os gráficos de 3 a 5 séries. Foi a escolha certa porque a primeira é percebida por quem olha o slide; a segunda decide se uma parte da plateia consegue ler o gráfico.
 
-### 7.11 O limite de 5 séries é uma regra de leitura, não de gosto
+### 7.9 O limite de 5 séries é uma regra de leitura, não de gosto
 
 A reordenação não resolve tudo, e o padrão diz isso em voz alta. Teal e ardósia estão ambos na paleta, então **nenhuma ordem** salva o caso de 6 séries: em algum momento os dois aparecem juntos. Não é defeito da ordem — é da composição da paleta.
 
@@ -2450,7 +2181,7 @@ A regra, portanto:
 
 Os outros 14 pares da paleta ficam todos em ΔE ≥ 16,7 sob deuteranopia — o problema é exclusivamente esse par, e por isso a regra é cirúrgica em vez de genérica. Duas regras acompanham: **âmbar e laranja nunca como séries adjacentes** (separação de 2,02:1, e ambos migram para o mesmo amarelo sob deuteranopia), e **escala certa para o dado certo** — categórica para grupos sem ordem, sequencial teal para intensidade sem ponto neutro, divergente **só** quando o zero tem significado.
 
-### 7.12 T9 — a paleta vale em todo artefato, e é aplicada por ferramenta
+### 7.10 T9 — a paleta vale em todo artefato, e é aplicada por ferramenta
 
 A regra T9 foi acrescentada em 24/09/2026 e é a que dá dentes ao padrão: **toda saída visual do projeto usa exclusivamente a paleta v06** — `.pbix`, notebook, gráfico em Python, tabela, relatório, deck, vídeo, diagrama e qualquer arquivo gerado. A rubrica de avaliação pontua dashboard **e** vídeo; se os dois não parecerem o mesmo produto, a inconsistência é visível antes de qualquer número.
 
@@ -2464,29 +2195,29 @@ A segunda metade da regra é o que a torna cumprível: **a aplicação é sempre
 
 Uma limitação de formato ficou registrada, porque é do Power BI e não do padrão: o JSON de tema comporta apenas `minimum`/`center`/`maximum` para escala de cor, sem campo para uma rampa de 6 ou 7 passos. O tema carrega a escala sequencial nesse trio (`#EAF3F2` → `#96C6C2` → `#12504D`), que o Power BI interpola; a escala divergente e qualquer uso em faixas discretas são aplicados pela formatação condicional do visual, com os hex lidos da tabela v06. Não é escolha manual de cor — é a mesma fonte, aplicada onde o formato do arquivo não alcança.
 
-### 7.13 As cinco áreas do dashboard, em sete páginas
+### 7.11 As cinco áreas do dashboard, em sete páginas analíticas
 
-O enunciado apresenta a estrutura de cinco áreas como **referência, não obrigação**. O grupo a adotou por decisão própria: ela separa o material pelo eixo do problema — Preço → Desconto → Engajamento → Satisfação — e evita a página-depósito onde todo gráfico que sobra vai parar. Cada área existe para responder um conjunto declarado das 15 perguntas do escopo fechado, e nenhum visual entra sem esse vínculo.
+O enunciado apresenta a estrutura de cinco áreas como **referência, não obrigação**. O grupo a adotou por decisão própria: ela separa o material pelo eixo do problema — Preço → Desconto → Engajamento → Satisfação — e evita a página-depósito onde todo gráfico que sobra vai parar. Cada área existe para responder um conjunto declarado das 14 perguntas do escopo, e nenhum visual entra sem esse vínculo.
 
-**As cinco áreas ocupam sete páginas**, e o motivo é de leitura, não de conteúdo. A área 2 — *Produtos e Categorias* — concentra **sete das quinze perguntas** (Q1, Q4, Q5, Q6, QA3, QA6 e QA7); três delas — Q1, Q4 e Q8 — também aparecem na Visão Executiva, em versão de cartão, e é a §9.3 que fixa a distribuição página a página. Espremer isso numa tela significaria visuais pequenos demais para serem lidos numa gravação em 1080p, ou um acúmulo de abas internas que esconde metade do trabalho. Ela foi dividida em três páginas — **Categorias**, **Quadrantes** e **Rankings** —, cada uma cabendo inteira numa tela e podendo ser mostrada de uma vez no vídeo.
+**As cinco áreas ocupam sete páginas analíticas**, precedidas de uma página inicial com o roteiro de navegação, os compromissos metodológicos e a equipe. O motivo da divisão é de leitura, não de conteúdo. A área 2 — *Produtos e Categorias* — concentra **seis das catorze perguntas** (Q4, QA3, Q5, Q6, QA6 e QA7), e é a §9.3 que fixa a distribuição página a página. Espremer isso numa tela significaria visuais pequenos demais para serem lidos numa gravação em 1080p, ou um acúmulo de abas internas que esconde metade do trabalho. Ela foi dividida em três páginas — **Categorias**, **Quadrantes** e **Rankings e arquétipos** —, cada uma cabendo inteira numa tela e podendo ser mostrada de uma vez no vídeo.
 
-A divisão não cria área nova: a numeração das áreas continua a do enunciado, e as três páginas carregam o mesmo rótulo de origem.
+A divisão não cria área nova: a numeração das áreas continua a do enunciado, e as três páginas carregam o mesmo número de origem — 2a, 2b e 2c.
 
 | # | Área | O que responde | Perguntas |
 |---|---|---|---|
-| 1 | **Visão Executiva** | tamanho e forma do portfólio, e onde o engajamento se concentra: corte de engajamento alto em p90 = 36.384 avaliações; **306 produtos (22,7% da base analítica) concentram 80% das avaliações** | Q2 · QA2 |
-| 2 | **Produtos e Categorias** | quem merece atenção produto a produto e categoria a categoria: os **19 produtos** de alto engajamento e nota abaixo de 4,0; os **187** candidatos a boa nota com pouco engajamento; as 4 categorias de nível 1 acima do piso; as **8 subcategorias** de nível 2 com 88,3% de cobertura; os **4 arquétipos** comerciais | Q1 · Q4 · Q5 · Q6 · QA3 · QA6 · QA7 |
-| 3 | **Preços e Estratégia Comercial** | se desconto e nota andam juntos, e se o preço de tabela tem associação com a nota: desconto × nota **ρ = −0,150, p = 3,1e-08** — significativo e pequeno; preço de tabela × nota **ρ = +0,032, p = 0,236 — sem associação**; as 5 faixas de desconto com nota corrigida e volume | Q3 · QA1 · QA4 |
-| 4 | **Customer Insights** | o que aparece no texto das avaliações, com o corpus declarado nas três contagens (1.348 blocos · 10.588 referências · 9.255 reviews distintos) e o truncamento em 8 avaliações dito na própria página | Q7 · QA5 |
-| 5 | **Recomendações** | o que fazer com o que foi encontrado, e o que não pode ser afirmado: o bloco completo das limitações L1 a L8 vive aqui | Q8 |
+| 1 | **Visão Executiva** | tamanho e forma do portfólio, e onde o engajamento se concentra: corte de engajamento alto em p90 = 36.384 avaliações; **306 produtos (22,7% da base analítica) concentram 80% das avaliações**; os quatro grupos de volume × nota — Âncora 41 · Risco de vitrine 19 · Subexplorado 187 · Cauda frágil 227, 474 produtos ao todo; os outros 874 são intermediários | Q1 · QA2 |
+| 2 | **Produtos e Categorias** | quem merece atenção produto a produto e categoria a categoria: os **19 produtos** de alto engajamento e nota abaixo de 4,0; os **187** candidatos a boa nota com pouco engajamento, dos quais **61** sobrevivem à correção de Wilson; as 4 categorias de nível 1 acima do piso; as **8 subcategorias** de nível 2 com 88,3% de cobertura, e o quanto a nota varia dentro de cada uma; os **4 arquétipos** comerciais e o contraste B × D | Q4 · QA3 · Q5 · Q6 · QA6 · QA7 |
+| 3 | **Preços e Estratégia Comercial** | se desconto e nota andam juntos, e se o preço de tabela tem associação com a nota: desconto × nota **ρ = −0,150, p = 3,1e-08** — significativo e pequeno; preço de tabela × nota **ρ = +0,032, p = 0,236 — sem associação**; as 5 faixas de desconto com nota corrigida e volume; e se o preço de tabela acompanha o desconto: preço de tabela e preço com desconto medianos por faixa, **ρ = −0,063, p = 0,020** — não resiste à correção de multiplicidade | Q3 · QA1 · QA4 |
+| 4 | **Customer Insights** | o que aparece no texto das avaliações, com o corpus declarado nas três contagens (1.348 blocos · 10.588 referências · 9.255 reviews distintos) e o truncamento em 8 avaliações dito na própria página; o contraste de termos entre nota baixa e alta em Electronics — som na baixa, imagem na alta —; os temas das 147 avaliações dos 19 produtos de Q5 | Q7 · QA5 |
+| 5 | **Recomendações** | o que fazer com o que foi encontrado, e o que não pode ser afirmado: as cinco decisões, cada uma com o seu número, e o bloco completo das limitações L1 a L8 | Q8 |
 
-Três regras de construção valem para as **sete páginas**, e são verificadas antes de publicar:
+Três regras de construção valem para as **oito páginas**:
 
-1. **Rodapé com fonte, base usada, *n* efetivo e limiar aplicado** (T3). Cinco bases convivem no projeto — 1.465 · 1.351 · 1.350 · 1.349 · 1.348 — e a analítica de 1.348 é o padrão. Um número sem base declarada é um número não verificável.
-2. **Um único elemento em âmbar por página** (regra dos 10%).
-3. **Rodapé fixo com L1, L4 e L5 em uma linha cada**, em todas as páginas; o bloco completo das oito limitações fica na página de Recomendações.
+1. **Rodapé com fonte, base usada, *n* efetivo e limiar aplicado** (T3). Toda página fecha com a fonte, a base analítica e o seu *n*, o *n* filtrado pelas segmentações, o corte de engajamento alto (p90) e a moeda (L5). Cinco bases convivem no projeto — 1.465 · 1.351 · 1.350 · 1.349 · 1.348 — e a analítica de 1.348 é o padrão. Um número sem base declarada é um número não verificável.
+2. **No máximo um elemento em âmbar por página** (regra dos 10%).
+3. **Cada limitação aparece onde morde.** L5 está no rodapé de todas as páginas; T6 — volume de avaliações, nunca vendas — está no cartão de volume e no "como ler" da Visão Executiva; L1 abre a página de Customer Insights; o bloco completo das oito limitações fica na página de Recomendações.
 
-A área 4 recebe uma exigência a mais, e é a aplicação direta de tudo que está em 7.5: **o truncamento em 8 avaliações é dito na própria página, não apenas no rodapé de limitações** — e, no vídeo, imediatamente antes do bloco de Customer Insights, nunca depois. Uma limitação que só aparece depois da conclusão chega tarde.
+A área 4 recebe uma exigência a mais, e é a aplicação direta de tudo que está em 7.4: **o truncamento em 8 avaliações abre a própria página, antes de qualquer número do corpus, e não fica só no bloco de limitações da página 5** — e, no vídeo, imediatamente antes do bloco de Customer Insights, nunca depois. Uma limitação que só aparece depois da conclusão chega tarde.
 
 
 ---
@@ -2515,7 +2246,7 @@ Na Amazon, variantes de um mesmo anúncio — cor, tamanho, embalagem — **comp
 | Home & Kitchen | 12,6% | **16,4%** | ❌ não |
 | Volume mediano do arquétipo D | 13.120 | 11.772 | ⚠️ desloca 10% |
 
-*Fonte: base analítica, n = 1.348, contra a **base colapsada**, n = 1.190 — obtida fundindo os 254 produtos que repetem o par `(rating_count, rating)` nos seus 96 grupos (1.348 − 254 + 96). Esse 1.190 coincide por acaso com a cobertura de QA3 (§5.13): são contagens de coisas diferentes.*
+*Fonte: base analítica, n = 1.348, contra a **base colapsada**, n = 1.190 — obtida fundindo os 254 produtos que repetem o par `(rating_count, rating)` nos seus 96 grupos (1.348 − 254 + 96). Esse 1.190 coincide por acaso com a cobertura das subcategorias acima do piso (§5.17): são contagens de coisas diferentes.*
 
 **Regra adotada:** toda leitura de "participação no volume" por categoria passa a citar **as duas versões**. A concentração de Pareto segue publicada com um único número, porque é robusta.
 
@@ -2530,13 +2261,13 @@ Uma limitação só vale alguma coisa quando vira uma frase vedada. Abaixo, cada
 | # | Limitação | O que fica **vedado afirmar** | Onde a restrição morde |
 |---|---|---|---|
 | **L1** | Truncamento em 8 avaliações por produto (média medida **7,85**; máximo **8**) | "a maioria dos clientes pensa que…" | Todo o bloco de Customer Insights |
-| **L2** | Corpus predominantemente em inglês; o pipeline remove tokens não latinos | "os temas cobrem todas as avaliações" | Q7, QA5 |
-| **L3** | Só **4** das **9** categorias de nível 1 têm n ≥ 30 | "análise de portfólio por categoria" sem ressalva | Q1, Q4, QA3 |
+| **L2** | Corpus predominantemente em inglês; o pipeline remove tokens não latinos | "os temas cobrem todas as avaliações" | QA5 |
+| **L3** | Só **4** das **9** categorias de nível 1 têm n ≥ 30 | "análise de portfólio por categoria" sem ressalva | Q1, Q4 |
 | **L4** | Não existe variável de venda, receita, margem, estoque ou data | qualquer recomendação em reais, unidades ou tendência | Recomendações, Q8 |
 | **L5** | Marketplace indiano, valores em rupia indiana, sem conversão | transpor faixas de preço para o mercado brasileiro como resultado | Toda a página de Preços |
 | **L6** | **114** linhas excedentes em **92** `product_id`, **31** com `rating_count` divergente | "a base está limpa na origem" | Preparação dos dados |
 | **L7** | Recorte do catálogo, sem pesos amostrais | generalizar para o marketplace inteiro ou para o e-commerce | Toda conclusão |
-| **L8** | **254** produtos (18,8%) em **96** grupos repetem o mesmo par nota × volume — listagens variantes do mesmo item | participação por categoria sem citar as **duas** versões, com e sem variantes | Q1, Q4, §5.19, página 2a |
+| **L8** | **254** produtos (18,8%) em **96** grupos repetem o mesmo par nota × volume — listagens variantes do mesmo item | participação por categoria sem citar as **duas** versões, com e sem variantes | Q1, Q4, §5.18, página 2a |
 
 **L1 — truncamento.** A base entrega no máximo 8 avaliações por produto, e a média medida é 7,85 (base analítica, n = 1.348). Esse recorte não é amostra aleatória: é o que o marketplace escolheu exibir na página. A consequência é dura e vale a pena dizê-la sem rodeio — o bloco de Customer Insights descreve **os temas visíveis na vitrine**, não a distribuição real das opiniões. Apresentada como "a voz do cliente", a análise cai na primeira pergunta de quem conhece a base; apresentada como "os temas visíveis", o achado sobrevive intacto. *A analogia: lemos os depoimentos que a loja pendurou na parede, não o livro de reclamações.*
 
@@ -2544,7 +2275,7 @@ Uma limitação só vale alguma coisa quando vira uma frase vedada. Abaixo, cada
 
 **L3 — concentração de categorias.** Electronics (490), Home & Kitchen (447) e Computers & Accessories (373) somam **97,2%** da base analítica; Office Products tem **31**, exatamente um produto acima do piso de 30. As outras cinco categorias somam **7 produtos** e nunca são ranqueadas (regra T2). Há uma fragilidade extra aqui: **um único** produto reclassificado tira Office Products do piso e reduz a "análise por categoria" a três famílias.
 
-*(ver **Figura 5**, seção 5.6)*
+*(ver **Figura 5**, seção 5.5)*
 
 **L4 — ausência de variável de venda.** `rating_count` é **volume de avaliações**, um proxy de engajamento (regra T6). A base não traz unidades, receita, margem, estoque nem data. Isso elimina de uma vez toda a família de análises temporais — tendência, sazonalidade, evolução — e proíbe qualquer recomendação expressa em retorno financeiro. Foi também o critério que descartou previsão de vendas e séries temporais do registro de machine learning: não há alvo para treinar.
 
@@ -2700,7 +2431,7 @@ Vale registrar um ponto de fronteira, porque ele aparece no registro de ML: a es
 
 **Ética em dados de avaliação pública.** O fato de um comentário estar visível na internet não o torna material livre para qualquer tratamento. Três regras: comentários entram **sempre agregados**; nenhum autor é identificado; nenhuma citação literal de avaliação individual vai para o vídeo ou para o dashboard. Some-se a isso a limitação L1 — o corpus é o recorte da vitrine —, e a postura ética e a postura estatística convergem: nenhuma frase de Customer Insights começa com "a maioria dos clientes".
 
-*(ver **Figura 12**, seção 6.4)*
+*(ver **Figura 13**, seção 7.3)*
 
 A regra T8 fecha o ciclo no lado técnico: há **1.333 referências repetidas** entre **10.588** referências e **9.255** `review_id` distintos (**759** aparecem em mais de um produto). Quem publicar "referências" no lugar de "reviews distintos" apresenta um corpus **14% maior do que ele é**. Declarar a unidade não é preciosismo de método — é a diferença entre dimensionar e inflar.
 
@@ -2712,14 +2443,14 @@ A regra T8 fecha o ciclo no lado técnico: há **1.333 referências repetidas** 
 
 | # | Decisão | O que trava **hoje** | Resolução registrada |
 |---|---|---|---|
-| ~~D-1~~ | ~~Visibilidade~~ | — | ✅ **fechada em 24/09/2026** — proxy declarado (§5.19) |
-| ~~D-2~~ | ~~Fórmula de relevância~~ | — | ✅ **fechada em 24/09/2026** — matriz 2×2 (§5.19) |
+| ~~D-1~~ | ~~Visibilidade~~ | — | ✅ **fechada em 24/09/2026** — proxy declarado (§5.18) |
+| ~~D-2~~ | ~~Fórmula de relevância~~ | — | ✅ **fechada em 24/09/2026** — matriz 2×2 (§5.18) |
 | ~~D-3~~ | ~~`nota_corrigida`: Wilson ou média bayesiana~~ | — | ✅ **fechada em 01/10/2026** — Wilson 95%, com a ressalva metodológica declarada em §3.7 |
 | ~~D-4~~ | ~~Promover as 4 cores da escala teal a tokens~~ | — | ✅ **fechada em 24/09/2026** — as 4 cores entraram na v06 como escala categórica; nenhum token novo |
 | ~~D-5~~ | `about_product`: destino ou exclusão justificada | — | ✅ **fechada em 01/10** — exclusão justificada: `about_product` descreve promessa do vendedor, não percepção do consumidor |
 | ~~D-6~~ | ~~Confirmar com a instituição a data oficial de entrega~~ | — | ✅ **fechada em 12/10/2026** por decisão de Ricardo — a data não condiciona nenhum número, análise ou conclusão; segue como informada, com a procedência declarada |
 | ~~D-7~~ | Recriar o catálogo de medidas M01–M10 e a matriz de aderência C1–C9 | — | ✅ **fechada em 01/10/2026** — catálogo de **22 medidas** (M01–M22) + matriz C1–C9 |
-| ~~D-8~~ | Declarar a cobertura das 4 perguntas de Customer Insights do enunciado | — | ✅ **fechada em 01/10** — amarração no relatório e no escopo |
+| ~~D-8~~ | Declarar a cobertura das perguntas de Customer Insights do enunciado | — | ✅ **fechada em 01/10** — amarração no relatório e no escopo |
 
 **A ordem que foi efetivamente seguida, e por quê.** D-1, D-2 e D-4 primeiro (24/09): bloqueavam medidas, duas das oito perguntas do enunciado e o primeiro visual — nenhuma página de ranking fechava sem elas. Depois D-3, D-5, D-7 e D-8 (01/10): D-3 porque materializa T1 em toda ordenação; D-7 e D-8 porque pontuam direto em dois dos nove critérios, com a melhor relação esforço/retorno da lista; D-5 porque a exclusão de `about_product` precisava de motivo registrado, não de silêncio. **D-6 ficou por último de propósito**: era a única que dependia de terceiro e a única que não bloqueava nada — e fechou exatamente por isso, ao se constatar que a resposta não mudaria nada no material.
 
@@ -2767,9 +2498,9 @@ O último item merece a frase com que a própria pasta de evidências se descrev
 
 ### 9.1 Estado desta entrega
 
-O `.pbix` **ainda não está construído** no momento desta versão do relatório. Este capítulo documenta o que já está fechado e verificado para construí-lo: o modelo de dados, as **22 medidas** com valor de referência calculado em Python, o tema visual e a estrutura das cinco áreas, distribuídas em sete páginas.
+O dashboard **está construído**: uma página inicial e as sete páginas analíticas, na versão **TC4.R**, exportada em PDF em 13/11/2026. Este capítulo descreve o arquivo entregue: o modelo de dados, as **22 medidas** com valor de referência calculado em Python, o que cada uma das oito páginas mostra e o tema visual. O que cada elemento de cada página representa, item a item e com as telas, está no **manual de leitura** (`docs/manual_leitura_dashboard_v1.pdf`).
 
-Essa ordem não é atraso — é a ordem fixada do projeto (§1.3). E a razão dela mudou de ênfase com a decisão de refazer a preparação no Power Query (§1.6): não é mais que o Power BI apenas consome o que o Python produziu, e sim que **definição que muda tarde custa caro nele e barato no Python**. Mudar um corte de engajamento é uma constante num notebook; no `.pbix` é um conjunto de medidas, filtros, títulos e rótulos espalhados por sete páginas.
+O `.pbix` foi o último artefato construído, e não por atraso — é a ordem fixada do projeto (§1.3). E a razão dela mudou de ênfase com a decisão de refazer a preparação no Power Query (§1.6): não é mais que o Power BI apenas consome o que o Python produziu, e sim que **definição que muda tarde custa caro nele e barato no Python**. Mudar um corte de engajamento é uma constante num notebook; no `.pbix` é um conjunto de medidas, filtros, títulos e rótulos espalhados por sete páginas.
 
 O que o Python continua fazendo, e o Power BI não substitui, são **três coisas que o `.pbix` não consegue mostrar sobre si mesmo**: a trava de integridade da origem (o Power Query não tem função de hash), os testes automáticos (o Power BI não executa testes) e o valor de referência de cada medida — porque uma ferramenta não confere a si mesma. Quando uma medida DAX devolve 4,065, o que atesta esse número é um segundo cálculo, feito por outro caminho.
 
@@ -2818,21 +2549,35 @@ Relacionamento **um para muitos** de `BaseAnalitica[product_id]` para `Reviews[p
 
 Inventar dimensões que o dado não sustenta é o erro mais comum em modelagem de portfólio. O modelo é pequeno porque a base é honesta sobre o que tem.
 
-### 9.3 As cinco áreas, em sete páginas
+### 9.3 A página inicial e as sete páginas analíticas
 
-| Área | Página | Perguntas | Visuais principais |
-|---|---|---|---|
-| 1 · **Visão Executiva** | 1 | Q2 · QA2 · Q8 · Q1 | KPIs de portfólio, histograma de nota, curva de Pareto, matriz de relevância |
-| 2 · **Produtos e Categorias** | **2a** Categorias | Q4 · QA3 | barras por categoria com a supressão de T2 declarada; desvio-padrão da nota nas 8 subcategorias acima do piso, com o *n* no rótulo |
-| | **2b** Quadrantes | Q1 · Q5 · Q6 · QA3 | dispersão volume × nota com os quatro cortes; as listas nominais dos **19** e dos **61**; dispersão por subcategoria |
-| | **2c** Rankings | QA6 · QA7 | nota bruta × nota corrigida lado a lado; os 4 arquétipos e o contraste B × D |
-| 3 · **Preços e Estratégia Comercial** | 3 | Q3 · QA1 · QA4 | faixas de desconto com nota corrigida e volume; ρ dos quatro pares com p e n |
-| 4 · **Customer Insights** | 4 | Q7 · QA5 | o corpus nas três contagens; n-gramas por faixa; temas dos 19 blocos |
-| 5 · **Recomendações** | 5 | Q8 | cinco recomendações com seu número; AUC por bloco; as oito limitações completas |
+| Área | Página | Perguntas |
+|---|---|---|
+| — | **Página inicial** | — |
+| 1 · **Visão Executiva** | **1** · Visão Executiva | Q1 · QA2 |
+| 2 · **Produtos e Categorias** | **2a** · Categorias | Q4 · QA3 |
+| | **2b** · Quadrantes | Q5 · Q6 |
+| | **2c** · Rankings e arquétipos | QA6 · QA7 |
+| 3 · **Preços e Estratégia Comercial** | **3** · Preços e estratégia | Q3 · QA1 · QA4 |
+| 4 · **Customer Insights** | **4** · Customer Insights | Q7 · QA5 |
+| 5 · **Recomendações** | **5** · Recomendações | Q8 |
 
-*O enunciado apresenta essa estrutura como **referência**, não obrigação — "a estrutura do dashboard ficará sob responsabilidade da equipe". O grupo a adotou por decisão própria, e registra que foi decisão. A área 2 ocupa três páginas porque responde sozinha a sete das quinze perguntas (§7.13).*
+**O que cada página mostra**, na ordem da barra de navegação. O detalhe item a item, com as telas, está no manual de leitura.
 
-**Três páginas ocultas** completam o conjunto — a de conferência, descrita em 9.4, e duas de apoio: a de **detalhamento** por produto — acessada das listas nominais e dos rankings, com nota, nota corrigida, volume, preço, desconto, arquétipo e quadrante — e a de **dica de ferramenta**, que mostra o *n* e a nota corrigida ao passar o mouse. Nenhuma das duas exibe dado de consumidor.
+- **Página inicial** — título do projeto e base analítica (n = 1.348); roteiro de navegação das sete páginas analíticas, com as perguntas que cada uma responde; compromissos metodológicos (T1–T9 · L1–L8); equipe.
+- **1 · Visão Executiva** — cinco cartões: nota mediana 4,10 · desconto mediano 49% · preço de tabela mediano 1.795 · volume mediano de avaliações 4.740 · engajamento alto a partir de 36.384 avaliações. Histograma da nota nas faixas baixa, média e alta: um quarto do catálogo está abaixo de 4,0. Curva de Pareto: 306 produtos (22,7% da base) concentram 80% das avaliações, e 39 deles (12,7%) têm nota abaixo de 4,0, metade da taxa da base (§5.11). Os quatro grupos de volume × nota (Q1), com 474 produtos, e os 874 restantes declarados como intermediários, com o "como ler" (§5.18).
+- **2a · Categorias** — % abaixo de 4,0 e nota corrigida mediana nas 4 categorias com n ≥ 30 (T2), com o *n* de cada grupo na dica de ferramenta. Participação no volume de avaliações com e sem listagens variantes (L8): Electronics responde por 59,7%, ou 53,1% sem contar as variantes. Desvio-padrão da nota nas 8 subcategorias acima do piso (QA3, cobertura 88,3%), com climatização e fones em laranja. Tabela das 8 subcategorias com *n*, desvio-padrão, IQR e % abaixo de 4,0.
+- **2b · Quadrantes** — mapa volume de avaliações (escala logarítmica) × nota bruta, um ponto por produto, com os cortes p90 e mediana × 4,0 e 4,3 e a cor do grupo. % abaixo de 4,0 nas 8 subcategorias, contra 25,1% da base, com a ressalva de que a diferença de dispersão entre fones e climatização é hipótese (Levene p = 0,18). As listas nominais dos **19** de Q5 e dos **61** que sobrevivem à correção de Wilson, dos 187 do funil de Q6 — cada produto com o *n* de avaliações ao lado.
+- **2c · Rankings e arquétipos** — o top 10 por nota bruta (11, por empate em 4,7), só para contraste, ao lado do ranking homologado, ordenado pela nota corrigida de Wilson, com o *n*. Os 4 arquétipos (k = 4, semente 42, silhueta 0,234) com *n*, desconto, avaliações e nota medianos. O contraste B × D em desconto (58% e 61%), volume de avaliações (468 e 13.120) e nota (3,9 e 4,2).
+- **3 · Preços e estratégia** — três cartões: preço mediano com desconto (899), preço de tabela mediano (1.795) e desconto mediano (49%). Nota corrigida mediana e volume mediano nas 5 faixas de desconto, todas com n ≥ 30: acima de 80% a nota corrigida cai para 3,906, a única faixa abaixo de 4,0. ρ de Spearman dos quatro pares do eixo, em barras e em tabela com p e *n* (T5): só preço de tabela × nota não tem associação detectável (p = 0,24). Preço de tabela e preço com desconto medianos por faixa: o preço de tabela não acompanha o desconto (ρ = −0,063, p = 0,020, sem significância depois da correção de multiplicidade, §5.13).
+- **4 · Customer Insights** — L1 no alto da página. O corpus nas três contagens (1.348 blocos · 10.588 referências · 9.255 reviews distintos) e por faixa de satisfação (339 · 591 · 418 blocos; 2.502 · 3.875 · 2.878 reviews distintos). Os temas das 147 avaliações dos 19 produtos de Q5, por leitura dirigida (QA5, §7.6). O contraste de termos entre os blocos de nota < 4,0 e ≥ 4,3 em Electronics, 8 termos de cada lado: som na nota baixa, imagem na alta (Q7, §5.8).
+- **5 · Recomendações** — as cinco decisões, cada uma com o seu número (19 · 335 · 61 · ρ −0,150 · 97,2%). AUC por bloco de preditores, de 0,56 (volume) a 0,70 (completo), com a linha do acaso em 0,50. As oito limitações. Como os números foram conferidos: a página Conferência (§9.4), o `verifica_pbix.py`, o teste do sumário executivo e o teste do achado B × D.
+
+*O enunciado apresenta essa estrutura como **referência**, não obrigação — "a estrutura do dashboard ficará sob responsabilidade da equipe". O grupo a adotou por decisão própria, e registra que foi decisão. A área 2 ocupa três páginas porque responde sozinha a seis das catorze perguntas (§7.11).*
+
+**Navegação, segmentações e rodapé.** Uma barra no topo de todas as páginas leva a qualquer uma das oito. As páginas 2a, 2b, 2c e 3 têm quatro segmentações — Categoria, Faixa de desconto, Engajamento e Satisfação —, sincronizadas: a escolha feita numa vale para as quatro. As páginas 1, 4 e 5 não têm, e dizem isso no topo: mostram a base inteira (1.348 produtos). Toda página fecha com o mesmo rodapé: fonte, base analítica, *n* filtrado, corte de engajamento alto e moeda (L5).
+
+**Três páginas ocultas** completam o arquivo. *Detalhe do produto* abre pelo detalhamento — botão direito numa linha das listas dos 19 e dos 61, ou do ranking pela nota bruta — e mostra nota bruta e corrigida, avaliações, preço de tabela, desconto e o perfil do produto. *Dica de ferramenta* é a caixa que aparece ao passar o mouse nos gráficos da 2a, com o *n* e a nota corrigida do grupo. *Conferência* está descrita em §9.4 e é citada na página 5. O PDF exportado traz só as oito páginas visíveis.
 
 ### 9.4 As medidas e a reconciliação com Python
 
@@ -2856,13 +2601,13 @@ São **22 medidas** catalogadas em `03_dashboard/medidas_dax.md` (M01–M22), ca
 
 *Tabela parcial — as **22** estão em `03_dashboard/medidas_dax.md`, com a expressão DAX de cada uma. Valores gerados por `03_dashboard/valores_referencia.py` em `03_dashboard/valores_referencia.csv` — é esse arquivo, de 25 linhas, que a reconciliação DAX × Python confere, medida a medida. A `tab12_valores_referencia.csv`, com 64 valores, serve à auditoria ampla do relatório.*
 
-**Como a reconciliação é feita: dentro do próprio `.pbix`, por conta, não por olho.** A tabela `Conferencia` traz os 25 valores de referência, e uma medida recalcula cada um pelo DAX do catálogo; uma página oculta mostra a diferença linha a linha, e o cartão `Conf · Divergentes` tem de mostrar **zero**. A tolerância é por linha — 0 em contagens, 1e-12 em frações, 1e-8 na nota corrigida —: só diferença de ponto flutuante passa. **O total não basta**, e a página sabe disso: esquecer o `ALL` de um corte dá o mesmo número na base inteira e outro sob filtro — M18 iria de 36.384 a 67.330,9 em Electronics. Por isso ela confere também 6 medidas sob filtro de categoria e as linhas da `Reviews`, que provam a deduplicação. O que nem assim aparece — `ALLSELECTED` no lugar de `ALL` — é pego por `verifica_pbix.py`, que compara a expressão de cada medida do arquivo com a do catálogo. A página é montada **logo depois** das 22 medidas — o DAX não aceita referência a medida que ainda não existe — e fica no arquivo entregue, como evidência de que os números do dashboard são os do Python. Medidas e tabela são geradas por `03_dashboard/gera_conferencia.py`, que falha se o catálogo e a referência se desencontrarem. Divergência significa erro no DAX ou no modelo — nunca "arredondamento diferente". Se o `.pbix` mostra 1.351 produtos onde o Python mostra 1.348, o filtro de base está errado, e é por isso que as cinco bases são declaradas em toda medida.
+**Como a reconciliação é feita: dentro do próprio `.pbix`, por conta, não por olho.** A tabela `Conferencia` traz os 25 valores de referência — 33 linhas ao todo, contando as conferências sob filtro descritas abaixo —, e uma medida recalcula cada um pelo DAX do catálogo; uma página oculta mostra a diferença linha a linha, e o cartão `Conf · Divergentes` tem de mostrar **zero**. A tolerância é por linha — 0 em contagens, 1e-12 em frações, 1e-8 na nota corrigida —: só diferença de ponto flutuante passa. **O total não basta**, e a página sabe disso: esquecer o `ALL` de um corte dá o mesmo número na base inteira e outro sob filtro — M18 iria de 36.384 a 67.330,9 em Electronics. Por isso ela confere também 6 medidas sob filtro de categoria e as linhas da `Reviews`, que provam a deduplicação. O que nem assim aparece — `ALLSELECTED` no lugar de `ALL` — é pego por `verifica_pbix.py`, que compara a expressão de cada medida do arquivo com a do catálogo. A página é montada **logo depois** das 22 medidas — o DAX não aceita referência a medida que ainda não existe — e fica no arquivo entregue, como evidência de que os números do dashboard são os do Python. Medidas e tabela são geradas por `03_dashboard/gera_conferencia.py`, que falha se o catálogo e a referência se desencontrarem. Divergência significa erro no DAX ou no modelo — nunca "arredondamento diferente". Se o `.pbix` mostra 1.351 produtos onde o Python mostra 1.348, o filtro de base está errado, e é por isso que as cinco bases são declaradas em toda medida.
 
 ### 9.5 O tema visual
 
 `method/design_system/tema_fase4_ambar_ardosia.json` é importado **antes do primeiro visual**. Cor aplicada à mão se sobrepõe ao tema, e o padrão se perde.
 
-Regras que valem em toda página: um único elemento em âmbar (regra dos 10%) · máximo de 5 séries por visual, com rótulo direto obrigatório se forem 6 · rodapé com fonte, base e *n* (T3) · valores monetários sem símbolo, em rupia indiana (L5).
+Regras que valem em toda página: no máximo um elemento em âmbar (regra dos 10%) · máximo de 5 séries por visual, com rótulo direto obrigatório se forem 6 · rodapé com fonte, base e *n* (T3) · valores monetários sem símbolo, em rupia indiana (L5).
 
 ---
 
@@ -2870,44 +2615,35 @@ Regras que valem em toda página: um único elemento em âmbar (regra dos 10%) �
 
 ### 10.1 Estado desta entrega
 
-A gravação **ainda não foi produzida**. O roteiro está fechado, cronometrado e com os números amarrados: `04_video/roteiro.md`, com cada indicador rastreado em `04_video/tab_roteiro_numeros.csv` (indicador · valor · base · *n* · regra). **Nenhum número falado no vídeo foi estimado** — o que não estiver naquela tabela não é dito.
+A gravação **ainda não foi produzida**. O roteiro está fechado: `04_video/roteiro.md`, também em `04_video/roteiro_video_v1.pdf` e `.docx`, com cada número falado rastreado em `04_video/tab_roteiro_numeros.csv` (indicador · valor · base · *n* · regra). **Nenhum número falado no vídeo foi estimado** — o que não estiver naquela tabela não é dito.
+
+O vídeo é uma apresentação executiva feita **dentro do dashboard**. Abre com a preparação dos dados e o método; depois passa pelas páginas na ordem da barra de navegação e, em cada uma, diz para que ela serve, o que ler primeiro e onde clicar. As telas citadas no roteiro usam a numeração dos itens do manual de leitura.
 
 ### 10.2 Cronometragem
 
-| # | Bloco | Início | Fim | Duração |
-|---|---|---|---|---|
-| 1 | Contexto do problema *(inclui L5, 10 s)* | 0:00 | 0:40 | 0:40 |
-| 2 | Principais indicadores | 0:40 | 1:30 | 0:50 |
-| 3 | Principais insights *(o conflito B × D)* | 1:30 | 2:40 | 1:10 |
-| 4 | Demonstração do dashboard | 2:40 | 3:37 | 0:57 |
-| — | **L1 — dita antes de Customer Insights** | 3:37 | 3:50 | **0:13** |
-| 5 | **Customer Insights** *(inclui os dois focos de insatisfação)* | 3:50 | 4:50 | **1:00** |
-| 6 | Recomendações *(inclui L4, 12 s)* | 4:50 | 6:00 | 1:10 |
-| 7 | Conclusão executiva | 6:00 | 6:50 | 0:50 |
-| — | margem | 6:50 | 7:00 | 0:10 |
-| | **Total** | | | **6:50 de 7:00** |
+| # | Bloco | O que o enunciado pede | Início | Fim | Duração |
+|---|---|---|---|---|---|
+| 1 | Contexto, preparação dos dados e método | Contexto do problema | 0:00 | 1:10 | 1:10 |
+| 2 | Página inicial e Visão Executiva | Principais indicadores | 1:10 | 1:56 | 0:46 |
+| 3 | Categorias, Quadrantes, Rankings e Preços | Principais insights | 1:56 | 3:30 | 1:34 |
+| 4 | Como usar o painel: filtro e ficha do produto | Demonstração do dashboard | 3:30 | 4:00 | 0:30 |
+| 5 | Customer Insights | Customer Insights | 4:00 | 4:40 | 0:40 |
+| 6 | Recomendações | Recomendações para o negócio | 4:40 | 5:20 | 0:40 |
+| 7 | As três mensagens | Conclusão executiva e mensagens para a liderança | 5:20 | 5:50 | 0:30 |
+| — | margem | | 5:50 | 6:00 | 0:10 |
+| | **Total** | | | | **5:50 de 6:00** |
 
-Os sete blocos são os exigidos pelo enunciado, na ordem em que ele os lista. As três limitações obrigatórias têm posição fixa e tempo reservado: **L5** na abertura, **L1** imediatamente antes de Customer Insights, **L4** junto às recomendações.
+Os sete blocos são os exigidos pelo enunciado, na ordem em que ele os lista. **A meta de 6 minutos é do grupo**; o enunciado admite até 7. O roteiro anterior, de 6:36, foi refeito em 12/11/2026 por dois motivos: caber na meta nova e mostrar o próprio painel — o Power Query e a página de conferência no bloco 1, o filtro e o detalhamento no bloco 4.
 
-**Uma realocação de 18 segundos, e por que ela foi feita.** Numa revisão do roteiro já cronometrado, a busca por `áudio`, `fone`, `climatiz` e `Headphones` no texto inteiro devolveu **zero ocorrências**. O bloco de Customer Insights apresentava o **método** — tamanho do corpus, deduplicação por `review_id`, a lacuna da faixa intermediária — e fechava nos 19 produtos de Q5, **sem dizer uma única vez o que o cliente reclama**. Num dos nove critérios de avaliação, era o próprio critério faltando: a liderança ouviria como o corpus foi construído e não ouviria nenhum tema.
+**As limitações são ditas onde mordem.** L5 e L4 na abertura ("um marketplace indiano, com preços em rupia, sem conversão. Não há dado de venda"); L1 no primeiro trecho de Customer Insights, antes de qualquer tema; e L4 de novo nas recomendações, junto com o limite do modelo de risco — AUC de 0,70 serve para triagem, não para veredito.
 
-O roteiro estava fechado em 6:50 de 7:00, com 10 s de margem, então acrescentar exigiu **tirar**:
+**A fala cabe no tempo, e isso é medido.** São **749 palavras em 350 s (2,14 por segundo)**; contando cada numeral como é lido, ≈ 2,41. O `04_video/confere_amarracao.py` reprova o roteiro se um número falado não estiver na tabela de amarração ou se o ritmo passar dos tetos — 2,6 palavras por segundo, ou 3,0 lendo os numerais por extenso, no total e por bloco —, e o `04_video/gera_storyboard.py` reprova se os blocos saírem de ordem ou passarem de 6:00.
 
-| Ajuste | De | Para | Ganho |
-|---|---|---|---|
-| Bloco 4 — demonstração do dashboard | 1:10 | **0:57** | 13 s |
-| Bloco 5 — trecho de construção do corpus | 14 s | 9 s | 5 s |
-| **Total realocado para o achado dos dois focos** | | | **18 s** |
+**As cinco recomendações são faladas**, na ordem da página 5: os 19, o perfil B, os 61, o desconto como alavanca isolada e a governança em três famílias, começando por fones e climatização.
 
-**O corte de 31/10/2026, e por que a cronometragem sozinha não bastava.** A tabela acima soma tempos escritos; ela não mede a fala. A fala tinha **1.750 palavras para 410 s (4,27 por segundo)** — a 2,5 p/s, ritmo de apresentação, levaria 11,7 minutos — e foi cortada para 1.000 (2,44 p/s). Contando cada numeral como é lido ("1.348" são seis palavras), o ritmo estimado é de ≈ 2,9 p/s, no limite do confortável, e nenhum bloco passa de 3,15. **L1** passou a 13 s e **L4** a 12 s: são cartelas de tela cheia, e a 10 s sairiam acima de 3 p/s onde a dicção precisa ser lenta. Os 3 s de L1 vieram do trecho de corpus do bloco 5, que é método e continua na tela. O `04_video/confere_amarracao.py` reprova o roteiro se um número falado não estiver na tabela de amarração ou se o ritmo passar dos tetos, no total e por bloco.
+**Customer Insights fala o que o texto diz.** Depois de L1, o bloco 5 mostra o contraste de termos de Q7 — som, ruído e ouvido nas notas baixas; imagem, instalação e excelente nas altas — e o que as 147 avaliações dos 19 produtos de Q5 dizem: preço e custo-benefício aparece em quase todos os blocos, e som, ruído e microfone em 15 dos 19 (§7.6).
 
-**Quatro das cinco recomendações.** O relatório traz cinco recomendações; o vídeo fala quatro, em outra ordem — o grupo B, os 19, o desconto e os 61 —, e a quinta, governança em três famílias, fica no relatório e no dashboard. É escolha de tempo, não de conteúdo.
-
-**A escolha de onde cortar não foi arbitrária.** A demonstração do dashboard é a parte que o avaliador **vê na tela** de qualquer forma — encurtar a narração não remove a evidência. A contagem de deduplicação é conteúdo metodológico: a liderança não decide nada com ela, e ela continua no rodapé, na tabela de números e no relatório. O tema, ao contrário, **se não for dito não existe em nenhum lugar do vídeo**.
-
-Os 18 s entregam os dois focos: **fones** com 52,4% abaixo de 4,0 e **climatização** com 37,9%, ambos acima da base, com a ressalva dita em voz alta de que a diferença de dispersão entre eles — que sugere revisar fones como categoria e climatização produto a produto — é hipótese, não conclusão. A taxa da base, 25,1%, entra na tela porque **sem ela 52% e 38% não têm referência**. Os cinco números estão em `04_video/tab_roteiro_numeros.csv`, cada um com o *n* da subcategoria — e a regra do roteiro é que número fora daquela tabela não é dito.
-
-**O que o bloco deliberadamente não afirma.** Que o texto das avaliações *confirma* o problema dos fones. O eixo de áudio no corpus e os 52,4% da subcategoria **não são medições independentes** (§7.7): excluindo os fones, o tema de áudio colapsa de seis termos para um. Os 52,4% se sustentam sozinhos. Apresentar as duas coisas como corroboração cruzada seria contar a mesma evidência duas vezes.
+**O que o vídeo deliberadamente não afirma.** Que o texto das avaliações *confirma* o problema dos fones. Os 52,4% se sustentam sozinhos, na distribuição de notas de 63 produtos (§5.17); o eixo de som do contraste é a mesma medição vista de outro ângulo (§5.8).
 
 ### 10.3 A resposta à pergunta final
 
@@ -2915,26 +2651,24 @@ O enunciado exige que a apresentação encerre respondendo:
 
 > **"Quais são as principais mensagens que a liderança deve levar a partir desta análise?"**
 
-São quatro, e elas ocupam os últimos cinquenta segundos:
+São três, e elas ocupam os últimos trinta segundos:
 
 **1. Desconto não é estratégia de sortimento.** Dois grupos com 58% e 61% de desconto — três pontos de distância — terminam com 468 e 13.120 avaliações medianas, e notas 3,9 e 4,2. Se o desconto fosse a alavanca, esses dois grupos não estariam em lados opostos do portfólio.
 
-**2. Um quarto do catálogo está abaixo de 4,0** (339 produtos, 25,1%), **mas a insatisfação não está onde a atenção está.** Dos 306 produtos que concentram 80% das avaliações, apenas **39 (12,7%)** têm nota abaixo de 4,0 — metade da taxa da base. O risco de reputação é concentrado e pequeno, e por isso mesmo tratável.
+**2. Um quarto do catálogo está abaixo de 4,0** (339 produtos, 25,1%), **e a insatisfação tem endereço: fones (52,4%) e climatização (37,9%).** E ela não está onde a atenção está: dos 306 produtos que concentram 80% das avaliações, apenas **39 (12,7%)** têm nota abaixo de 4,0 — metade da taxa da base.
 
-**3. Existe uma fila de 19 produtos para começar esta semana** — alto engajamento, nota abaixo de 4,0, avaliação escrita disponível para leitura. Não precisa de dado novo, não precisa de projeto, não precisa de orçamento.
+**3. As listas para agir já estão no painel.** Existe uma fila de 19 produtos para começar esta semana — alto engajamento, nota abaixo de 4,0 — e a dos 61 bem avaliados e pouco comentados, com nome e número de avaliações. Nenhuma precisa de dado novo, de projeto ou de orçamento.
 
-**4. E a mais importante: tudo isso foi medido sobre volume de avaliações, não sobre vendas — e sobre no máximo 8 avaliações por produto, em rupia indiana, sem conversão.** Dentro desses limites a evidência é sólida e sustenta decisão. Fora deles não sustenta, e o relatório não finge que sustenta. É esse o valor da análise: saber exatamente até onde ela vai.
-
-*A quarta mensagem é deliberada. Uma apresentação executiva que termina declarando os próprios limites é mais difícil de atacar do que uma que termina em superlativo — e é a única compatível com as regras T4, T5 e T6 que governam este trabalho.*
+*Os limites não ficam para o fim, e é deliberado.* Volume de avaliações não é venda, o texto é o recorte da vitrine e os valores estão em rupia sem conversão: o vídeo diz cada limite antes dos números a que ele se aplica (§10.2). Uma apresentação que declara os próprios limites antes das conclusões é mais difícil de atacar do que uma que os deixa para o último minuto — e é a única compatível com as regras T4, T5 e T6 que governam este trabalho.
 
 ### 10.4 Storytelling
 
 | Elemento | Nesta apresentação |
 |---|---|
-| **Personagem** | a **liderança** é o herói — quem decide sortimento e política de desconto. O time de dados entrega o mapa; quem escolhe o caminho é ela |
+| **Personagem** | a **liderança** é o herói — quem decide sortimento, preço e desconto. O time de dados entrega o mapa; quem escolhe o caminho é ela |
 | **Ambiente** | um catálogo de 1.348 produtos, sem histórico, sem venda e sem cliente identificado. Decisões sendo tomadas com a única evidência disponível: o que o consumidor avaliou |
 | **Conflito** | os arquétipos **B e D** — desconto quase igual, resultado oposto |
-| **Mensagem** | desconto não é estratégia de sortimento, e existe um bloco de 335 produtos descontando fundo sem tração, identificável hoje, sem dado novo |
+| **Mensagem** | desconto não é estratégia de sortimento, e a insatisfação tem endereço — fones e climatização —, com as listas para agir já no painel |
 
 ---
 
@@ -2946,10 +2680,10 @@ São quatro, e elas ocupam os últimos cinquenta segundos:
 
 | O que a pergunta pede | A resposta medida | Onde |
 |---|---|---|
-| **Quais produtos** merecem atenção | os **19** de alto volume e nota abaixo de 4,0 — publicados nominalmente em `tab19` | §5.7 · §7.8 |
-| **Quais categorias** | a comparação válida é por **subcategoria**, não por família: **fones** com 52,4% do sortimento abaixo do limiar e **climatização** com 37,9%, ambos acima da base de 25,1%. A dispersão sugere ações diferentes, como hipótese | §5.18 · §7.7 |
-| **Quais estratégias comerciais** | **desconto profundo não é estratégia de sortimento.** Dois grupos com 58% e 61% de desconto terminam com 468 e 13.120 avaliações medianas e notas 3,9 e 4,2 | §5.17 · §6.6 |
-| **Quais oportunidades** | os **61** produtos bem avaliados e pouco comentados — já corrigidos por Wilson, publicados em `tab20`. Teste controlado, não certeza: sem variável de venda, exposição adicional não é retorno demonstrável | §5.19 |
+| **Quais produtos** merecem atenção | os **19** de alto volume e nota abaixo de 4,0 — publicados nominalmente em `tab19` | §5.6 · §7.6 |
+| **Quais categorias** | a comparação válida é por **subcategoria**, não por família: **fones** com 52,4% do sortimento abaixo do limiar e **climatização** com 37,9%, ambos acima da base de 25,1%. A dispersão sugere ações diferentes, como hipótese | §5.17 |
+| **Quais estratégias comerciais** | **desconto profundo não é estratégia de sortimento.** Dois grupos com 58% e 61% de desconto terminam com 468 e 13.120 avaliações medianas e notas 3,9 e 4,2 | §5.16 · §6.5 |
+| **Quais oportunidades** | os **61** produtos bem avaliados e pouco comentados — já corrigidos por Wilson, publicados em `tab20`. Teste controlado, não certeza: sem variável de venda, exposição adicional não é retorno demonstrável | §5.18 |
 
 **E o que a pergunta não permite responder nesta base**, porque isso também é resposta: nada em reais, nada sobre tendência e nada sobre causa. Não há variável de venda, não há data e correlação não é causalidade — três limites declarados antes do primeiro número, não depois do último.
 
@@ -2965,13 +2699,13 @@ A terceira é metodológica, e vale para quem for defender este trabalho. **Nenh
 
 **O que a análise não permitiu concluir, e por quê.**
 
-O preço de tabela não explica a satisfação (ρ = +0,032, p = 0,236). Isso é um resultado, não uma falha — e está publicado como inconclusivo em vez de ser omitido.
+O preço de tabela não explica a satisfação (ρ = +0,032, p = 0,236) e não acompanha o desconto (ρ = −0,063, p = 0,020, sem significância depois da correção de multiplicidade). São resultados, não falhas — e estão publicados como inconclusivos em vez de omitidos.
 
-Duas das quinze perguntas dependiam de definições de negócio reservadas ao responsável pelo projeto — a fórmula de relevância (Q1) e o rótulo de visibilidade (Q6) — e **as duas foram fechadas em 24/09/2026**, sem criar limiar novo. Q1 devolve a matriz de relevância 2×2 sobre os cortes já operacionais (Âncora 41 · Risco de vitrine 19 · Subexplorado 187 · Cauda frágil 227), **sem índice composto**, porque um peso arbitrado não tem resposta defensável. Q6 devolve **187 candidatos** por nota bruta e **61** depois da correção de Wilson, que é a lista acionável. As quinze perguntas estão respondidas; nenhuma ficou aberta.
+Duas das catorze perguntas dependiam de definições de negócio reservadas ao responsável pelo projeto — a fórmula de relevância (Q1) e o rótulo de visibilidade (Q6) — e **as duas foram fechadas em 24/09/2026**, sem criar limiar novo. Q1 devolve a matriz de relevância 2×2 — no dashboard, os quatro grupos de volume × nota — sobre os cortes já operacionais (Âncora 41 · Risco de vitrine 19 · Subexplorado 187 · Cauda frágil 227), **sem índice composto**, porque um peso arbitrado não tem resposta defensável. Q6 devolve **187 candidatos** por nota bruta e **61** depois da correção de Wilson, que é a lista acionável. As catorze perguntas estão respondidas; nenhuma ficou aberta.
 
 As **oito decisões** registradas ao longo do projeto também estão fechadas (§8.6).
 
-E o bloco de Customer Insights descreve temas visíveis na vitrine, não opinião de consumidor. A base entrega no máximo 8 avaliações por produto — média medida de 7,85 — e esse recorte foi feito pelo marketplace, não por amostragem aleatória. Apresentado como "a voz do cliente", o achado cai na primeira pergunta de quem conhece a base. Apresentado como "os temas que o comprador encontra na página", permanece íntegro.
+E o bloco de Customer Insights descreve temas visíveis na vitrine, não opinião de consumidor. A base entrega no máximo 8 avaliações por produto — média medida de 7,85 — e esse recorte foi feito pelo marketplace, não por amostragem aleatória. Apresentado como "a voz do cliente", o achado cai na primeira pergunta de quem conhece a base. Apresentado como "os temas que o comprador encontra na página", permanece íntegro. Dentro desse limite, o texto mostra um padrão claro em Electronics: som aparece onde a nota é baixa; imagem, onde é alta (§5.8).
 
 ---
 
@@ -2983,11 +2717,11 @@ Todas expressas em ação sobre o portfólio, nunca em receita — a base não c
 
 **2. Tratar o grupo B como candidato a revisão de sortimento.** São 335 produtos praticando 58% de desconto, com nota mediana de 3,9 — o único grupo abaixo do limiar — e volume de avaliações vinte e oito vezes menor que o do grupo D, que pratica desconto equivalente. O desconto já está profundo; o problema não está no preço.
 
-**3. Testar exposição nos 61 produtos bem avaliados e com baixo volume de avaliações — não nos 187.** O corte por nota bruta (≥ 4,3 com volume abaixo da mediana) devolve 187 candidatos, mas **126 deles caem abaixo do limiar quando se aplica a correção de Wilson** que T1 exige em todo ranking: são produtos cuja nota alta repousa em pouquíssimas avaliações. Os **61 restantes** são os que têm percepção boa *já validada por volume suficiente*, e é neles que o teste de exposição se justifica (§5.19). Vale como teste controlado, não como certeza — a base não permite afirmar que exposição adicional converteria em tração.
+**3. Testar exposição nos 61 produtos bem avaliados e com baixo volume de avaliações — não nos 187.** O corte por nota bruta (≥ 4,3 com volume abaixo da mediana) devolve 187 candidatos, mas **126 deles caem abaixo do limiar quando se aplica a correção de Wilson** que T1 exige em todo ranking: são produtos cuja nota alta repousa em pouquíssimas avaliações. Os **61 restantes** são os que têm percepção boa *já validada por volume suficiente*, e é neles que o teste de exposição se justifica (§5.18). Vale como teste controlado, não como certeza — a base não permite afirmar que exposição adicional converteria em tração.
 
 **4. Parar de usar profundidade de desconto como alavanca isolada.** Os dados não mostram associação positiva entre desconto e nota, nem entre desconto e volume. Se o desconto é um instrumento válido, ele precisa estar acompanhado de outra coisa — e essa outra coisa não está nesta base.
 
-**5. Concentrar a governança de catálogo em três famílias, começando por duas subcategorias.** Electronics (490), Home & Kitchen (447) e Computers & Accessories (373) somam 97,2% do portfólio. Começar por fones (52,4% abaixo de 4,0) e climatização (37,9%), ambas acima da base de 25,1%, lendo os 33 e os 44 produtos abaixo de 4,0 antes de decidir a ação.
+**5. Concentrar a governança de catálogo em três famílias, começando por duas subcategorias.** Electronics (490), Home & Kitchen (447) e Computers & Accessories (373) somam 97,2% do portfólio. Começar por fones (52,4% abaixo de 4,0) e climatização (37,9%), ambas acima da base de 25,1%.
 
 ---
 

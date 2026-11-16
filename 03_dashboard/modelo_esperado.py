@@ -50,7 +50,7 @@ RESULTADO = [
     ("tab03", "tab03_correlacoes.csv", "página 3", "Spearman · Q3 e QA4"),
     ("tab05", "tab05_arquetipos.csv", "gabarito da 2c", "perfil dos arquétipos · QA7"),
     ("tab07", "tab07_ml2_blocos.csv", "página 5", "AUC por bloco · Q8"),
-    ("tab14", "tab14_ngramas.csv", "página 4", "n-gramas e TF-IDF · Q7"),
+    ("tab14", "tab14_ngramas.csv", "página 4", "n-gramas e TF-IDF"),
     ("tab23", "tab23_qa5_temas.csv", "página 4", "eixos da QA5 · 19 blocos"),
 ]
 

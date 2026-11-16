@@ -14,7 +14,7 @@ Medido em 24/09/2026 sobre `00_data/gold/`. Fonte executável dos números: **`0
 | Catálogo de medidas | **este arquivo** — 22 medidas, M01 a M22 | ✅ |
 | Matriz de aderência C1–C9 | `method/definitions/matriz_aderencia_C1_C9.md` | ✅ |
 
-A numeração antiga ia até M10; esta vai até **M22** porque o escopo de 15 perguntas exige mais do que dez indicadores. **As decisões que condicionavam medidas também fecharam:**
+A numeração antiga ia até M10; esta vai até **M22** porque o escopo de perguntas exige mais do que dez indicadores. **As decisões que condicionavam medidas também fecharam:**
 
 | Medida | Decisão | Estado |
 |---|---|---|
@@ -247,7 +247,7 @@ MEDIAN ( BaseAnalitica[avaliacoes] )
 | **Base (T3)** | Analítica · n = 1.348 |
 | **Valor de referência** | **4.740** |
 | **Formato** | `#.##0` |
-| **Onde aparece** | Visão Executiva; Q2 |
+| **Onde aparece** | Visão Executiva; corte de engajamento alto |
 
 Numericamente igual a **M19** no contexto total, e **diferente** dela em qualquer contexto filtrado: M08 é a mediana do que está filtrado; M19 é o **corte fixo** da base inteira. Ver M19.
 
@@ -480,7 +480,7 @@ COUNTROWS (
 | **Base (T3)** | Analítica · n = 1.348 · piso T2 = 30 |
 | **Valor de referência** | **8** (de 29) |
 | **Formato** | `#.##0` |
-| **Onde aparece** | Produtos e Categorias (QA3) |
+| **Onde aparece** | Produtos e Categorias (subcategorias, Q4) |
 
 O `CALCULATE` dentro do `FILTER` faz a **transição de contexto**: conta produtos de cada subcategoria, uma a uma. Sem ele, a expressão compara o total da tabela com 30 e devolve 29.
 
@@ -526,9 +526,9 @@ RETURN
 | **Base (T3)** | Analítica · n = 1.348 · piso T2 = 30 |
 | **Valor de referência** | **88,3%** — 1.190 de 1.348 (88,279%) |
 | **Formato** | `0,0%` |
-| **Onde aparece** | rodapé de QA3; página de Recomendações |
+| **Onde aparece** | rodapé das subcategorias (2a); página de Recomendações |
 
-É a medida que **mede a própria T2**: diz quanto do portfólio sobrevive ao piso amostral. Os 11,7% restantes (158 produtos, 21 subcategorias) não entram em nenhuma comparação de QA3.
+É a medida que **mede a própria T2**: diz quanto do portfólio sobrevive ao piso amostral. Os 11,7% restantes (158 produtos, 21 subcategorias) não entram em nenhuma comparação por subcategoria.
 
 Denominador fixo pela mesma razão de M14: a frase publicada é "88,3% **do portfólio**".
 
@@ -548,7 +548,7 @@ PERCENTILEX.INC ( ALL ( BaseAnalitica ), BaseAnalitica[avaliacoes], 0.90 )
 | **Base (T3)** | Analítica · n = 1.348 · p90 de `rating_count` |
 | **Valor de referência** | **36.384** |
 | **Formato** | `#.##0` |
-| **Onde aparece** | rodapé de Q2 e Q5; linha de referência em gráfico de dispersão |
+| **Onde aparece** | rodapé do corte de engajamento e de Q5; linha de referência em gráfico de dispersão |
 
 **O `ALL` é obrigatório e não é detalhe.** O corte é **fechado sobre a base inteira**. Sem `ALL`, o p90 recalcula dentro de cada categoria, a linha de corte passa a flutuar e o visual deixa de bater com os 19 produtos de M11. É o segundo erro de reconciliação mais comum, e o mais silencioso: nenhum número parece errado isoladamente.
 
@@ -590,7 +590,7 @@ DISTINCTCOUNT ( Reviews[review_id] )
 | **Base (T3)** | Reviews · `gold/reviews.csv` · n = 9.255 |
 | **Valor de referência** | **9.255** |
 | **Formato** | `#.##0` |
-| **Onde aparece** | Customer Insights (Q7, QA5) |
+| **Onde aparece** | Customer Insights (corpus e QA5) |
 
 **T8 completo, obrigatório no rodapé da página:**
 
@@ -605,11 +605,11 @@ Sem a linha do truncamento, o corpus aparece **14% maior** do que é, e o bloco 
 ```dax
 Rodapé T3 =
 "Fonte: Amazon Sales Dataset (Kaggle) · base analítica n = "
-    & FORMAT ( CALCULATE ( [Produtos Ativos], ALL ( BaseAnalitica ) ), "#,##0" )
+    & FORMAT ( CALCULATE ( [Produtos Ativos], ALL ( BaseAnalitica ) ), "#,##0", "pt-BR" )
     & " produtos · n filtrado = "
-    & FORMAT ( [Produtos Ativos], "#,##0" )
+    & FORMAT ( [Produtos Ativos], "#,##0", "pt-BR" )
     & " · corte de engajamento alto = "
-    & FORMAT ( [Corte de Engajamento Alto], "#,##0" )
+    & FORMAT ( [Corte de Engajamento Alto], "#,##0", "pt-BR" )
     & " avaliações (p90) · valores em rupia indiana, sem conversão (L5)"
 ```
 
@@ -621,6 +621,8 @@ Rodapé T3 =
 | **Valor de referência** | *(composto de M01 e M18, ambos medidos)* → **"Fonte: Amazon Sales Dataset (Kaggle) · base analítica n = 1.348 produtos · n filtrado = 1.348 · corte de engajamento alto = 36.384 avaliações (p90) · valores em rupia indiana, sem conversão (L5)"** |
 | **Formato** | cartão de texto, `secundario` `#5B6770` (T9) |
 | **Onde aparece** | **rodapé de todas as 7 páginas** |
+
+**Por que `"pt-BR"` nos três `FORMAT`.** Sem o terceiro argumento, `FORMAT` usa a cultura do modelo, que é en-US desde a criação do arquivo e não muda pela localidade de importação: o rodapé saía "1,348" ao lado de cartões com "1.348". As medidas de título já passavam `"pt-BR"`; o rodapé passou a fazer o mesmo em 13/11/2026.
 
 É T3 mecanizado: o rodapé passa a mostrar **o n que está efetivamente filtrado**, em vez de um texto fixo que envelhece no primeiro clique de segmentação. Quando os dois n diferem, a diferença fica visível ao leitor — que é exatamente o ponto da regra.
 
@@ -652,7 +654,7 @@ CALCULATE (
 
 **Dependência de coluna.** `nota_corrigida` é calculada no Power Query (passo 9) e conferida contra a gold pela `qa_compara_gold`; não é recalculada em DAX — igual a M07. Se a definição de `nota_corrigida` mudar, M07 **e** M22 mudam juntas.
 
-*Fonte do valor de referência: `03_dashboard/valores_referencia.py` · relatório §5.19.*
+*Fonte do valor de referência: `03_dashboard/valores_referencia.py` · relatório §5.18.*
 
 ---
 

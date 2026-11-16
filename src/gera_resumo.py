@@ -15,7 +15,7 @@ POR QUE SÃO GERADOS
 Um resumo escrito à mão é uma segunda cópia dos mesmos números, e a primeira
 alteração no relatório deixaria as duas divergentes. Aqui nada é reescrito:
 
-- o SUMÁRIO EXECUTIVO é extraído do relatório — Resumo Executivo, as quatro
+- o SUMÁRIO EXECUTIVO é extraído do relatório — Resumo Executivo, as três
   mensagens para a liderança e as cinco recomendações. E o script FALHA se o
   resumo trouxer um número que o corpo do relatório (fora do próprio resumo)
   não traz: resumo que afirma o que o corpo não sustenta é o defeito clássico.
@@ -196,7 +196,7 @@ for k, ln in enumerate(LINHAS):
     UNIDADES.append((secao, titulo, tokens(ln), palavras(ln), False, ln, ocorrencias(ln)))
 
 # O corpo que sustenta o sumário: as seções numeradas, menos a §10.3, que é
-# cópia literal das quatro mensagens — suporte nela seria circular.
+# cópia literal das três mensagens — suporte nela seria circular.
 CORPO = [u for u in UNIDADES if u[0].startswith("§") and u[0] != "§10.3"]
 
 # Palavra que aparece em muitos parágrafos ("nota", "desconto") não prova contexto.
@@ -217,8 +217,8 @@ def trecho(titulo_inicio, titulo_fim):
 
 
 resumo = trecho("## Resumo Executivo", "### As duas definições que o grupo fechou")
-definicoes = trecho("### As duas definições que o grupo fechou", "### As quatro mensagens para a liderança")
-mensagens = trecho("### As quatro mensagens para a liderança", "## Artefatos e Links do Projeto")
+definicoes = trecho("### As duas definições que o grupo fechou", "### As três mensagens para a liderança")
+mensagens = trecho("### As três mensagens para a liderança", "## Artefatos e Links do Projeto")
 recomendacoes = trecho("## Recomendações para o Negócio", "## Referências")
 SUMARIO = [resumo, definicoes, mensagens, recomendacoes]
 
@@ -369,7 +369,7 @@ def candidatas(r):
         # Numa tabela, a linha cuja PRIMEIRA célula é o nome do grupo e que traz o valor é a
         # medição dele — "| Electronics | 490 | sim |" não é citação de passagem. Isso vale 2,
         # como uma palavra rara: sem isso, a regra dependia de "Electronics" ser rara no
-        # relatório, e bastou a §7.7 citar a categoria seis vezes para o suporte sumir.
+        # relatório, e bastou uma seção citar a categoria seis vezes para o suporte sumir.
         rotulo_casa = u[4] and any(casa_palavra(c, palavras(celulas(u[5])[0])) for c in chaves)
         # número comum no relatório ("50%", "5", "0,62"): a régua do sumário, um ponto abaixo — a
         # linha do roteiro já exige todos os números do valor no mesmo parágrafo, o código e o n.
@@ -406,20 +406,20 @@ SECAO_DECLARADA = {
     "produtos em OfficeProducts": "§2.6",
     "preço de tabela mediano (rupia, sem conversão)": "§2.5",
     "produtos com nota < 4,0": "§4.5",
-    "taxa da base abaixo de 4,0 — para comparação": "§5.18",
+    "taxa da base abaixo de 4,0 — para comparação": "§5.17",
     "referências de avaliação na base": "§7.3",
     "nota mediana": "§2.5",
     "desconto mediano": "§2.5",
     "volume mediano de avaliações": "§4.3",
     "corte de engajamento alto (p90 de avaliações)": "§4.3",
     "produtos com nota >= 4,3": "§4.5",
-    "Spearman desconto × engajamento": "§5.5",
-    "Spearman engajamento × nota": "§5.5",
-    "Q6 — funil: nota >= 4,3 e volume abaixo da mediana": "§5.8",
-    "conflito B × D — distância de desconto": "§5.17",
-    "avaliações por produto — média e máximo": "§7.5",
-    "fones — produtos abaixo de 4,0": "§5.18",
-    "climatização — produtos abaixo de 4,0": "§5.18",
+    "Spearman desconto × engajamento": "§5.4",
+    "Spearman engajamento × nota": "§5.4",
+    "Q6 — funil: nota >= 4,3 e volume abaixo da mediana": "§5.7",
+    "conflito B × D — distância de desconto": "§5.16",
+    "avaliações por produto — média e máximo": "§7.4",
+    "fones — produtos abaixo de 4,0": "§5.17",
+    "climatização — produtos abaixo de 4,0": "§5.17",
 }
 # Quando a frase que mede o número traz, ao lado, outro número do mesmo tipo — "apenas 4 alcançam
 # 30 produtos, e as outras 5 somam 7"; "o p de QA4 vai de 0,236 para 0,228" sem desempate —,
@@ -427,8 +427,10 @@ SECAO_DECLARADA = {
 # expressão trazem os números na ordem em que o roteiro os lista.
 ANCORAS = {
     "categorias com n >= 30 (T2)": ("§2.6", r"apenas (\d+) alcançam 30 produtos"),
+    # sem o código da pergunta na regra, "subcategorias" + qualquer número pequeno achava apoio em outra frase
+    "subcategorias de nível 2 com n >= 30": ("§3.5", r"oferece \*\*(\d+) subcategorias acima do piso"),
     "Spearman preço de tabela × nota": (
-        "§5.14", r"\|\s*\*\*Preço de tabela × nota\*\*\s*\|\s*\*\*([+−-]?\d+,\d+)\*\*\s*\|\s*\*\*(\d+,\d+)\*\*"),
+        "§5.13", r"\|\s*\*\*Preço de tabela × nota\*\*\s*\|\s*\*\*([+−-]?\d+,\d+)\*\*\s*\|\s*\*\*(\d+,\d+)\*\*"),
 }
 
 

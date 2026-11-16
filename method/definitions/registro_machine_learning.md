@@ -5,14 +5,14 @@
 |---|---|---|---|---|
 | ML1 | Regressão explicativa da nota | **Absorvida no ML2** — decisão fechada em 23/09/2026, não reabrir | — | R² 0,10 (justificativa da absorção) |
 | ML2 | **Atributos associados à baixa satisfação** | Adotado | Q5, apoio a Q8 | AUC **0,70 ± 0,01** |
-| ML3 | n-gramas e TF-IDF sobre blocos de review | Mantido | Q7 | 339 e 418 blocos |
+| ML3 | n-gramas e TF-IDF sobre blocos de review | Mantido fora do relatório final | página 4 do dashboard (`tab14`) | 339 e 418 blocos |
 | ML4 | Segmentação descritiva multivariada | Obrigatório | QA7 | **k = 4**, semente 42, silhueta 0,234 |
 
 ## ML2 — definição
 - **Alvo:** `rating` < 4,0 — mesmo limiar dos cortes operacionais, sem critério paralelo
 - **Preditores:** preço de tabela · preço com desconto · percentual de desconto · volume de avaliações · categoria nível 1
 - **Vedação de vazamento:** nenhuma variável derivada de `rating` entra nos preditores, e **nenhuma listagem-gêmea (L8) fica dividida entre treino e teste** — a validação agrupa as variantes
-- **Saída:** **ranking de importância de atributos**. Não existe coluna de probabilidade de risco por produto — a formulação anterior está revogada
+- **Saída:** a **escada de AUC por bloco de preditores**, a que o relatório (§6.3) e a página 5 do dashboard publicam. O ranking de importância de atributos continua gerado (`tab25`), fora do relatório final. Não existe coluna de probabilidade de risco por produto — a formulação anterior está revogada
 - **Evidência:** validação cruzada agrupada por variante em 5 partes, taxa de risco 25,1%. Nenhum bloco isolado chega perto do conjunto — volume **0,556** · comerciais **0,583** · comerciais+categoria **0,658** · completo **0,70** (Random Forest 300, `random_state=42`, `StratifiedGroupKFold(5, shuffle=True, random_state=42)` agrupada por `(rating_count, rating)`). O sinal é multivariado — é exatamente por isso que o modelo existe.
   > ⚠️ **Valores anteriores revogados.** O registro trazia 0,640 · 0,655 · 0,715 · 0,755, medidos sob especificação não declarada, e depois 0,622 · 0,624 · 0,691 · 0,750 sob validação ingênua — que **inflava o AUC por vazamento de listagens-gêmeas** (L8): de 0,034 a 0,066 por bloco, medido em 31/10/2026 (`tab27_ml2_vazamento.csv`). Os valores acima são os de `02_results/tables/tab07_ml2_blocos.csv`, reproduzíveis com `python3 src/gera_figuras.py`. O desvio entre as cinco partições é de até **±0,039**, o que torna a terceira casa decimal indefensável: reportar duas
 - **Especificação de reprodução (obrigatória — sem ela o número não é verificável):** Random Forest, 300 árvores, `random_state=42`; preditores numéricos padronizados e categoria nível 1 em *one-hot*; `StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42)`, agrupada por `(rating_count, rating)`; a validação mora em `src/ml2.py`.

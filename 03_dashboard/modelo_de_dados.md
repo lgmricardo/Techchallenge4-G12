@@ -77,7 +77,7 @@ Cardinalidade **um para muitos**, filtro **unidirecional** de `BaseAnalitica` pa
 | `tab03` | `tab03_correlacoes.csv` | 4 × 5 | 3 | ρ de Spearman, p e *n* dos quatro pares — Q3 e QA4 |
 | `tab05` | `tab05_arquetipos.csv` | 4 × 8 | gabarito da 2c | perfil mediano dos quatro arquétipos — QA7. É o **gabarito** das medidas por arquétipo (seção 4 do guia): a matriz da 2c sai de `BaseAnalitica[arquetipo]`, que responde ao segmentador; a `tab05` confere os números |
 | `tab07` | `tab07_ml2_blocos.csv` | 4 × 3 | 5 | AUC por bloco de preditores, com o desvio entre partições — Q8 |
-| `tab14` | `tab14_ngramas.csv` | 105 × 17 | 4 | n-gramas por faixa de nota e contraste TF-IDF — Q7 |
+| `tab14` | `tab14_ngramas.csv` | 105 × 17 | 4 | n-gramas por faixa de nota e contraste TF-IDF — página 4 |
 | `tab23` | `tab23_qa5_temas.csv` | 9 × 8 | 4 | eixos temáticos nos 19 blocos de Q5 — QA5 |
 
 **Por que vêm prontas.** O Power Query não treina modelo (ML2, ML4), não tem TF-IDF nativo e não pode carregar o texto das avaliações (T7), que é de onde saem os n-gramas e os eixos da QA5. Spearman com p-valor exigiria montar postos com empate e o teste em DAX: risco alto, ganho zero.
@@ -100,7 +100,7 @@ As 6 medidas `Conf ·` (`conferencia_dax.md`) recalculam cada valor pelo DAX do 
 |---|---|
 | `user_id` · `user_name` | dado pessoal — vedado em visual, slide ou frame de vídeo (T7, LGPD). **Não existem no gold.** |
 | `img_link` · `product_link` | sem uso analítico declarado |
-| `about_product` · `review_title` · `review_content` | texto longo, e o das avaliações traz nome de consumidor; a análise textual acontece em Python (ML3), e só o resultado agregado chega ao dashboard — `tab14` e `tab23` |
+| `about_product` · `review_title` · `review_content` | texto longo, e o das avaliações traz nome de consumidor; a análise textual acontece em Python (notebook 05), e só o resultado agregado chega ao dashboard — `tab14` e `tab23` |
 
 ## Por que um modelo tão simples
 
